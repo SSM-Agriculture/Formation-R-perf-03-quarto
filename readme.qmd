@@ -1,0 +1,75 @@
+---
+title: "Formation Quarto"
+author:
+  - name: Michaël Delorme 
+    email: michael.delorme@agriculture.gouv.fr
+    affiliations:
+      - name: SSP/DéMéSIS
+affiliation: "SSP"
+date: today
+format: 
+  html:
+    self-contained: true
+    output-file: lisez-moi.html
+    mermaid: 
+      theme: default
+  gfm:
+    output-file: README.md
+crossref:
+  fig-prefix: figure
+  fig-title:  Figure
+  tbl-prefix: tableau
+  tbl-title:  Tableau
+  title-delim: " &ndash; "
+toc: true
+editor: source
+lang: fr
+editor_options: 
+  chunk_output_type: console
+execute: 
+  echo: false
+  warning: false
+---
+
+
+## Objectif
+ 
+Proposer documents et données pour une découverte du système de publication [Quarto](https://quarto.org/) d'une demi-journée dans le cadre du [parcours de formation R du SSP](https://orion.agriculture/confluence/display/CER/Formation+R_Ressources), possiblement en :
+
+- auto-formation, ou
+- présentiel.
+
+
+## Méta
+
+```{r}
+#| label: source-et-forge
+#| echo: false
+#| warning: false
+
+meta_qmd_source <- xfun::with_ext(knitr::current_input(dir = TRUE), "qmd") |> 
+  stringr::str_replace("/var/data/nfs", "~")
+
+meta_remote <- system("git remote -v", intern = TRUE)
+meta_url <- if (any(grep(pattern = "^origin", x = meta_remote))) {
+  meta_i <- grep(pattern = "^origin.*\\.git\\s\\(fetch\\)", x = meta_remote)
+  gsub("\\.git\\s\\(fetch\\)", "", strsplit(meta_remote[meta_i], "\\t")[[1]][[2]])
+} else {
+  ""
+}
+```
+
+Ce document est produit par :  
+  *`r meta_qmd_source`*
+  
+```{r}
+#| label: afficher-forge
+#| eval: !expr meta_url != ""
+#| echo: false
+#| results: asis
+
+cat("### Dépôt Git
+
+Ce projet est versionné dans :  
+[", meta_url, "](", meta_url, ")")
+```
