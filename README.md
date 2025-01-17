@@ -4,6 +4,7 @@ Michaël Delorme
 
 - [Objectif](#objectif)
 - [Fichiers](#fichiers)
+- [Construction](#construction)
   - [Méta](#méta)
     - [Dépôt Git](#dépôt-git)
 
@@ -27,6 +28,14 @@ possiblement en :
   Il s’agit d’un extrait aléatoire de 1000 exploitations du RA 2020 dont
   les lignes ont été mélangées par colonne pour secrétiser les données.
   Si besoin elles sont générées par *R/generer_donnees.R*.
+
+# Construction
+
+``` r
+install.packages("renv")
+renv::restore()
+source("R/generer_tout.R")
+```
 
 ## Méta
 

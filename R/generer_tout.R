@@ -1,5 +1,7 @@
 library(quarto)
+
 source("R/generer_donnees.R")
+
 quarto_render("formation_quarto.qmd", output_format = "html")
 quarto_render("formation_quarto.qmd", output_format = "revealjs")
 quarto_render("formation_quarto.qmd", output_format = "typst")

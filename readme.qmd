@@ -27,7 +27,7 @@ lang: fr
 editor_options: 
   chunk_output_type: console
 execute: 
-  echo: false
+  echo: true
   warning: false
 ---
 
@@ -51,6 +51,7 @@ Proposer documents et données pour une découverte du système de publication [
 
 ```{r}
 #| eval: false
+
 install.packages("renv")
 renv::restore()
 source("R/generer_tout.R")
