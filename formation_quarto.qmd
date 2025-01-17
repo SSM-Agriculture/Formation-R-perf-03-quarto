@@ -13,23 +13,23 @@ title-slide-attributes:
   data-background-size: cover
   data-background-opacity: "0.5"
 mainfont: Marianne
+toc: true
 format:
   revealjs:
     incremental: true
     width: 1600
     margin: 0.05
-    toc: true
     toc-depth: 1
     theme: [moon, masa.scss]
     logo: img/logo_masa_mail.png
     preview-links: auto
     show-slide-number: all
     slide-number: c/t
-    self-contained: true
   html:
-    toc: true
-    output-file: document.html
-  typst: default
+    output-file: formation_quarto_document.html
+    self-contained: true
+  typst:
+    output-file: formation_quarto_document.pdf
 editor_options: 
   chunk_output_type: console
 execute: 

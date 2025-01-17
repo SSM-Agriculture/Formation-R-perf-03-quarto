@@ -3,8 +3,9 @@ Michaël Delorme
 2025-01-17
 
 - [Objectif](#objectif)
-- [Méta](#méta)
-  - [Dépôt Git](#dépôt-git)
+- [Fichiers](#fichiers)
+  - [Méta](#méta)
+    - [Dépôt Git](#dépôt-git)
 
 ## Objectif
 
@@ -16,6 +17,16 @@ possiblement en :
 
 - auto-formation, ou
 - présentiel.
+
+# Fichiers
+
+- La compilation de *formation.quarto.qmd* permet de produire la
+  présentation *formation.quarto.qmd* (sous forme de diaporama
+  reveal.js) ou un document HTML ou PDF.
+- Les données des exercices sont présentes dans le répertoire *donnees*.
+  Il s’agit d’un extrait aléatoire de 1000 exploitations du RA 2020 dont
+  les lignes ont été mélangées par colonne pour secrétiser les données.
+  Si besoin elles sont générées par *R/generer_donnees.R*.
 
 ## Méta
 
