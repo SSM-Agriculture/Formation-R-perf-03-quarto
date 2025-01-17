@@ -15,10 +15,10 @@ title-slide-attributes:
 mainfont: Marianne
 format:
   revealjs:
+    incremental: true
     width: 1600
     margin: 0.05
     toc: true
-    incremental: true
     toc-depth: 1
     theme: [moon, masa.scss]
     logo: img/logo_masa_mail.png
@@ -26,11 +26,15 @@ format:
     show-slide-number: all
     slide-number: c/t
     self-contained: true
+  html:
+    toc: true
+    output-file: document.html
+  typst: default
 editor_options: 
   chunk_output_type: console
 execute: 
   echo: true
-bibliography: formation_quarto.bib
+bibliography: quarto.bib
 lang: fr
 csl: biblio.csl
 nocite: |
@@ -39,13 +43,64 @@ nocite: |
 
 # Objectifs
 
-# Quarto
 
-Un système de publication multi-format, multi-langage
 
-# Sur CERISE
+# Introduction
+
+## Quarto
+
+Un système de publication 
+
+:::: {.columns}
+
+::: {.column width="40%"}
+- multi-format
+  - HTML (rapports, livres, présentations)
+  - PDF
+  - Appli web (statique/Shiny) : blog, sites, tableaux de bord
+  - MS Word
+:::
+
+::: {.column width="60%"}
+- multi-langage
+  - R
+  - Python
+  - observable
+  - Julia
+:::
+
+::::
+
+::: notes
+Mélange code et texte
+Successeur de Rmarkdown
+
+Latex ou Typst pour le PDF
+:::
+
+## Avantages
+
+- intégration avec R
+- reproductibilité
+- versionnement avec git
+
+::: notes
+afficher du code dans le doc
+éviter les copier/coller : synchronisation analyse/résultats
+:::
+
+## Inconvénients
+
+- syntaxe (markdown)
+- génération
+
+::: notes
+éditeur WYSIWYG
+:::
+
+## Sur CERISE
 
 Un package et un binaire
 
-# Références {.smaller}
+# Références
 

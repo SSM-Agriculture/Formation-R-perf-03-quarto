@@ -3,5 +3,7 @@
 .RData
 .Ruserdata
 *.html
-
 /.quarto/
+formation_quarto_files
+*.typ
+*.pdf
