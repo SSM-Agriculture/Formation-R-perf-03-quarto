@@ -1,0 +1,51 @@
+---
+title: "Formation Quarto"
+subtitle: "Parcours de formation R perfectionnement SSP"
+author:
+  - name: Michaël Delorme 
+    email: michael.delorme@agriculture.gouv.fr
+    affiliations:
+      - name: SSP/DéMéSIS
+date: 2025-02-07
+date-modified: "`Sys.Date()`"
+title-slide-attributes:
+  data-background-image: img/jan-kahanek-g3O5ZtRk2E4-unsplash.jpg
+  data-background-size: cover
+  data-background-opacity: "0.5"
+mainfont: Marianne
+format:
+  revealjs:
+    width: 1600
+    margin: 0.05
+    toc: true
+    incremental: true
+    toc-depth: 1
+    theme: [moon, masa.scss]
+    logo: img/logo_masa_mail.png
+    preview-links: auto
+    show-slide-number: all
+    slide-number: c/t
+    self-contained: true
+editor_options: 
+  chunk_output_type: console
+execute: 
+  echo: true
+bibliography: formation_quarto.bib
+lang: fr
+csl: biblio.csl
+nocite: |
+  @*
+---
+
+# Objectifs
+
+# Quarto
+
+Un système de publication multi-format, multi-langage
+
+# Sur CERISE
+
+Un package et un binaire
+
+# Références {.smaller}
+

@@ -1,0 +1,26 @@
+/*-- scss:defaults --*/
+
+// fonts
+$presentation-font-size-root: 40px !default;
+$font-family-sans-serif: Marianne, serif !default;
+
+/*-- scss:rules --*/
+code {
+  white-space: pre !important;
+}
+
+blockquote > p {
+  font-style: italic;
+}
+
+/*-- leaflet --*/
+.reveal .slide-logo {
+  height: 10% !important;
+  /*width: 100px!important;*/
+  max-width: unset !important;
+  max-height: unset !important;
+}
+
+li:has(.nobullet) {
+  list-style: none;
+}
