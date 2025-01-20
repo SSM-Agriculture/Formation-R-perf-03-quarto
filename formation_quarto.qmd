@@ -22,7 +22,6 @@ format:
   html:
     output-file: formation_quarto_document.html
     self-contained: true
-    
   typst:
     output-file: formation_quarto_document.pdf
 editor_options: 
