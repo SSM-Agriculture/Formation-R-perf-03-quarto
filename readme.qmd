@@ -54,7 +54,6 @@ Les formateurs peuvent modifier leur nom et la date dans *\_quarto.yml*, puis ex
 ```{r}
 #| eval: false
 
-install.packages("renv")
 renv::restore()
 source("R/generer_tout.R")
 ```
