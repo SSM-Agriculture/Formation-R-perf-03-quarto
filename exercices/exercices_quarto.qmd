@@ -1,5 +1,5 @@
 ---
-title: "Formation Quarto"
+title: "Exercices Quarto"
 author:
   - name: Michaël Delorme 
     email: michael.delorme@agriculture.gouv.fr
@@ -10,11 +10,11 @@ date: today
 format: 
   html:
     self-contained: true
-    output-file: lisez-moi.html
-    mermaid: 
-      theme: default
-  gfm:
-    output-file: README.md
+    code-fold: true
+    code-tools: true
+    output-file: exercices_corriges_quarto.html
+  typst: 
+    output-file: exercices_corriges_quarto.pdf
 crossref:
   fig-prefix: figure
   fig-title:  Figure
@@ -31,32 +31,44 @@ execute:
   warning: false
 ---
 
+```{r}
+#| label: setup
 
-## Objectif
- 
-Proposer documents et données pour une découverte du système de publication [Quarto](https://quarto.org/) d'une demi-journée dans le cadre du [parcours de formation R du SSP](https://orion.agriculture/confluence/display/CER/Formation+R_Ressources), possiblement en :
-
-- présentiel, ou
-- auto-formation.
+library(readr)
+library(dplyr)
+```
 
 
-# Fichiers
-
-- La compilation de *formation_quarto.qmd* permet de produire la présentation *formation_quarto.qmd* (sous forme de diaporama reveal.js) ou un document HTML ou PDF.
-- Les exercices sont préparés dans *exercices_quarto.qmd*, produisant le document à distribuer *exercices_quarto.html* ou *exercices_quarto.pdf*.
-- Les données des exercices sont présentes dans le répertoire *donnees*.
-  Il s'agit d'un extrait aléatoire de 1000 exploitations du RA 2020 dont les lignes ont été mélangées par colonne pour secrétiser les données.
-  Si besoin elles sont générées par *R/generer_donnees.R*.
-
-# Construction
+## Présentation des données
 
 ```{r}
-#| eval: false
+#| label: donnees
+#| echo: true
 
-install.packages("renv")
-renv::restore()
-source("R/generer_tout.R")
+ra <- read_rds("donnees/ra_2020.rds")
 ```
+
+
+## Produire un document simple
+
+
+### Afficher un tableau
+
+```{r}
+#| label: tbl-ra
+
+ra
+```
+
+## HTML avec éléments interactifs
+
+
+## PDF
+
+
+## Tableaux de bord
+
+
 
 
 ## Méta
@@ -64,6 +76,7 @@ source("R/generer_tout.R")
 ```{r}
 #| label: source-et-forge
 #| echo: false
+#| eval: true
 #| warning: false
 
 meta_qmd_source <- xfun::with_ext(knitr::current_input(dir = TRUE), "qmd") |> 

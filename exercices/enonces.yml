@@ -1,0 +1,10 @@
+execute:
+  echo: false
+  eval: false
+format: 
+  html: 
+    code-fold: false
+    code-tools: false
+    output-file: exercices_enonces_quarto.html
+  typst: 
+    output-file: exercices_enonces_quarto.pdf

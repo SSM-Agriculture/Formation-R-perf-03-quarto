@@ -28,6 +28,7 @@ format:
   html:
     output-file: formation_quarto_document.html
     self-contained: true
+    
   typst:
     output-file: formation_quarto_document.pdf
 editor_options: 
@@ -71,6 +72,10 @@ Un système de publication
 
 ::::
 
+----
+
+![Principe de fonctionnement (source RStudio)](img/rstudio-qmd-how-it-works.png){#fig-works}
+
 ::: notes
 Mélange code et texte
 Successeur de Rmarkdown
@@ -101,6 +106,42 @@ afficher du code dans le doc
 ## Sur CERISE
 
 Un package et un binaire
+
+`quarto check install`
+`quarto check knitr`
+
+# Syntaxe et structure
+
+## markdown
+
+
+## chunks
+
+
+## YAML
+
+
+
+# Éléments
+
+## Images
+
+## Renvois
+
+## Tableaux
+
+## Graphiques
+
+## Cartes
+
+## Code
+
+
+Numérotation automatique
+
+## Citations/bibliographie
+
+Avec Zotero
 
 # Références
 
