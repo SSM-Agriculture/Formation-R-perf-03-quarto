@@ -14,7 +14,7 @@ format:
     width: 1600
     margin: 0.05
     toc-depth: 1
-    theme: [moon, style/masa.scss]
+    theme: [moon, styles/masa.scss]
     logo: img/logo_masa_mail.png
     preview-links: auto
     show-slide-number: all
@@ -28,9 +28,9 @@ editor_options:
   chunk_output_type: console
 execute: 
   echo: true
-bibliography: styles/formation_quarto.bib
+bibliography: formation_quarto.bib
 lang: fr
-csl: biblio.csl
+csl: styles/biblio.csl
 nocite: |
   @*
 ---
