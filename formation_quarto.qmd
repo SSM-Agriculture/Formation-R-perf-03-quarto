@@ -14,7 +14,7 @@ format:
     width: 1600
     margin: 0.05
     toc-depth: 1
-    theme: [moon, masa.scss]
+    theme: [moon, style/masa.scss]
     logo: img/logo_masa_mail.png
     preview-links: auto
     show-slide-number: all
@@ -28,12 +28,25 @@ editor_options:
   chunk_output_type: console
 execute: 
   echo: true
-bibliography: quarto.bib
+bibliography: formation_quarto.bib
 lang: fr
 csl: biblio.csl
 nocite: |
   @*
 ---
+
+```{r}
+#| label: setup
+
+library(ggplot2)
+
+theme_masa <- function(...) {
+  theme_grey(...) %+replace%
+    theme(
+      text = element_text(family = "Marianne"))
+}
+```
+
 
 # Objectifs
 
@@ -61,6 +74,10 @@ Un système de publication
   - Python
   - observable
   - Julia
+:::
+
+::: notes
+PDF nécessite {tinytex}
 :::
 
 ::::
@@ -105,13 +122,46 @@ Un package et un binaire
 
 # Syntaxe et structure
 
+````
+---
+title: "Mon document"
+author: ""
+---
+
+Lorem ipsum *dolor* sit amet, consectetur adipiscing elit,
+
+```{{python}}
+1 + 1
+```
+
+```{{r}}
+a <- 1 + 1
+```
+
+sed do `{{r}} a` eiusmod **tempor** incididunt ut labore et dolore magna aliqua
+
+````
+
 ## markdown
 
+Un langage balisé simple
+
+[doc](https://quarto.org/docs/authoring/markdown-basics.html)
 
 ## chunks
 
+```{{r}}
+#| label: mon-chunk
+#| warning: false
+
+1+1
+```
 
 ## YAML
+
+En-tête de configuration
+
+----
 
 ::: {.callout-note}
 ### À vous de jouer
@@ -122,26 +172,83 @@ Un package et un binaire
 
 
 
-# Éléments
+## Éléments
 
-## Images
+### Texte
 
-## Renvois
+- 2 retours à la ligne pour faire un paragraphe
+- `*` ou `_` pour mettre en *\*italique\** ou en **\*\*gras\*\***.
+- `[un lien](https://www.example.org/)` → [un lien](https://www.example.org/)
 
-## Tableaux
 
-## Graphiques
+----
 
-## Cartes
+### Titres
 
-## Code
 
+----
+
+### Listes
+
+
+----
+
+### Images
+
+`![MASA](img/logo_masa_mail.png)`  
+
+![MASA](img/logo_masa_mail.png "voir le logo"){fig-alt="Logo MASA"}
+
+`![MASA](img/logo_masa_mail.png "voir le logo"){fig-alt="Logo MASA"}`
+
+----
+
+### Renvois
 
 Numérotation automatique
+
+----
+
+### Tableaux
+
+
+----
+
+### Graphiques
+
+
+----
+
+### Cartes
+
+
+----
+
+### Code
+
+
+```{r}
+#| fig-cap: "Iris"
+#| output-location: column
+
+ggplot(iris, aes(Petal.Length, Petal.Width, color = Species)) +
+  geom_point() +
+  theme_masa()
+```
+
+- Taille d'image dans Quarto [@arel-bundockConsistentFiguresQuarto2024]
+
+----
+
+
 
 ## Citations/bibliographie
 
 Avec Zotero
+
+
+## Cache
+
 
 # Références
 

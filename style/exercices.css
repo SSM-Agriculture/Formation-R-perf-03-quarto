@@ -1,0 +1,6 @@
+h2:not(.unnumbered):before {
+  content:"Exercice "
+}
+.header-section-number:after, .toc-section-number:after {
+  content:". "
+}

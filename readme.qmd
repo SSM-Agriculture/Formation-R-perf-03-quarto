@@ -39,19 +39,21 @@ Proposer des documents et des exercices avec leurs données pour une découverte
 - auto-formation.
 
 
-# Fichiers
+## Fichiers
 
-- La compilation de *formation_quarto.qmd* permet de produire la présentation *formation_quarto.qmd* (sous forme de diaporama reveal.js) ou un document HTML ou PDF.
-- Les exercices sont préparés dans *exercices/exercices_quarto.qmd*, produisant le document à distribuer *exercices_quarto.html* ou *exercices_quarto.pdf* dans ce même répertoire.
+- La compilation de *formation_quarto.qmd* permet de produire la présentation *formation_quarto.html* (sous forme de diaporama reveal.js) ou un document HTML ou PDF.
+- Les exercices sont préparés dans *exercices/exercices_quarto.qmd*, produisant les énoncés à distribuer *exercices_enonces_quarto.html* (ou en PDF) dans ce même répertoire, ainsi que les corrigés *exercices_corriges_quarto.\**.
 - Les données des exercices sont présentes dans le répertoire *donnees*.
   Il s'agit d'un extrait aléatoire de 1000 exploitations du RA 2020 dont les lignes ont été mélangées par colonne pour secrétiser les données.
   Si besoin elles sont générées par *R/generer_donnees.R*.
 
-# Construction
+
+## Construction
 
 Les formateurs peuvent modifier leur nom et la date dans *\_quarto.yml*, puis exécuter le code suivant pour générer tous les documents :
 
 ```{r}
+#| label: construction
 #| eval: false
 
 renv::restore()

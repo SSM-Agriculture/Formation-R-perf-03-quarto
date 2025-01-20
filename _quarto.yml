@@ -1,8 +1,10 @@
+# Formateur(s) :
 author:
   - name: Michaël Delorme 
     email: michael.delorme@agriculture.gouv.fr
     affiliations:
       - name: SSP/DéMéSIS
+# date de la formation :
 date: 2025-02-07
 project:
   execute-dir: project
