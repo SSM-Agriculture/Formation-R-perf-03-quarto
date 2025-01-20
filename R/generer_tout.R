@@ -14,9 +14,9 @@ quarto_render("formation_quarto.qmd", output_format = "typst")
 
 # énoncés et corrigés des exercices ---------------------------------------
 
-# ils sont dans un sous-répertoire : les fichiers qu'ils utilisent (dans donnees)
-# sont cependant accédés depuis la racine car on a mis execute-dir: project
-# dans _quarto_yml
+# ils sont dans un sous-répertoire : les fichiers qu'ils utilisent (dans 
+# donnees) sont cependant accédés comme depuis la racine car on a mis 
+# `execute-dir: project` dans _quarto_yml
 
 # corrigés
 quarto_render("exercices/exercices_quarto.qmd", output_format = "html")

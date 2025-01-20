@@ -1,17 +1,12 @@
 ---
 title: "Exercices Quarto"
-author:
-  - name: Michaël Delorme 
-    email: michael.delorme@agriculture.gouv.fr
-    affiliations:
-      - name: SSP/DéMéSIS
-affiliation: "SSP"
-date: today
+date-modified: "`Sys.Date()`"
 format: 
   html:
     self-contained: true
     code-fold: true
     code-tools: true
+    number-sections: true
     output-file: exercices_corriges_quarto.html
   typst: 
     output-file: exercices_corriges_quarto.pdf
@@ -27,19 +22,21 @@ lang: fr
 editor_options: 
   chunk_output_type: console
 execute: 
+  eval: true
   echo: true
   warning: false
 ---
 
 ```{r}
 #| label: setup
+#| echo: true
 
 library(readr)
 library(dplyr)
 ```
 
 
-## Présentation des données
+## Présentation des données {.unnumbered}
 
 ```{r}
 #| label: donnees
@@ -49,7 +46,7 @@ ra <- read_rds("donnees/ra_2020.rds")
 ```
 
 
-## Produire un document simple
+## Produire un document simple {#ex-1}
 
 
 ### Afficher un tableau
@@ -70,8 +67,7 @@ ra
 
 
 
-
-## Méta
+## Méta {.unnumbered}
 
 ```{r}
 #| label: source-et-forge
@@ -100,7 +96,7 @@ Ce document est produit par :
 #| echo: false
 #| results: asis
 
-cat("### Dépôt Git
+cat("### Dépôt Git {.unnumbered}
 
 Ce projet est versionné dans :  
 [", meta_url, "](", meta_url, ")")
