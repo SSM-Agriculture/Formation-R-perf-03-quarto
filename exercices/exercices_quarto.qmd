@@ -1,7 +1,7 @@
 ---
 title: "Exercices Quarto"
 date-modified: today
-css: ../style/exercices.css
+css: ../styles/exercices.css
 format: 
   html:
     self-contained: true

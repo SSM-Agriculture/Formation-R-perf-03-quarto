@@ -28,7 +28,7 @@ editor_options:
   chunk_output_type: console
 execute: 
   echo: true
-bibliography: formation_quarto.bib
+bibliography: styles/formation_quarto.bib
 lang: fr
 csl: biblio.csl
 nocite: |
