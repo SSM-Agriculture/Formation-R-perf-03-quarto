@@ -41,6 +41,8 @@ nocite: |
 library(ggplot2)
 library(ragg)
 
+knitr::opts_chunk$set(dev = "ragg_png")
+
 theme_masa <- function(...) {
   theme_grey(...) %+replace%
     theme(
@@ -229,6 +231,7 @@ Numérotation automatique
 
 
 ```{r}
+#| label: fig-iris
 #| fig-cap: "Iris"
 #| output-location: column
 
