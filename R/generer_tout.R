@@ -9,7 +9,7 @@ source("R/generer_donnees.R")
 
 quarto_render("formation_quarto.qmd", output_format = "revealjs")
 quarto_render("formation_quarto.qmd", output_format = "html")
-quarto_render("formation_quarto.qmd", output_format = "typst")
+quarto_render("formation_quarto.qmd", output_format = "pdf")
 
 
 # énoncés et corrigés des exercices ---------------------------------------
@@ -20,14 +20,14 @@ quarto_render("formation_quarto.qmd", output_format = "typst")
 
 # corrigés
 quarto_render("exercices/exercices_quarto.qmd", output_format = "html")
-quarto_render("exercices/exercices_quarto.qmd", output_format = "typst")
+quarto_render("exercices/exercices_quarto.qmd", output_format = "pdf")
 
 # Les énoncés n'affichent pas le code et les solutions car on change le `echo`
 # avec enonces.yml
 quarto_render("exercices/exercices_quarto.qmd", 
               metadata_file = "exercices/enonces.yml", output_format = "html")
 quarto_render("exercices/exercices_quarto.qmd", 
-              metadata_file = "exercices/enonces.yml", output_format = "typst")
+              metadata_file = "exercices/enonces.yml", output_format = "pdf")
 
 
 # lisez-moi ---------------------------------------------------------------

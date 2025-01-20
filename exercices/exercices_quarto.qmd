@@ -8,7 +8,7 @@ format:
     code-tools: true
     number-sections: true
     output-file: exercices_corriges_quarto.html
-  typst: 
+  pdf: 
     output-file: exercices_corriges_quarto.pdf
 crossref:
   fig-prefix: figure

@@ -22,7 +22,7 @@ format:
   html:
     output-file: formation_quarto_document.html
     self-contained: true
-  typst:
+  pdf:
     output-file: formation_quarto_document.pdf
 editor_options: 
   chunk_output_type: console
