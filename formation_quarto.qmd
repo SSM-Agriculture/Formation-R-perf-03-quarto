@@ -100,7 +100,7 @@ afficher du code dans le doc
 
 Un package et un binaire
 
-`quarto check install`
+`quarto check install`  
 `quarto check knitr`
 
 # Syntaxe et structure
@@ -113,7 +113,14 @@ Un package et un binaire
 
 ## YAML
 
-[Exercice 1](exercices/exercices_enonces_quarto.html#ex-1)
+::: {.callout-note}
+### À vous de jouer
+
+[Exercice 1](exercices/exercices_enonces_quarto.html#doc-simple) : produire un document simple
+:::
+
+
+
 
 # Éléments
 

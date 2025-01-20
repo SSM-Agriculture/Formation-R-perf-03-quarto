@@ -46,7 +46,7 @@ ra <- read_rds("donnees/ra_2020.rds")
 ```
 
 
-## Produire un document simple {#ex-1}
+## Produire un document simple {#doc-simple}
 
 
 ### Afficher un tableau
