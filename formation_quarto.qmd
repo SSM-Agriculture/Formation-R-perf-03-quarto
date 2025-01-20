@@ -39,6 +39,7 @@ nocite: |
 #| label: setup
 
 library(ggplot2)
+library(ragg)
 
 theme_masa <- function(...) {
   theme_grey(...) %+replace%
