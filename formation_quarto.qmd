@@ -26,6 +26,9 @@ format:
     output-file: formation_quarto_document.pdf
 editor_options: 
   chunk_output_type: console
+knitr:
+  opts_chunk: 
+    dev: "ragg_png"
 execute: 
   echo: true
 bibliography: formation_quarto.bib
@@ -39,9 +42,6 @@ nocite: |
 #| label: setup
 
 library(ggplot2)
-library(ragg)
-
-knitr::opts_chunk$set(dev = "ragg_png")
 
 theme_masa <- function(...) {
   theme_grey(...) %+replace%
@@ -253,6 +253,27 @@ Avec Zotero
 
 ## Cache
 
+# DSFR
+
+- Typographie Marianne [@servicedinformationdugouvernementCharteGraphiqueLEtat2020] : textes et graphiques
+  
+  - Installer {ragg}, {systemfonts} et {textshaping}
+  - Dans Quarto :
+    ```{{r}}
+    knitr::opts_chunk$set(dev = "ragg_png")
+    ```
+    
+    ou dans l'en-tête yaml :
+    
+    ```
+    ---
+    knitr:
+      opts_chunk: 
+        dev: "ragg_png"
+    ---
+    ```
+
+- Couleurs
 
 # Références
 
