@@ -300,6 +300,8 @@ Comme le dit @rdevelopmentcoreteamLanguageEnvironmentStatistical2010 :
 
 ### Callout
 
+Les "libellés" permettent de mettre en exergue des informations complémentaire.
+
 ````
 :::{.callout-note}
 Il existe cinq types de : 
