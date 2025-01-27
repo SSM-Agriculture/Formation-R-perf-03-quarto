@@ -64,7 +64,7 @@ ra
 ## PDF
 
 
-## Tableaux de bord
+## Tableau de bord
 
 
 

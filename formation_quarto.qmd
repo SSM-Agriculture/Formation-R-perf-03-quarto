@@ -19,6 +19,7 @@ format:
     preview-links: auto
     show-slide-number: all
     slide-number: c/t
+    slide-level: 3
   html:
     output-file: formation_quarto_document.html
     self-contained: true
@@ -64,10 +65,10 @@ Un système de publication
 :::: {.columns}
 
 ::: {.column width="40%"}
-- multi-format
+- [multi-format](https://quarto.org/docs/gallery/)
   - HTML (rapports, livres, présentations)
   - PDF
-  - Appli web (statique/Shiny) : blog, sites, tableaux de bord
+  - Appli web (statique/Shiny) : blog, site, tableau de bord
   - MS Word
 :::
 
@@ -75,8 +76,8 @@ Un système de publication
 - multi-langage
   - R
   - Python
-  - observable
-  - Julia
+  - [Observable](https://observablehq.com/)
+  - [Julia](https://julialang.org/)
 :::
 
 ::: notes
@@ -113,7 +114,7 @@ afficher du code dans le doc
 - génération
 
 ::: notes
-éditeur WYSIWYG
+éditeur visuel WYSIWYG
 :::
 
 ## Sur CERISE
@@ -164,7 +165,6 @@ Un langage balisé simple
 
 En-tête de configuration
 
-----
 
 ::: {.callout-note}
 ### À vous de jouer
@@ -184,96 +184,159 @@ En-tête de configuration
 - `[un lien](https://www.example.org/)` → [un lien](https://www.example.org/)
 
 
-----
+
 
 ### Titres
 
+Préfixer le titre avec `#`, `##` ou `###` pour avoir les titres de niveau 1, 2 ou 3, *etc.*.
 
-----
+`#### Titre de niveau 4`
+
+#### Titre de niveau 4
+
 
 ### Listes
 
 
-----
+
+### Liens
+
 
 ### Images
 
 `![MASA](img/logo_masa_mail.png)`  
 
-![MASA](img/logo_masa_mail.png "voir le logo"){fig-alt="Logo MASA"}
+![MASA](img/logo_masa_mail.png "voir le logo"){fig-alt="Logo MASA" width="215px"}
 
 `![MASA](img/logo_masa_mail.png "voir le logo"){fig-alt="Logo MASA"}`
 
-----
+
 
 ### Renvois
 
 Numérotation automatique
 
-----
-
-### Tableaux
-
-
-----
-
-### Graphiques
-
-
-----
-
-### Cartes
-
-
-----
 
 ### Code
-
 
 ```{r}
 #| label: fig-iris
 #| fig-cap: "Iris"
 #| output-location: column
 
-ggplot(iris, aes(Petal.Length, Petal.Width, color = Species)) +
+ggplot(iris, aes(Petal.Length, 
+                 Petal.Width, 
+                 color = Species)) +
   geom_point() +
   theme_masa()
 ```
 
 - Taille d'image dans Quarto [@arel-bundockConsistentFiguresQuarto2024]
 
-----
+
+
+### Tableaux
+
+
+### Notes de pied de page
+
+````
+Les notes se construisent en ajoutant un `[^1]` dans le texte, avec le `1` 
+pouvant être une numérotation (pas obligatoirement dans l'ordre) ou tout 
+autre mot clé. La note est ensuite introduite avec le même symbols dans un 
+nouveau paragraphe
+
+[^1]: texte de la note
+
+````
+
+C'est normalement facile[^nbp] à faire si on se rappelle de la syntaxe.
+
+[^nbp]: [page d'aide](https://quarto.org/docs/authoring/markdown-basics.html#footnotes) sur les notes de bas de page.
+
+### Graphiques
 
 
 
-## Citations/bibliographie
+### Cartes
 
-Avec Zotero
 
+
+### Équations
+
+Syntaxe Latex entre des `$` (inline) ou `$$` (bloc).
+
+```latex
+$\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^N (x_i - \mu)^2},\text{ où } \mu = \frac{1}{N} \sum_{i=1}^N x_i$
+```
+
+$$\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^N (x_i - \mu)^2},\text{ où } \mu = \frac{1}{N} \sum_{i=1}^N x_i$$
+
+### Citations/bibliographie
+
+Avec [Zotero](https://www.zotero.org/) et l'extension [Better BibTeX](https://retorque.re/zotero-better-bibtex/) pour auto-exporter en BibTeX la collection quand elle est modifiée.
+
+Préciser le fichier utilisé en en-tête, puis utilisation des identifiants du fichier BibTex.
+
+````
+---
+title: "Mon document"
+bibliography: formation_quarto.bib
+---
+
+Comme le dit @rdevelopmentcoreteamLanguageEnvironmentStatistical2010 :
+
+> Lorem ipsum dolor sit amet[@rstudioGuide2024], consectetur adipiscing elit
+
+````
+
+Comme le dit @rdevelopmentcoreteamLanguageEnvironmentStatistical2010 :
+
+> Lorem ipsum dolor sit amet[@rstudioGuide2024], consectetur adipiscing elit
+
+
+### Callout
+
+````
+:::{.callout-note}
+Il existe cinq types de : 
+`note`, `tip`, `warning`, `caution` et `important`.
+:::
+````
+
+:::{.callout-note}
+Il existe cinq types de : 
+`note`, `tip`, `warning`, `caution` et `important`.
+:::
 
 ## Cache
 
-# DSFR
+# Marque de l'État
 
-- Typographie Marianne [@servicedinformationdugouvernementCharteGraphiqueLEtat2020] : textes et graphiques
+## Typographie Marianne
+
+Pour textes et graphiques [@servicedinformationdugouvernementCharteGraphiqueLEtat2020]
   
-  - Installer {ragg}, {systemfonts} et {textshaping}
-  - Dans Quarto :
-    ```{{r}}
-    knitr::opts_chunk$set(dev = "ragg_png")
-    ```
-    
-    ou dans l'en-tête yaml :
-    
-    ```
-    ---
-    knitr:
-      opts_chunk: 
-        dev: "ragg_png"
-    ---
-    ```
+- Installer {ragg}, {systemfonts} et {textshaping}
+- Dans l'en-tête yaml du document Quarto :
+  
+  ```
+  ---
+  mainfont: Marianne
+  knitr:
+    opts_chunk: 
+      dev: "ragg_png"
+  ---
+  ```
+  
+::: notes
+Permet d'avoir la police Marianne pour le texte et de la prendre en compte dans les graphiques ggplot.
 
-- Couleurs
+Autre option (à mettre dans un chunk de configuration en début de document) :
+  `knitr::opts_chunk$set(dev = "ragg_png")`
+:::
+
+## Couleurs
 
 # Références
 
