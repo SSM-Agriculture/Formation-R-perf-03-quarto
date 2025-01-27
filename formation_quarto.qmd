@@ -54,7 +54,9 @@ theme_masa <- function(...) {
 
 # Objectifs
 
-
+:::{.callout-caution}
+DIAPORAMA EN COURS DE CONSTRUCTION 
+:::
 
 # Introduction
 
