@@ -20,6 +20,7 @@ format:
     show-slide-number: all
     slide-number: c/t
     slide-level: 3
+    self-contained: true
   html:
     output-file: formation_quarto_document.html
     self-contained: true
