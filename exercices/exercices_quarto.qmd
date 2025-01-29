@@ -8,6 +8,7 @@ format:
     code-fold: true
     code-tools: true
     number-sections: true
+    smooth-scroll: true
     output-file: exercices_corriges_quarto.html
   pdf: 
     output-file: exercices_corriges_quarto.pdf

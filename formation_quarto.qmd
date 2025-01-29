@@ -25,6 +25,9 @@ format:
   html:
     output-file: formation_quarto_document.html
     self-contained: true
+    code-links:
+      - text: Code source
+        repo: https://github.com/SSM-Agriculture/Formation-R-perf-03-quarto
   pdf:
     output-file: formation_quarto_document.pdf
 editor_options: 
@@ -225,7 +228,8 @@ quarto render mon_document.qmd
 - 2 espaces et 1 retour à la ligne pour un saut de ligne
 - `*` ou `_` pour mettre en *\*italique\** ou en **\*\*gras\*\***
 - `[un lien](https://www.example.org/)` → [un lien](https://www.example.org/)
-- `[red](en rouge)` pour mettre en [red](en rouge)
+- une portion de texte peut être stylée en [vert]{style="color:darkgreen"} avec `[vert]{style="color:darkgreen"}`
+- mais du HTML est aussi possible `<span style="color:red">rouge</span>` pour mettre en <span style="color:red">rouge</span>
 
 [doc](https://quarto.org/docs/authoring/markdown-basics.html)
 
