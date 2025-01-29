@@ -34,3 +34,8 @@ quarto_render("exercices/exercices_quarto.qmd",
 
 quarto_render("readme.qmd", output_format = "html")
 quarto_render("readme.qmd", output_format = "gfm")
+
+
+# publier sur github pages ------------------------------------------------
+
+system("quarto publish gh-pages formation_quarto.qmd")

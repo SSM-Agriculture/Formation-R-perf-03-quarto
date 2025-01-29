@@ -47,8 +47,30 @@ ra <- read_rds("donnees/ra_2020.rds")
 ```
 
 
+## Découvrir l'interface {#interface}
+
+`Fichier` \>
+`Nouveau projet` \>
+`Nouveau répertoire` \>
+`Projet Quarto` \>
+
+- *formation* dans *~*  
+- moteur <kbd>knitr</kbd>
+
+ou `Fichier` \> `Nouveau fichier` \> `R Quarto document`
+
+Basculer successivement sur l'éditeur WYSIWYG / text brut
+
+Tricoter le document
+
 ## Produire un document simple {#doc-simple}
 
+
+### Formater du texte {#formattage}
+
+- Insérer un titre
+- Passer en gras, italique
+- Insérer une image
 
 ### Afficher un tableau
 
@@ -68,12 +90,11 @@ ra
 
 
 
-## Méta {.unnumbered}
+## Méta {.appendix}
 
 ```{r}
 #| label: source-et-forge
 #| echo: false
-#| eval: true
 #| warning: false
 
 meta_qmd_source <- xfun::with_ext(knitr::current_input(dir = TRUE), "qmd") |> 
@@ -81,8 +102,8 @@ meta_qmd_source <- xfun::with_ext(knitr::current_input(dir = TRUE), "qmd") |>
 
 meta_remote <- system("git remote -v", intern = TRUE)
 meta_url <- if (any(grep(pattern = "^origin", x = meta_remote))) {
-  meta_i <- grep(pattern = "^origin.*\\.git\\s\\(fetch\\)", x = meta_remote)
-  gsub("\\.git\\s\\(fetch\\)", "", strsplit(meta_remote[meta_i], "\\t")[[1]][[2]])
+  meta_i <- grep(pattern = "^origin.*\\s\\(fetch\\)", x = meta_remote)
+  gsub("(\\.git)?\\s\\(fetch\\)", "", strsplit(meta_remote[meta_i], "\\t")[[1]][[2]])
 } else {
   ""
 }
@@ -97,11 +118,10 @@ Ce document est produit par :
 #| echo: false
 #| results: asis
 
-cat("### Dépôt Git {.unnumbered}
+cat("### Dépôt Git {.appendix}
 
 Ce projet est versionné dans :  
 [", meta_url, "](", meta_url, ")")
 ```
-
 
 

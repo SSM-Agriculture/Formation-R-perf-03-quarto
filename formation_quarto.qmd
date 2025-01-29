@@ -3,7 +3,7 @@ title: "Formation Quarto"
 subtitle: "Parcours de formation R perfectionnement SSP"
 date-modified: "`Sys.Date()`"
 title-slide-attributes:
-  data-background-image: img/jan-kahanek-g3O5ZtRk2E4-unsplash.jpg
+  data-background-image: images/ze-paulo-gasparotto-GeReAnOMiZ8-unsplash.jpg
   data-background-size: cover
   data-background-opacity: "0.5"
 mainfont: Marianne
@@ -14,13 +14,14 @@ format:
     width: 1600
     margin: 0.05
     toc-depth: 1
-    theme: [moon, styles/masa.scss]
-    logo: img/logo_masa_mail.png
+    theme: [solarized, styles/masa.scss]
+    logo: images/logo_masa_mail.png
     preview-links: auto
     show-slide-number: all
     slide-number: c/t
     slide-level: 3
     self-contained: true
+    code-block-height: 650px
   html:
     output-file: formation_quarto_document.html
     self-contained: true
@@ -33,6 +34,8 @@ knitr:
     dev: "ragg_png"
 execute: 
   echo: true
+  warning: false
+  error: false
 bibliography: formation_quarto.bib
 lang: fr
 csl: styles/biblio.csl
@@ -40,11 +43,18 @@ nocite: |
   @*
 ---
 
+## Pré-requis techniques
+
 ```{r}
 #| label: setup
 
-library(ggplot2)
+library(dplyr)   # manip. données
+library(ggplot2) # graphiques
+library(sf)      # carto
+library(leaflet) # carto
+library(gt)
 
+# un theme ggplot utilisant la police Marianne
 theme_masa <- function(...) {
   theme_grey(...) %+replace%
     theme(
@@ -52,100 +62,116 @@ theme_masa <- function(...) {
 }
 ```
 
+# Introduction
 
-# Objectifs
-
-:::{.callout-caution}
-DIAPORAMA EN COURS DE CONSTRUCTION 
+::: callout-caution
+DIAPORAMA EN COURS DE CONSTRUCTION
 :::
 
-# Introduction
+## Objectifs
+
+-   Intérêt des publications reproductibles
+-   Découvrir la versatilité de Quarto
+-   Réaliser un document simple à complexe
+
+::: notes
+versatile : pour le langage en entrée et les formats en sortie (diapo suivante)
+:::
 
 ## Quarto
 
-Un système de publication 
+Un système de publication
 
-:::: {.columns}
-
-::: {.column width="40%"}
-- [multi-format](https://quarto.org/docs/gallery/)
-  - HTML (rapports, livres, présentations)
-  - PDF
-  - Appli web (statique/Shiny) : blog, site, tableau de bord
-  - MS Word
+:::::: columns
+::: {.column width="50%"}
+-   [multi-format](https://quarto.org/docs/gallery/)
+    -   HTML (rapports, livres, présentations)
+    -   PDF
+    -   Appli web (statique/Shiny) : blog, site, tableau de bord
+    -   MS Word
 :::
 
-::: {.column width="60%"}
-- multi-langage
-  - R
-  - Python
-  - [Observable](https://observablehq.com/)
-  - [Julia](https://julialang.org/)
+::: {.column width="50%"}
+-   multi-langage
+    -   R
+    -   Python
+    -   [Observable](https://observablehq.com/)
+    -   [Julia](https://julialang.org/)
 :::
 
 ::: notes
-PDF nécessite {tinytex}
+Le format PDF nécessite {tinytex}
 :::
-
-::::
+::::::
 
 ----
 
-![Principe de fonctionnement (source RStudio)](img/rstudio-qmd-how-it-works.png){#fig-works}
+![Principe de fonctionnement (source RStudio)](images/rstudio-qmd-how-it-works.png){#fig-works}
 
 ::: notes
-Mélange code et texte
+Mélange code et texte 
+
 Successeur de Rmarkdown
 
-Latex ou Typst pour le PDF
+Commandes complémentaires Latex ou Typst pour le PDF
 :::
 
 ## Avantages
 
-- intégration avec R
-- reproductibilité
-- versionnement avec git
+-   intégration avec R
+-   reproductibilité
+-   versionnement avec git
 
 ::: notes
-afficher du code dans le doc
-éviter les copier/coller : synchronisation analyse/résultats
+-   afficher du code dans le doc
+-   éviter les copier/coller : synchronisation analyse/résultats
+-   faciliter la reproductibilité avec {renv}
 :::
 
 ## Inconvénients
 
-- syntaxe (markdown)
-- génération
+-   syntaxe (markdown)
+-   génération
 
 ::: notes
-éditeur visuel WYSIWYG
+Mais disponibilité d'un éditeur visuel WYSIWYG dans RStudio
 :::
 
 ## Sur CERISE
 
-Un package et un binaire
+Un package {quarto} et un binaire `quarto`.
 
-`quarto check install`  
-`quarto check knitr`
+```{.bash}
+quarto check install
+quarto check knitr
+```
 
 # Syntaxe et structure
 
-````
+----
+
+````{.markdown}
 ---
-title: "Mon document"
-author: ""
+title: "Litany against fear"
+author: "Bene Gesserit"
 ---
 
-Lorem ipsum *dolor* sit amet, consectetur adipiscing elit,
+I must not fear. *Fear is the mind-killer*. Fear is the little-death that
+brings total obliteration. 
 
 ```{{python}}
-1 + 1
+import numpy as np
+np.exp(np.pi * complex(0, 1)) + 1
 ```
+
+**I will face my fear.** I will permit it to pass over me and through me.
 
 ```{{r}}
-a <- 1 + 1
+somme <- sum(1:10)
 ```
 
-sed do `{{r}} a` eiusmod **tempor** incididunt ut labore et dolore magna aliqua
+And when it has gone past I will turn the `{{r}} somme` inner eye to see its 
+path. Where the fear has gone there will be nothing. Only I will remain.
 
 ````
 
@@ -157,6 +183,8 @@ Un langage balisé simple
 
 ## chunks
 
+Le code exécutable est intégré dans un *chunk* (bloc) :
+
 ```{{r}}
 #| label: mon-chunk
 #| warning: false
@@ -164,30 +192,42 @@ Un langage balisé simple
 1+1
 ```
 
+[doc](https://quarto.org/docs/computations/r.html)
+
 ## YAML
 
-En-tête de configuration
+- en-tête de configuration
+- bloc entre `---`
+- *a minima* : `title:`
+- variable selon les formats
+
+## Rendu
+
+```{.bash}
+quarto render mon_document.qmd
+```
 
 
-::: {.callout-note}
+<kbd>Ctrl</kbd> <kbd>⇧</kbd> <kbd>k</kbd> ou ![](images/clipboard-660236810.png){width=75 style="vertical-align:text-top"} (ou
+![](images/clipboard-660236811.png){width=131 style="vertical-align:text-top"})
+
+::: callout-note
 ### À vous de jouer
 
-[Exercice 1](exercices/exercices_enonces_quarto.html#doc-simple) : produire un document simple
+[Exercice 1](exercices/exercices_enonces_quarto.html#interface) et [Exercice 2](exercices/exercices_enonces_quarto.html#doc-simple) : découvrir l'interface et produire un document simple
 :::
-
-
-
 
 ## Éléments
 
 ### Texte
 
 - 2 retours à la ligne pour faire un paragraphe
-- `*` ou `_` pour mettre en *\*italique\** ou en **\*\*gras\*\***.
+- 2 espaces et 1 retour à la ligne pour un saut de ligne
+- `*` ou `_` pour mettre en *\*italique\** ou en **\*\*gras\*\***
 - `[un lien](https://www.example.org/)` → [un lien](https://www.example.org/)
+- `[red](en rouge)` pour mettre en [red](en rouge)
 
-
-
+[doc](https://quarto.org/docs/authoring/markdown-basics.html)
 
 ### Titres
 
@@ -197,30 +237,234 @@ Préfixer le titre avec `#`, `##` ou `###` pour avoir les titres de niveau 1, 2 
 
 #### Titre de niveau 4
 
-
 ### Listes
 
+::::: columns
+::: {.column width="50%"}
+``` markdown
+- Atréides
+  - Leto
+  - Jessica
+  - Paul
+- Harkonnen
+  - Vladimir
+  - Rabban
+  - Feyd-Rautha
+```
 
+ou
+
+``` markdown
+- Atréides
+  * Leto
+  * Jessica
+  * Paul
+- Harkonnen
+  * Vladimir
+  * Rabban
+  * Feyd-Rautha
+```
+:::
+
+::: {.nonincremental .column width="50%"}
+-   Atréides
+    -   Leto
+    -   Jessica
+    -   Paul
+-   Harkonnen
+    -   Vladimir
+    -   Rabban
+    -   Feyd-Rautha
+:::
+:::::
+
+----
+
+::::: columns
+::: {.column width="50%"}
+``` markdown
+- Atréides
+  - Leto
+  - Jessica  
+    2 espace + nouvelle ligne + aligner pour 
+    ajouter du texte dans les items
+  - Paul
+- Harkonnen
+  - Vladimir
+  - Rabban
+  - Feyd-Rautha
+```
+:::
+
+::: {.nonincremental .column width="50%"}
+-   Atréides
+    -   Leto
+    -   Jessica\
+        **2 espace + nouvelle ligne + aligner pour ajouter du texte dans les items**
+    -   Paul
+-   Harkonnen
+    -   Vladimir
+    -   Rabban
+    -   Feyd-Rautha
+:::
+:::::
 
 ### Liens
 
+``` markdown
+[Texte du lien](https://fr.wikipedia.org/wiki/Arrakis)
+```
+
+[Texte du lien](https://fr.wikipedia.org/wiki/Arrakis)
 
 ### Images
 
-`![MASA](img/logo_masa_mail.png)`  
+`![Fremen](images/images/dune_book.jpg)`
 
-![MASA](img/logo_masa_mail.png "voir le logo"){fig-alt="Logo MASA" width="215px"}
+![Fremen](images/dune_book.jpg "Shai-hulud"){#fig-dune fig-alt="A sand worm on Arrakis"}
 
-`![MASA](img/logo_masa_mail.png "voir le logo"){fig-alt="Logo MASA"}`
+``` markdown
+![Fremen](images/images/dune_book.jpg "Shai-hulud"){#fig-dune fig-alt="A sand worm on Arrakis"}
+```
 
+::: notes
+Utiliser le préfixe `fig-` pour l'identifiant afin de pouvoir bénéficier des renvois automatiques et de la numérotation automatique
+:::
+
+---
+
+[Exercice 3](exercices/exercices_enonces_quarto.html#formattage) : formater du texte
 
 
 ### Renvois
 
-Numérotation automatique
+(*cross-references*)
 
+Un lien automatique est créé si on indique `@fig-dune` ; il nous renvoie à @fig-dune.
+
+Les noms des types affichés peuvent être modifiés dans l'en-tête :
+
+``` yaml
+---
+crossref:
+  fig-prefix: figure
+  fig-title:  Figure
+  tbl-prefix: tableau
+  tbl-title:  Tableau
+  title-delim: " &ndash; "
+---
+```
 
 ### Code
+
+```{r}
+#| label: exemple-code
+
+iris |> 
+  glm(Sepal.Length ~ Sepal.Width, data = _)
+```
+
+
+----
+
+#### Options de bloc de code
+
+-   exécution : 
+  - `#| eval:` exécuter le code
+  - `#| echo:` afficher le code
+-   nommage : 
+  - `#| label:` identifiant du chunk
+  - `#| fig-cap:` légende du bloc
+
+----
+
+#### Outils
+
+Si on a `#| echo: true` l'utilisateur voit le code mais on peut ajouter des outils pour l'utilisateur pour qu'il affiche ou cache les chunks avec, dans l'en-tête YAML :
+
+``` yaml
+format: 
+  html:
+    code-fold: true
+    code-tools: true
+```
+
+----
+
+#### Sorties de code
+
+- texte, avec :
+  - `#| results: markup` ou
+  - `cat()` et `#| results: asis`
+- tableaux
+- images
+- éléments interactifs
+
+### Tableaux
+
+```{r}
+#| tbl-cap: "Iris (tibble)"
+#| output-location: column
+
+iris |> 
+  summarise(.by = Species,
+            moy_sepales = sum(Sepal.Length))
+```
+
+Avec
+
+``` yaml
+format:
+  html:
+    df-print: kable
+```
+
+```{r}
+#| tbl-cap: "Iris (kable)"
+#| output-location: column
+
+iris |> 
+  summarise(.by = Species,
+            moy_sepales = sum(Sepal.Length)) |> 
+  knitr::kable()
+```
+
+[doc](https://quarto.org/docs/computations/r.html#data-frames)
+
+::: notes
+Contrôler l'impression de data.frame avec `df-print: kable` ou `df-print: paged`, `df-print: tibble`
+:::
+
+----
+
+ou avec {gt}
+
+```{r}
+#| tbl-cap: "Iris (gt)"
+#| output-location: column
+
+iris |> 
+  summarise(.by = Species,
+            moy_sepales = sum(Sepal.Length)) |> 
+  gt()
+```
+
+
+::: notes
+Utiliser le préfixe `tbl-` pour l'identifiant afin de pouvoir bénéficier des renvois automatiques et la numérotation automatique
+:::
+
+### Notes de pied de page
+
+Les notes se construisent en ajoutant un `[^1]` dans le texte, avec le `1` pouvant être une numérotation (pas obligatoirement dans l'ordre) ou tout autre mot clé. La note est ensuite introduite avec le même symbole dans un nouveau paragraphe :
+
+`[^1]: texte de la note`
+
+C'est normalement facile[^1] à faire si on se rappelle de la syntaxe.
+
+[^1]: [page d'aide](https://quarto.org/docs/authoring/markdown-basics.html#footnotes) sur les notes de bas de page.
+
+### Graphiques
 
 ```{r}
 #| label: fig-iris
@@ -234,46 +478,33 @@ ggplot(iris, aes(Petal.Length,
   theme_masa()
 ```
 
-- Taille d'image dans Quarto [@arel-bundockConsistentFiguresQuarto2024]
-
-
-
-### Tableaux
-
-
-### Notes de pied de page
-
-````
-Les notes se construisent en ajoutant un `[^1]` dans le texte, avec le `1` 
-pouvant être une numérotation (pas obligatoirement dans l'ordre) ou tout 
-autre mot clé. La note est ensuite introduite avec le même symbols dans un 
-nouveau paragraphe
-
-[^1]: texte de la note
-
-````
-
-C'est normalement facile[^nbp] à faire si on se rappelle de la syntaxe.
-
-[^nbp]: [page d'aide](https://quarto.org/docs/authoring/markdown-basics.html#footnotes) sur les notes de bas de page.
-
-### Graphiques
-
-
+Taille d'image dans Quarto [@arel-bundockConsistentFiguresQuarto2024]
 
 ### Cartes
 
+```{r}
+#| label: fig-carte
+#| fig-cap: "Exemple Leaflet"
+#| out-width: 100%
+#| output-location: column
+
+"~/CERISE/03-Espace-de-Diffusion/000_Referentiels/0040_Geo/IGN/adminexpress/adminexpress_cog_simpl_000_2024.gpkg" |> 
+  read_sf(layer = "region") |> 
+  leaflet() |>
+  addTiles() |> 
+  addPolygons()
+```
 
 
 ### Équations
 
 Syntaxe Latex entre des `$` (inline) ou `$$` (bloc).
 
-```latex
+``` tex
 $\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^N (x_i - \mu)^2},\text{ où } \mu = \frac{1}{N} \sum_{i=1}^N x_i$
 ```
 
-$$\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^N (x_i - \mu)^2},\text{ où } \mu = \frac{1}{N} \sum_{i=1}^N x_i$$
+$$\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^N (x_i - \mu)^2},\text{ où } \mu = \frac{1}{N} \sum_{i=1}^N x_i$$ [doc](https://quarto.org/docs/authoring/markdown-basics.html#equations)
 
 ### Citations/bibliographie
 
@@ -281,7 +512,7 @@ Avec [Zotero](https://www.zotero.org/) et l'extension [Better BibTeX](https://re
 
 Préciser le fichier utilisé en en-tête, puis utilisation des identifiants du fichier BibTex.
 
-````
+``` markdown
 ---
 title: "Mon document"
 bibliography: formation_quarto.bib
@@ -290,58 +521,91 @@ bibliography: formation_quarto.bib
 Comme le dit @rdevelopmentcoreteamLanguageEnvironmentStatistical2010 :
 
 > Lorem ipsum dolor sit amet[@rstudioGuide2024], consectetur adipiscing elit
-
-````
+```
 
 Comme le dit @rdevelopmentcoreteamLanguageEnvironmentStatistical2010 :
 
 > Lorem ipsum dolor sit amet[@rstudioGuide2024], consectetur adipiscing elit
 
+----
 
-### Callout
+La bibliographie est directement générée :
 
-Les "libellés" permettent de mettre en exergue des informations complémentaire.
+-   en fin de document ou
 
-````
+-   après un \<div\> identifié avec #refs ex. :
+
+    ``` markdown
+    ## Références
+    ::: {#refs}
+    :::
+    ```
+
+[doc](https://quarto.org/docs/authoring/citations.html)
+
+### Libellés
+
+(*Callout*)
+
+Les "libellés" permettent de mettre en exergue des informations complémentaires.
+
+``` markdown
 :::{.callout-note}
-Il existe cinq types de : 
+Il existe cinq types de libellés : 
 `note`, `tip`, `warning`, `caution` et `important`.
 :::
-````
+```
 
-:::{.callout-note}
-Il existe cinq types de : 
-`note`, `tip`, `warning`, `caution` et `important`.
+::: callout-note
+Il existe cinq types de : `note`, `tip`, `warning`, `caution` et `important`.
 :::
+
+[doc](https://quarto.org/docs/authoring/callouts.html)
+
+# Fonctionnalités avancées
 
 ## Cache
+
+[doc](https://quarto.org/docs/projects/code-execution.html#cache)
+
+## Crosstalk
+
+[doc](https://rstudio.github.io/crosstalk/)
+
+## Dashboards
+
+[doc](https://quarto.org/docs/dashboards/call)
 
 # Marque de l'État
 
 ## Typographie Marianne
 
 Pour textes et graphiques [@servicedinformationdugouvernementCharteGraphiqueLEtat2020]
-  
-- Installer {ragg}, {systemfonts} et {textshaping}
-- Dans l'en-tête yaml du document Quarto :
-  
-  ```
-  ---
-  mainfont: Marianne
-  knitr:
-    opts_chunk: 
-      dev: "ragg_png"
-  ---
-  ```
-  
+
+-   Installer {ragg}, {systemfonts} et {textshaping}
+
+-   Dans l'en-tête yaml du document Quarto :
+
+    ``` yaml
+    ---
+    mainfont: Marianne
+    knitr:
+      opts_chunk: 
+        dev: "ragg_png"
+    ---
+    ```
+
 ::: notes
 Permet d'avoir la police Marianne pour le texte et de la prendre en compte dans les graphiques ggplot.
 
-Autre option (à mettre dans un chunk de configuration en début de document) :
-  `knitr::opts_chunk$set(dev = "ragg_png")`
+Autre option (à mettre dans un chunk de configuration en début de document) : `knitr::opts_chunk$set(dev = "ragg_png")`
 :::
 
 ## Couleurs
 
 # Références
 
+----
+
+::: {#refs}
+:::
