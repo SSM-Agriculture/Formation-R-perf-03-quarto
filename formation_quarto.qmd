@@ -28,8 +28,8 @@ format:
     code-links:
       - text: Code source
         repo: https://github.com/SSM-Agriculture/Formation-R-perf-03-quarto
-  pdf:
-    output-file: formation_quarto_document.pdf
+  # pdf:
+  #   output-file: formation_quarto_document.pdf
 editor_options: 
   chunk_output_type: console
 knitr:
