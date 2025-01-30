@@ -30,6 +30,8 @@ format:
         repo: https://github.com/SSM-Agriculture/Formation-R-perf-03-quarto
   # pdf:
   #   output-file: formation_quarto_document.pdf
+
+tbl-cap-location: bottom
 editor_options: 
   chunk_output_type: console
 knitr:
@@ -47,6 +49,9 @@ nocite: |
 ---
 
 ## Pré-requis techniques
+
+- Quarto (≥ 1.5)
+- RStudio (≥ 2022.07) et R (≥ 4)
 
 ```{r}
 #| label: setup
@@ -75,7 +80,7 @@ DIAPORAMA EN COURS DE CONSTRUCTION
 
 -   Intérêt des publications reproductibles
 -   Découvrir la versatilité de Quarto
--   Réaliser un document simple à complexe
+-   Réaliser un document, de simple à complexe
 
 ::: notes
 versatile : pour le langage en entrée et les formats en sortie (diapo suivante)
@@ -90,7 +95,8 @@ Un système de publication
 -   [multi-format](https://quarto.org/docs/gallery/)
     -   HTML (rapports, livres, présentations)
     -   PDF
-    -   Appli web (statique/Shiny) : blog, site, tableau de bord
+    -   Appli web (statique/Shiny) : blog, site, tableau de bord
+    -   Powerpoint
     -   MS Word
 :::
 
@@ -116,19 +122,24 @@ Mélange code et texte
 
 Successeur de Rmarkdown
 
-Commandes complémentaires Latex ou Typst pour le PDF
+Commandes complémentaires $\LaTeX$ ou Typst pour le PDF
+
+Pandoc est un convertisseur "universel" de formats de texte
 :::
 
 ## Avantages
 
--   intégration avec R
--   reproductibilité
--   versionnement avec git
+- intégration avec R
+- reproductibilité
+  - limiter les copier/coller entre outils
+  - prise en compte des changements de données ou de méthodes
+- interactivité possible dans le document (HTML)
+- versionnement avec git
 
 ::: notes
--   afficher du code dans le doc
--   éviter les copier/coller : synchronisation analyse/résultats
--   faciliter la reproductibilité avec {renv}
+- afficher du code dans le doc
+- éviter les copier/coller : synchronisation analyse/résultats
+- faciliter la reproductibilité avec {renv}
 :::
 
 ## Inconvénients
@@ -137,17 +148,29 @@ Commandes complémentaires Latex ou Typst pour le PDF
 -   génération
 
 ::: notes
-Mais disponibilité d'un éditeur visuel WYSIWYG dans RStudio
+Mais disponibilité d'un éditeur visuel [What You See Is What You Mean](https://en.wikipedia.org/wiki/WYSIWYM) dans RStudio.
+  
 :::
 
 ## Sur CERISE
 
 Un package {quarto} et un binaire `quarto`.
 
+```{{r}}
+install.packages("quarto")
+```
+
 ```{.bash}
 quarto check install
 quarto check knitr
 ```
+
+Le format PDF nécessite $\LaTeX\$.
+
+```{.bash}
+quarto install tinytex
+```
+
 
 # Syntaxe et structure
 
@@ -174,13 +197,15 @@ somme <- sum(1:10)
 ```
 
 And when it has gone past I will turn the `{{r}} somme` inner eye to see its 
-path. Where the fear has gone there will be nothing. Only I will remain.
+path. Where the fear has gone there will be nothing. 
+
+> Only I will remain.
 
 ````
 
 ## markdown
 
-Un langage balisé simple
+Un langage balisé simplifié
 
 [doc](https://quarto.org/docs/authoring/markdown-basics.html)
 
@@ -201,7 +226,7 @@ Le code exécutable est intégré dans un *chunk* (bloc) :
 
 - en-tête de configuration
 - bloc entre `---`
-- *a minima* : `title:`
+- *a minima* : `title:`
 - variable selon les formats
 
 ## Rendu
@@ -217,7 +242,7 @@ quarto render mon_document.qmd
 ::: callout-note
 ### À vous de jouer
 
-[Exercice 1](exercices/exercices_enonces_quarto.html#interface) et [Exercice 2](exercices/exercices_enonces_quarto.html#doc-simple) : découvrir l'interface et produire un document simple
+[Exercice 1.](exercices/exercices_enonces_quarto.html#interface) : découvrir l'interface
 :::
 
 ## Éléments
@@ -335,16 +360,12 @@ ou
 Utiliser le préfixe `fig-` pour l'identifiant afin de pouvoir bénéficier des renvois automatiques et de la numérotation automatique
 :::
 
----
-
-[Exercice 3](exercices/exercices_enonces_quarto.html#formattage) : formater du texte
-
 
 ### Renvois
 
 (*cross-references*)
 
-Un lien automatique est créé si on indique `@fig-dune` ; il nous renvoie à @fig-dune.
+Un lien automatique est créé si on indique `@fig-dune` ; il nous  écrit le lien (type et numéro) renvoie à @fig-dune.
 
 Les noms des types affichés peuvent être modifiés dans l'en-tête :
 
@@ -358,6 +379,120 @@ crossref:
   title-delim: " &ndash; "
 ---
 ```
+
+### Notes de pied de page
+
+Les notes se construisent en ajoutant un `[^1]` dans le texte, avec le `1` pouvant être une numérotation (pas obligatoirement dans l'ordre) ou tout autre mot clé. La note est ensuite introduite avec le même symbole dans un nouveau paragraphe :
+
+`[^1]: texte de la note`
+
+C'est normalement facile[^1] à faire si on se rappelle de la syntaxe.
+
+[^1]: [page d'aide](https://quarto.org/docs/authoring/markdown-basics.html#footnotes) sur les notes de bas de page.
+
+
+### Équations
+
+Syntaxe $\LaTeX$  entre des `$` (inline) ou `$$` (bloc).
+
+``` tex
+$\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^N (x_i - \mu)^2},\text{ où } \mu = \frac{1}{N} \sum_{i=1}^N x_i$
+```
+
+$$\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^N (x_i - \mu)^2},\text{ où } \mu = \frac{1}{N} \sum_{i=1}^N x_i$$ [doc](https://quarto.org/docs/authoring/markdown-basics.html#equations)
+
+
+### Citations/bibliographie
+
+Avec [Zotero](https://www.zotero.org/) et l'extension [Better BibTeX](https://retorque.re/zotero-better-bibtex/) pour auto-exporter en BibTeX la collection quand elle est modifiée.
+
+Préciser le fichier utilisé en en-tête, puis utilisation des identifiants du fichier BibTex.
+
+``` markdown
+---
+title: "Mon document"
+bibliography: formation_quarto.bib
+---
+
+Comme le dit @rdevelopmentcoreteamLanguageEnvironmentStatistical2010 :
+
+> Lorem ipsum dolor sit amet[@rstudioGuide2024], consectetur adipiscing elit
+```
+
+Comme le dit @rdevelopmentcoreteamLanguageEnvironmentStatistical2010 :
+
+> Lorem ipsum dolor sit amet[@rstudioGuide2024], consectetur adipiscing elit
+
+----
+
+La bibliographie est directement générée :
+
+-   en fin de document ou
+
+-   après un \<div\> identifié avec #refs ex. :
+
+    ``` markdown
+    ## Références
+    ::: {#refs}
+    :::
+    ```
+
+[doc](https://quarto.org/docs/authoring/citations.html)
+
+### Libellés
+
+(*Callout*)
+
+Les "libellés" permettent de mettre en exergue des informations complémentaires.
+
+``` markdown
+:::{.callout-note}
+Il existe cinq types de libellés : 
+`note`, `tip`, `warning`, `caution` et `important`.
+:::
+```
+
+::: callout-note
+Il existe cinq types de libellés : `note`, `tip`, `warning`, `caution` et `important`.
+:::
+
+----
+
+``` markdown
+::: callout-warning
+Suite aux nombreux manquements à l’obligation de contrôle hebdomadaire (...)
+:::
+```
+
+::: callout-warning
+Suite aux nombreux manquements à l'obligation de contrôle hebdomadaire de l'étanchéité des colonnettes à crémaillère (...)
+:::
+
+``` markdown
+::: callout-warning
+#### Attention
+
+Le caisson de calibrage de la bride du commutateur à fuseaux (...)
+:::
+```
+
+::: callout-warning
+#### Attention
+
+Le caisson de calibrage de la bride du commutateur à fuseaux rotatifs est HORS-SERVICE
+:::
+
+
+[doc](https://quarto.org/docs/authoring/callouts.html)
+
+---
+
+::: callout-note
+### À vous de jouer
+
+[Exercice 2.](exercices/exercices_enonces_quarto.html#doc-simple) produire un document simple
+:::
+
 
 ### Code
 
@@ -384,7 +519,9 @@ iris |>
 
 #### Outils
 
-Si on a `#| echo: true` l'utilisateur voit le code mais on peut ajouter des outils pour l'utilisateur pour qu'il affiche ou cache les chunks avec, dans l'en-tête YAML :
+Si on a `#| echo: true` l'utilisateur voit le code
+
+On peut aussi ajouter des outils pour l'utilisateur pour qu'il affiche ou cache les chunks avec, dans l'en-tête YAML :
 
 ``` yaml
 format: 
@@ -404,9 +541,60 @@ format:
 - images
 - éléments interactifs
 
+---
+
+::: callout-note
+### À vous de jouer
+
+[Exercice 3.](exercices/exercices_enonces_quarto.html#code) Code
+:::
+
+
 ### Tableaux
 
+Les tableaux sont balisés ainsi en Markdown :
+
+:::::: columns
+::: {.column width="50%"}
+
+````{.markdown}
+| année | titre                   |
+|------:|:------------------------|
+|  1965 | Dune                    |
+|  1969 | Le Messie de Dune       |
+|  1976 | Les Enfants de Dune     |
+|  1981 | L'Empereur-Dieu de Dune |
+|  1984 | Les Hérétiques de Dune  |
+|  1985 | La Maison des mères     |
+
+: Cycle de Dune {#tbl-cycle}
+````
+
+:::
+::: {.column width="50%"}
+
+| année | titre                   |
+|------:|:------------------------|
+|  1965 | Dune                    |
+|  1969 | Le Messie de Dune       |
+|  1976 | Les Enfants de Dune     |
+|  1981 | L'Empereur-Dieu de Dune |
+|  1984 | Les Hérétiques de Dune  |
+|  1985 | La Maison des mères     |
+
+: Cycle de Dune {#tbl-cycle}
+
+:::
+::::::
+
+[doc](https://quarto.org/docs/authoring/tables.html)
+
+----
+
+Mais la plupart du temps on affichera des tableaux programmatiquement.
+
 ```{r}
+#| label: tbl-iris-tibble
 #| tbl-cap: "Iris (tibble)"
 #| output-location: column
 
@@ -415,7 +603,9 @@ iris |>
             moy_sepales = sum(Sepal.Length))
 ```
 
-Avec
+----
+
+Avec {knitr} ou le paramètre en en-tête :
 
 ``` yaml
 format:
@@ -424,6 +614,7 @@ format:
 ```
 
 ```{r}
+#| label: tbl-iris-kable
 #| tbl-cap: "Iris (kable)"
 #| output-location: column
 
@@ -437,6 +628,7 @@ iris |>
 
 ::: notes
 Contrôler l'impression de data.frame avec `df-print: kable` ou `df-print: paged`, `df-print: tibble`
+Interactivité javascript `df-print: paged` à voir en exercice
 :::
 
 ----
@@ -444,6 +636,7 @@ Contrôler l'impression de data.frame avec `df-print: kable` ou `df-print: paged
 ou avec {gt}
 
 ```{r}
+#| label: tbl-iris-gt
 #| tbl-cap: "Iris (gt)"
 #| output-location: column
 
@@ -458,15 +651,14 @@ iris |>
 Utiliser le préfixe `tbl-` pour l'identifiant afin de pouvoir bénéficier des renvois automatiques et la numérotation automatique
 :::
 
-### Notes de pied de page
+---
 
-Les notes se construisent en ajoutant un `[^1]` dans le texte, avec le `1` pouvant être une numérotation (pas obligatoirement dans l'ordre) ou tout autre mot clé. La note est ensuite introduite avec le même symbole dans un nouveau paragraphe :
+::: callout-note
+### À vous de jouer
 
-`[^1]: texte de la note`
+[Exercice 3.](exercices/exercices_enonces_quarto.html#tableau) Tableaux
+:::
 
-C'est normalement facile[^1] à faire si on se rappelle de la syntaxe.
-
-[^1]: [page d'aide](https://quarto.org/docs/authoring/markdown-basics.html#footnotes) sur les notes de bas de page.
 
 ### Graphiques
 
@@ -500,83 +692,67 @@ Taille d'image dans Quarto [@arel-bundockConsistentFiguresQuarto2024]
 ```
 
 
-### Équations
+## Fonctionnalités avancées
 
-Syntaxe Latex entre des `$` (inline) ou `$$` (bloc).
+### Rapports paramétrés
 
-``` tex
-$\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^N (x_i - \mu)^2},\text{ où } \mu = \frac{1}{N} \sum_{i=1}^N x_i$
-```
-
-$$\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^N (x_i - \mu)^2},\text{ où } \mu = \frac{1}{N} \sum_{i=1}^N x_i$$ [doc](https://quarto.org/docs/authoring/markdown-basics.html#equations)
-
-### Citations/bibliographie
-
-Avec [Zotero](https://www.zotero.org/) et l'extension [Better BibTeX](https://retorque.re/zotero-better-bibtex/) pour auto-exporter en BibTeX la collection quand elle est modifiée.
-
-Préciser le fichier utilisé en en-tête, puis utilisation des identifiants du fichier BibTex.
-
-``` markdown
+````{.markdown}
 ---
-title: "Mon document"
-bibliography: formation_quarto.bib
+title: Rapport
+format:
+  html: default
+param:
+  region: 84
+  sortie: knitr
 ---
 
-Comme le dit @rdevelopmentcoreteamLanguageEnvironmentStatistical2010 :
+## Région `{{r}} params$region`
 
-> Lorem ipsum dolor sit amet[@rstudioGuide2024], consectetur adipiscing elit
+```{{r}}
+sau <- ra |> 
+  filter(siege_reg == params$region) |> 
+  summarise(.by = siege_dep,
+            sau_tot = sum(sau_tot, na.rm = TRUE))
+
+if (params$sortie == "knitr") kable::knitr(sau) else sau
+```
+````
+
+[doc](https://quarto.org/docs/computations/parameters.html)
+
+
+### Inclusions
+
+````{.markdown}
+{{{< include entete.qmd >}}}
+````
+
+### Cache
+
+Pour les calculs longs et rarement variables on peut gagner du temps avec `#| cache: true`
+
+```{{r}}
+#| label: long-traitement
+#| cache: true
+#| cache-extra : !expr file.mtime("donnees/departements.gpkg")
+
+region <- read_sf("donnees/departements.gpkg") |> 
+  st_union()
 ```
 
-Comme le dit @rdevelopmentcoreteamLanguageEnvironmentStatistical2010 :
+Ne sera exécuté qu'une fois sauf si le code du chunk change ou si la date du fichier change ou si on passe à `cache: false`, ou via :
 
-> Lorem ipsum dolor sit amet[@rstudioGuide2024], consectetur adipiscing elit
-
-----
-
-La bibliographie est directement générée :
-
--   en fin de document ou
-
--   après un \<div\> identifié avec #refs ex. :
-
-    ``` markdown
-    ## Références
-    ::: {#refs}
-    :::
-    ```
-
-[doc](https://quarto.org/docs/authoring/citations.html)
-
-### Libellés
-
-(*Callout*)
-
-Les "libellés" permettent de mettre en exergue des informations complémentaires.
-
-``` markdown
-:::{.callout-note}
-Il existe cinq types de libellés : 
-`note`, `tip`, `warning`, `caution` et `important`.
-:::
+```{.bash}
+quarto render fichier.qmd --cache-refresh
 ```
 
-::: callout-note
-Il existe cinq types de : `note`, `tip`, `warning`, `caution` et `important`.
-:::
+[doc](https://quarto.org/docs/computations/caching.html)
 
-[doc](https://quarto.org/docs/authoring/callouts.html)
-
-# Fonctionnalités avancées
-
-## Cache
-
-[doc](https://quarto.org/docs/projects/code-execution.html#cache)
-
-## Crosstalk
+### Crosstalk
 
 [doc](https://rstudio.github.io/crosstalk/)
 
-## Dashboards
+### Dashboards
 
 [doc](https://quarto.org/docs/dashboards/call)
 
@@ -602,7 +778,7 @@ Pour textes et graphiques [@servicedinformationdugouvernementCharteGraphiqueLEta
 ::: notes
 Permet d'avoir la police Marianne pour le texte et de la prendre en compte dans les graphiques ggplot.
 
-Autre option (à mettre dans un chunk de configuration en début de document) : `knitr::opts_chunk$set(dev = "ragg_png")`
+Autre option (à mettre dans un chunk de configuration en début de document) : `knitr::opts_chunk$set(dev = "ragg_png")`
 :::
 
 ## Couleurs

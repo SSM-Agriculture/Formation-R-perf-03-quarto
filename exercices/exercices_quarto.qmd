@@ -50,38 +50,98 @@ ra <- read_rds("donnees/ra_2020.rds")
 
 ## Découvrir l'interface {#interface}
 
-`Fichier` \>
-`Nouveau projet` \>
-`Nouveau répertoire` \>
-`Projet Quarto` \>
-
-- *formation* dans *~*  
+- `Fichier` \> `Nouveau projet` \> `Nouveau répertoire` \> `Projet Quarto` \>
+- choisir un répertoire, par exemple : *formation* dans *~*  
 - moteur <kbd>knitr</kbd>
 
-ou `Fichier` \> `Nouveau fichier` \> `R Quarto document`
+ou, dans un projet existant : 
 
-Basculer successivement sur l'éditeur WYSIWYG / text brut
+- `Fichier` \> `Nouveau fichier` \> `R Quarto document`
+
+Basculer successivement sur l'éditeur texte brut / [WYSIWYM](https://en.wikipedia.org/wiki/WYSIWYM)[^wysiwym]
+
+[^wysiwym]: What You See Is What You Mean
 
 Tricoter le document
 
 ## Produire un document simple {#doc-simple}
 
+### Formater du texte
 
-### Formater du texte {#formattage}
-
-- Insérer un titre
+- Nouveau document Quarto
+- Insérer du [texte](https://fr.lipsum.com/feed/html)
+- Insérer des titres de différent niveau
 - Passer en gras, italique
 - Insérer une image
+- Faire une liste
 
-### Afficher un tableau
+Tricoter le document.
+
+## Code {#code}
+
+
+## Afficher un tableau {#tableau}
+
+### Tibble brut
 
 ```{r}
-#| label: tbl-ra
+#| label: tbl-ra-brut
 
 ra
 ```
 
+### HTML mis en forme
+
+::: {.panel-tabset}
+
+#### gt
+
+```{r}
+#| label: tbl-ra-gt
+
+library(gt)
+
+ra |> 
+  slice_head(n = 5) |> 
+  gt()
+```
+
+#### knitr
+
+```{r}
+#| label: tbl-ra-knitr
+
+library(knitr)
+
+ra |> 
+  slice_head(n = 5) |> 
+  kable()
+```
+:::
+
+#### Interactif
+
+Javascript avec datatable
+
+```{r}
+#| label: tbl-ra-dt
+
+library(DT)
+
+ra |> 
+  slice_head(n = 100) |> 
+  datatable(
+    options = list(
+      language = list(
+        url = "https://cdn.datatables.net/plug-ins/1.10.11/i18n/French.json")))
+```
+
+
+## Graphiques
+
+
 ## HTML avec éléments interactifs
+
 
 
 ## PDF
@@ -91,7 +151,7 @@ ra
 
 
 
-## Méta {.appendix}
+## Méta {.appendix .unnumbered}
 
 ```{r}
 #| label: source-et-forge
@@ -119,7 +179,7 @@ Ce document est produit par :
 #| echo: false
 #| results: asis
 
-cat("### Dépôt Git {.appendix}
+cat("### Dépôt Git {.appendix .unnumbered}
 
 Ce projet est versionné dans :  
 [", meta_url, "](", meta_url, ")")
