@@ -165,7 +165,7 @@ quarto check install
 quarto check knitr
 ```
 
-Le format PDF nécessite $\LaTeX\$.
+Le format PDF nécessite $\LaTeX$.
 
 ```{.bash}
 quarto install tinytex
@@ -729,7 +729,7 @@ if (params$sortie == "knitr") kable::knitr(sau) else sau
 
 ### Cache
 
-Pour les calculs longs et rarement variables on peut gagner du temps avec `#| cache: true`
+Pour les calculs longs et rarement variables on peut gagner du temps avec `cache: true` (au niveau document ou chunk).
 
 ```{{r}}
 #| label: long-traitement
@@ -743,7 +743,7 @@ region <- read_sf("donnees/departements.gpkg") |>
 Ne sera exécuté qu'une fois sauf si le code du chunk change ou si la date du fichier change ou si on passe à `cache: false`, ou via :
 
 ```{.bash}
-quarto render fichier.qmd --cache-refresh
+quarto render mon_document.qmd --cache-refresh
 ```
 
 [doc](https://quarto.org/docs/computations/caching.html)
