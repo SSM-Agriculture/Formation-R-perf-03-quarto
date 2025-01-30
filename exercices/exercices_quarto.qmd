@@ -44,7 +44,7 @@ library(dplyr)
 #| label: donnees
 #| echo: true
 
-ra <- read_rds("donnees/ra_2020.rds")
+ra <- read_rds("donnees/ra_2020.rds") |> 
 ```
 
 
@@ -143,12 +143,13 @@ ra |>
 ## HTML avec éléments interactifs
 
 
-
 ## PDF
 
 
 ## Tableau de bord
 
+
+## Rapports paramétrés
 
 
 ## Méta {.appendix .unnumbered}

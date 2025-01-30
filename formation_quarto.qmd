@@ -1,7 +1,7 @@
 ---
 title: "Formation Quarto"
 subtitle: "Parcours de formation R perfectionnement SSP"
-date-modified: "`Sys.Date()`"
+date-modified: "`r Sys.Date()`"
 title-slide-attributes:
   data-background-image: images/ze-paulo-gasparotto-GeReAnOMiZ8-unsplash.jpg
   data-background-size: cover
@@ -21,16 +21,21 @@ format:
     slide-number: c/t
     slide-level: 3
     self-contained: true
+    embed-resources: true
     code-block-height: 650px
   html:
     output-file: formation_quarto_document.html
     self-contained: true
+    embed-resources: true
     code-links:
       - text: Code source
-        repo: https://github.com/SSM-Agriculture/Formation-R-perf-03-quarto
-  # pdf:
-  #   output-file: formation_quarto_document.pdf
-
+        href: https://github.com/SSM-Agriculture/Formation-R-perf-03-quarto
+  pdf:
+    output-file: formation_quarto_document.pdf
+  typst:
+    output-file: formation_quarto_document.pdf
+pdf-engine: lualatex
+always_allow_html: true
 tbl-cap-location: bottom
 editor_options: 
   chunk_output_type: console
@@ -41,7 +46,7 @@ execute:
   echo: true
   warning: false
   error: false
-bibliography: formation_quarto.bib
+bibliography: formation.bib
 lang: fr
 csl: styles/biblio.csl
 nocite: |
@@ -122,7 +127,7 @@ Mélange code et texte
 
 Successeur de Rmarkdown
 
-Commandes complémentaires $\LaTeX$ ou Typst pour le PDF
+Commandes complémentaires LaTeX ou Typst pour le PDF
 
 Pandoc est un convertisseur "universel" de formats de texte
 :::
@@ -165,7 +170,7 @@ quarto check install
 quarto check knitr
 ```
 
-Le format PDF nécessite $\LaTeX$.
+Le format PDF nécessite LaTeX.
 
 ```{.bash}
 quarto install tinytex
@@ -236,8 +241,8 @@ quarto render mon_document.qmd
 ```
 
 
-<kbd>Ctrl</kbd> <kbd>⇧</kbd> <kbd>k</kbd> ou ![](images/clipboard-660236810.png){width=75 style="vertical-align:text-top"} (ou
-![](images/clipboard-660236811.png){width=131 style="vertical-align:text-top"})
+<kbd>Ctrl</kbd> <kbd>⇧</kbd> <kbd>k</kbd> ou ![](images/clipboard-660236810.png){width="75pt" style="vertical-align:text-top"} (ou
+![](images/clipboard-660236811.png){width="131pt" style="vertical-align:text-top"})
 
 ::: callout-note
 ### À vous de jouer
@@ -393,7 +398,7 @@ C'est normalement facile[^1] à faire si on se rappelle de la syntaxe.
 
 ### Équations
 
-Syntaxe $\LaTeX$  entre des `$` (inline) ou `$$` (bloc).
+Syntaxe LaTeX entre des `$` (inline) ou `$$` (bloc).
 
 ``` tex
 $\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^N (x_i - \mu)^2},\text{ où } \mu = \frac{1}{N} \sum_{i=1}^N x_i$
@@ -678,6 +683,7 @@ Taille d'image dans Quarto [@arel-bundockConsistentFiguresQuarto2024]
 
 ### Cartes
 
+::: {.content-visible when-format="html"}
 ```{r}
 #| label: fig-carte
 #| fig-cap: "Exemple Leaflet"
@@ -690,13 +696,17 @@ Taille d'image dans Quarto [@arel-bundockConsistentFiguresQuarto2024]
   addTiles() |> 
   addPolygons()
 ```
+:::
 
+::: {.content-visible when-format="pdf"}
+Carte interactive non-visualisable au format PDF.
+:::
 
 ## Fonctionnalités avancées
 
 ### Rapports paramétrés
 
-````{.markdown}
+````{.markdown filename="mon_document.qmd"}
 ---
 title: Rapport
 format:
@@ -718,14 +728,28 @@ if (params$sortie == "knitr") kable::knitr(sau) else sau
 ```
 ````
 
+----
+
+On n'est pas obligé de changer manuellement les paramètres ; on peut itérer sur une liste :
+
+```{{r}}
+for (r in c(11, 94, 84, 04)) {
+  quarto::quarto_render("mon_document.qmd",
+                        execute_params = list(region = r),
+                        output_file = paste0("rapport_", r, ".html"))
+}
+```
+
+résultera en 4 rapports personnalisés : *rapport_11.html*, *rapport_94.html*,...
+
 [doc](https://quarto.org/docs/computations/parameters.html)
 
 
 ### Inclusions
 
-````{.markdown}
+```{.markdown}
 {{{< include entete.qmd >}}}
-````
+```
 
 ### Cache
 

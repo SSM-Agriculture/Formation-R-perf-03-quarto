@@ -16,11 +16,13 @@ read_rds("~/CERISE/03-Espace-de-Diffusion/030_Structures_exploitations/3020_Rece
   slice_sample(n = 1000) |> 
   lapply(function(x) { sample(x) }) |> 
   as_tibble() |> 
+  select(siege_code_com, siege_lib_com, siege_dep, siege_lib_dep, siege_reg,
+         siege_lib_reg, geo_lct, pbstot_coef17, otefda_coef17, sau_tot, 
+         ugbag_tot) |> 
   write_rds("donnees/ra_2020.rds")
 
 
 # carto -------------------------------------------------------------------
-
 
 read_sf("~/CERISE/03-Espace-de-Diffusion/000_Referentiels/0040_Geo/IGN/adminexpress/adminexpress_cog_simpl_000_2024.gpkg", layer = "departement") |> 
   write_sf("donnees/departements.gpkg")
