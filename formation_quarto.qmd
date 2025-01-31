@@ -29,10 +29,10 @@ format:
     code-links:
       - text: Code source
         href: https://github.com/SSM-Agriculture/Formation-R-perf-03-quarto
-  pdf:
-    output-file: formation_quarto_document.pdf
-  typst:
-    output-file: formation_quarto_document.pdf
+  # pdf:
+  #   output-file: formation_quarto_document.pdf
+  # typst:
+  #   output-file: formation_quarto_document.pdf
 pdf-engine: lualatex
 always_allow_html: true
 tbl-cap-location: bottom

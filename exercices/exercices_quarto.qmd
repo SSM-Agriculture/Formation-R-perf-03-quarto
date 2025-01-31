@@ -10,10 +10,10 @@ format:
     number-sections: true
     smooth-scroll: true
     output-file: exercices_corriges_quarto.html
-  pdf: 
-    output-file: exercices_corriges_quarto.pdf
-  typst: 
-    output-file: exercices_corriges_quarto.pdf
+  # pdf: 
+  #   output-file: exercices_corriges_quarto.pdf
+  # typst: 
+  #   output-file: exercices_corriges_quarto.pdf
 crossref:
   fig-prefix: figure
   fig-title:  Figure
