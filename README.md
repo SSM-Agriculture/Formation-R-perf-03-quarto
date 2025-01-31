@@ -1,12 +1,13 @@
 # Formation Quarto
 Michaël Delorme
-2025-01-20
+2025-01-31
 
 - [Objectif](#objectif)
 - [Fichiers](#fichiers)
 - [Construction](#construction)
-  - [Méta](#méta)
-    - [Dépôt Git](#dépôt-git)
+- [Publication](#publication)
+- [Méta](#méta)
+  - [Dépôt Git](#dépôt-git)
 
 ## Objectif
 
@@ -19,20 +20,21 @@ possiblement en :
 - présentiel, ou
 - auto-formation.
 
-# Fichiers
+## Fichiers
 
 - La compilation de *formation_quarto.qmd* permet de produire la
-  présentation *formation_quarto.qmd* (sous forme de diaporama
+  présentation *formation_quarto.html* (sous forme de diaporama
   reveal.js) ou un document HTML ou PDF.
 - Les exercices sont préparés dans *exercices/exercices_quarto.qmd*,
-  produisant le document à distribuer *exercices_quarto.html* ou
-  *exercices_quarto.pdf* dans ce même répertoire.
+  produisant les énoncés à distribuer *exercices_enonces_quarto.html*
+  (ou en PDF) dans ce même répertoire, ainsi que les corrigés
+  *exercices_corriges_quarto.\**.
 - Les données des exercices sont présentes dans le répertoire *donnees*.
   Il s’agit d’un extrait aléatoire de 1000 exploitations du RA 2020 dont
   les lignes ont été mélangées par colonne pour secrétiser les données.
   Si besoin elles sont générées par *R/generer_donnees.R*.
 
-# Construction
+## Construction
 
 Les formateurs peuvent modifier leur nom et la date dans *\_quarto.yml*,
 puis exécuter le code suivant pour générer tous les documents :
@@ -42,12 +44,17 @@ renv::restore()
 source("R/generer_tout.R")
 ```
 
+## Publication
+
+Diaporama disponible sur
+<https://ssm-agriculture.github.io/Formation-R-perf-03-quarto/>.
+
 ## Méta
 
 Ce document est produit par :  
-*C:/Users/michael.delorme/Documents/formation_quarto/readme.qmd*
+*C:/Users/michael.delorme/Documents/formations/formation_quarto/readme.qmd*
 
 ### Dépôt Git
 
 Ce projet est versionné dans :  
-<https://forge.agriculture.rie.gouv.fr/gitlab/ssp/bmis/formation_quarto>
+<https://github.com/SSM-Agriculture/Formation-R-perf-03-quarto>

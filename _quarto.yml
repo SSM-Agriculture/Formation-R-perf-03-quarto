@@ -1,7 +1,15 @@
 project:
   title: "Formation-R-perf-03-quarto"
   execute-dir: project
-
+mainfont: Marianne
+monofont: Fira Code
+crossref:
+  fig-prefix: figure
+  fig-title:  Figure
+  tbl-prefix: tableau
+  tbl-title:  Tableau
+  title-delim: " &ndash; "
+  
 # Formateur(s) :
 author:
   - name: Michaël Delorme 

@@ -6,7 +6,6 @@ title-slide-attributes:
   data-background-image: images/ze-paulo-gasparotto-GeReAnOMiZ8-unsplash.jpg
   data-background-size: cover
   data-background-opacity: "0.5"
-mainfont: Marianne
 toc: true
 format:
   revealjs:
@@ -20,13 +19,13 @@ format:
     show-slide-number: all
     slide-number: c/t
     slide-level: 3
-    self-contained: true
-    embed-resources: true
+    # self-contained: true
+    # embed-resources: true
     code-block-height: 650px
   html:
     output-file: formation_quarto_document.html
-    self-contained: true
-    embed-resources: true
+    # self-contained: true
+    # embed-resources: true
     code-links:
       - text: Code source
         href: https://github.com/SSM-Agriculture/Formation-R-perf-03-quarto
@@ -63,11 +62,11 @@ nocite: |
 
 library(dplyr)   # manip. données
 library(ggplot2) # graphiques
-library(sf)      # carto
-library(leaflet) # carto
-library(gt)
+library(sf)      # carto.
+library(leaflet) # carto.
+library(gt)      # formatage tableaux
 
-# un theme ggplot utilisant la police Marianne
+# un theme ggplot utilisant la typographie Marianne
 theme_masa <- function(...) {
   theme_grey(...) %+replace%
     theme(
@@ -75,11 +74,19 @@ theme_masa <- function(...) {
 }
 ```
 
+::: notes
+La police Marianne doit être installée sur le poste
+:::
+
 # Introduction
+
 
 ::: callout-caution
 DIAPORAMA EN COURS DE CONSTRUCTION
 :::
+
+Un module des [formations à R dispensées au MASA](https://ssm-agriculture.github.io/site-formations-R/)
+
 
 ## Objectifs
 
@@ -154,7 +161,6 @@ Pandoc est un convertisseur "universel" de formats de texte
 
 ::: notes
 Mais disponibilité d'un éditeur visuel [What You See Is What You Mean](https://en.wikipedia.org/wiki/WYSIWYM) dans RStudio.
-  
 :::
 
 ## Sur CERISE
@@ -176,8 +182,11 @@ Le format PDF nécessite LaTeX.
 quarto install tinytex
 ```
 
+::: notes
+ Typst n'est pas encore disponible sur CERISE pour générer du PDF sans LaTeX
+:::
 
-# Syntaxe et structure
+# Structure et syntaxe
 
 ----
 
@@ -227,19 +236,27 @@ Le code exécutable est intégré dans un *chunk* (bloc) :
 
 [doc](https://quarto.org/docs/computations/r.html)
 
+::: notes
+- détails dans la partie Code
+- Triple quote + le langage dans des accolades
+- Les commentaires/pipe permettent de préciser des options (la plus grosse différence visible entre Rmarkdown et Quarto)
+- `label:` est un identifiant
+:::
+
 ## YAML
 
 - en-tête de configuration
 - bloc entre `---`
 - *a minima* : `title:`
-- variable selon les formats
+- options nombreuses et variables selon les formats
 
 ## Rendu
+
+(*knit*)
 
 ```{.bash}
 quarto render mon_document.qmd
 ```
-
 
 <kbd>Ctrl</kbd> <kbd>⇧</kbd> <kbd>k</kbd> ou ![](images/clipboard-660236810.png){width="75pt" style="vertical-align:text-top"} (ou
 ![](images/clipboard-660236811.png){width="131pt" style="vertical-align:text-top"})
@@ -294,21 +311,21 @@ ou
   * Jessica
   * Paul
 - Harkonnen
-  * Vladimir
-  * Rabban
-  * Feyd-Rautha
+  + Vladimir
+  + Rabban
+  + Feyd-Rautha
 ```
 :::
 
 ::: {.nonincremental .column width="50%"}
--   Atréides
-    -   Leto
-    -   Jessica
-    -   Paul
--   Harkonnen
-    -   Vladimir
-    -   Rabban
-    -   Feyd-Rautha
+- Atréides
+  * Leto
+  * Jessica
+  * Paul
+- Harkonnen
+  + Vladimir
+  + Rabban
+  + Feyd-Rautha
 :::
 :::::
 
@@ -317,31 +334,35 @@ ou
 ::::: columns
 ::: {.column width="50%"}
 ``` markdown
-- Atréides
-  - Leto
-  - Jessica  
-    2 espace + nouvelle ligne + aligner pour 
-    ajouter du texte dans les items
-  - Paul
-- Harkonnen
-  - Vladimir
-  - Rabban
-  - Feyd-Rautha
+1. Atréides
+   - Leto
+   - Jessica\
+     **2 espaces (ou `\`) + nouvelle ligne + aligner
+     pour ajouter du texte dans les items**
+   - Paul
+2. Harkonnen
+   - Vladimir
+   - Rabban
+   - Feyd-Rautha
 ```
 :::
 
 ::: {.nonincremental .column width="50%"}
--   Atréides
-    -   Leto
-    -   Jessica\
-        **2 espace + nouvelle ligne + aligner pour ajouter du texte dans les items**
-    -   Paul
--   Harkonnen
-    -   Vladimir
-    -   Rabban
-    -   Feyd-Rautha
+1. Atréides
+   - Leto
+   - Jessica\
+     **2 espaces (ou `\`) + nouvelle ligne + aligner pour ajouter du texte dans les items**
+   - Paul
+2. Harkonnen
+   - Vladimir
+   - Rabban
+   - Feyd-Rautha
 :::
 :::::
+
+::: notes
+Renumérotation automatique incrémentée à partir du premier numéro trouvé.
+:::
 
 ### Liens
 
@@ -370,16 +391,16 @@ Utiliser le préfixe `fig-` pour l'identifiant afin de pouvoir bénéficier des 
 
 (*cross-references*)
 
-Un lien automatique est créé si on indique `@fig-dune` ; il nous  écrit le lien (type et numéro) renvoie à @fig-dune.
+Un lien automatique est créé si on indique `@fig-dune` : Quarto nous écrit le lien (type et numéro) qui renvoie à @fig-dune.
 
 Les noms des types affichés peuvent être modifiés dans l'en-tête :
 
 ``` yaml
 ---
 crossref:
-  fig-prefix: figure
+  fig-prefix: figure # par défaut : Figure
   fig-title:  Figure
-  tbl-prefix: tableau
+  tbl-prefix: tableau # par défaut : Tableau
   tbl-title:  Tableau
   title-delim: " &ndash; "
 ---
@@ -681,14 +702,15 @@ ggplot(iris, aes(Petal.Length,
 
 Taille d'image dans Quarto [@arel-bundockConsistentFiguresQuarto2024]
 
+
 ### Cartes
 
-::: {.content-visible when-format="html"}
 ```{r}
 #| label: fig-carte
 #| fig-cap: "Exemple Leaflet"
 #| out-width: 100%
 #| output-location: column
+#| eval: !expr knitr::is_html_output() 
 
 "~/CERISE/03-Espace-de-Diffusion/000_Referentiels/0040_Geo/IGN/adminexpress/adminexpress_cog_simpl_000_2024.gpkg" |> 
   read_sf(layer = "region") |> 
@@ -696,11 +718,31 @@ Taille d'image dans Quarto [@arel-bundockConsistentFiguresQuarto2024]
   addTiles() |> 
   addPolygons()
 ```
-:::
 
 ::: {.content-visible when-format="pdf"}
 Carte interactive non-visualisable au format PDF.
 :::
+
+
+### Diagrammes
+
+- [Mermaid](https://mermaid.js.org/)
+- À construire avec [mermaid.live](https://mermaid.live)
+
+::: {.content-visible when-format="html"}
+```{mermaid}
+flowchart TD
+    A[(données)] --> B(importer) --> C[/données valides/]
+    C --> D{"sum(sau > 200)"}
+    D -- oui --> E(OK)
+    D -- non --> F(Stop)
+```
+:::
+
+::: {.content-visible when-format="pdf"}
+Graphe non-visualisable au format PDF.
+:::
+
 
 ## Fonctionnalités avancées
 
@@ -730,7 +772,7 @@ if (params$sortie == "knitr") kable::knitr(sau) else sau
 
 ----
 
-On n'est pas obligé de changer manuellement les paramètres ; on peut itérer sur une liste :
+On n'est pas obligé de changer manuellement les paramètres et re-tricoter ; on peut itérer sur une liste :
 
 ```{{r}}
 for (r in c(11, 94, 84, 04)) {
@@ -774,9 +816,13 @@ quarto render mon_document.qmd --cache-refresh
 
 ### Crosstalk
 
+// TODO
+
 [doc](https://rstudio.github.io/crosstalk/)
 
 ### Dashboards
+
+// TODO
 
 [doc](https://quarto.org/docs/dashboards/call)
 

@@ -12,6 +12,8 @@ format:
     output-file: exercices_corriges_quarto.html
   pdf: 
     output-file: exercices_corriges_quarto.pdf
+  typst: 
+    output-file: exercices_corriges_quarto.pdf
 crossref:
   fig-prefix: figure
   fig-title:  Figure
@@ -19,6 +21,7 @@ crossref:
   tbl-title:  Tableau
   title-delim: " &ndash; "
 toc: true
+always_allow_html: true
 editor: source
 lang: fr
 editor_options: 
@@ -44,7 +47,7 @@ library(dplyr)
 #| label: donnees
 #| echo: true
 
-ra <- read_rds("donnees/ra_2020.rds") |> 
+ra <- read_rds("donnees/ra_2020.rds") 
 ```
 
 
@@ -125,6 +128,7 @@ Javascript avec datatable
 
 ```{r}
 #| label: tbl-ra-dt
+#| eval: !expr knitr::is_html_output() 
 
 library(DT)
 
@@ -136,6 +140,9 @@ ra |>
         url = "https://cdn.datatables.net/plug-ins/1.10.11/i18n/French.json")))
 ```
 
+::: {.content-visible when-format="pdf"}
+Tableau interactif non-visualisable au format PDF.
+:::
 
 ## Graphiques
 
