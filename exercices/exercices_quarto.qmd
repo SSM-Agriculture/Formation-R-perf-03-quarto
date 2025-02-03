@@ -38,16 +38,8 @@ execute:
 
 library(readr)
 library(dplyr)
-```
-
-
-## Présentation des données {.unnumbered}
-
-```{r}
-#| label: donnees
-#| echo: true
-
-ra <- read_rds("donnees/ra_2020.rds") 
+library(ggplot2)
+library(forcats)
 ```
 
 
@@ -83,7 +75,76 @@ Tricoter le document.
 ## Code {#code}
 
 
-## Afficher un tableau {#tableau}
+### Présentation des données
+
+```{r}
+#| label: donnees
+#| echo: true
+
+ra <- read_rds("donnees/ra_2020.rds") 
+
+```
+
+### Utiliser les résultats de calculs
+
+- Insérer un code R chargeant les paquets nécessaires, ouvrant les données du RA et calculant la SAU totale
+- Exécuter
+- Tricoter
+
+```{r}
+#| label: sau-tot-brut
+
+ra |> 
+  summarise(sau_tot_ha = sum(sau_tot, na.rm = TRUE))
+```
+
+
+- Reprendre le code précédent, sauver le résultat dans une variable.
+- Afficher le résultat au sein d'une phrase
+
+```{r}
+#| label: sau-tot-assigne
+
+sau_tot_ha <- ra |> 
+  summarise(sau_tot_ha = sum(sau_tot, na.rm = TRUE)) |> 
+  pull(1)
+```
+
+> La SAU totale vaut `r sau_tot_ha` ha.
+
+
+- Formater le résultat (arrondi, séparateur décimal, séparateur de milliers)
+
+> La SAU totale vaut `r format(round(sau_tot_ha, 1), decimal.mark = ",", big.mark = " ")` ha.
+
+- Utiliser des `options()` ou des `knitr::knit_hooks()` pour ne pas formater chaque sortie
+
+```{r}
+#| label: options
+
+options(OutDec = ",",
+        digits = 1,
+        scipen = 1e3)
+
+# ou par exemple
+
+knitr::knit_hooks$set(inline = function(x) {
+  if (!is.numeric(x)) { 
+    x
+  } else {
+    prettyNum(x, big.mark = " ")
+  }
+})
+```
+
+> La SAU totale vaut `r sau_tot_ha` ha.
+
+### Débuguer
+
+- Exécuter chunk par chunk
+- Utiliser "Exécuter tous les chunks au-dessus".
+
+## Afficher des tableaux {#tableaux}
 
 ### Tibble brut
 
@@ -144,19 +205,125 @@ ra |>
 Tableau interactif non-visualisable au format PDF.
 :::
 
-## Graphiques
+## Graphiques {#graphiques}
+
+- Ajouter un graphique dans le document Quarto.
+  Ex. : Top 10 SAU départementales à partir de `ra`.
+- Préciser un titre de figure
+  
+```{r}
+#| label: fig-sau
+#| fig-cap: "SAU top 10"
+
+graph_sau <- ra |> 
+  summarise(.by = c(siege_lib_dep),
+          sau_dep_ha = sum(sau_tot, na.rm = TRUE),
+          n = paste(n(), "exploit.")) |> 
+  slice_max(sau_dep_ha, n = 10) |> 
+  mutate(siege_lib_dep = fct_reorder(siege_lib_dep, sau_dep_ha)) |> 
+  ggplot(aes(siege_lib_dep,
+             sau_dep_ha,
+             text = n)) +
+  geom_col() +
+  coord_flip() + 
+  labs(title = "10 plus grandes SAU",
+       x = "dép.",
+       y = "surface (ha)")
+
+graph_sau
+```
+
+### Interactivité
+
+
+- Activer l'interactivité avec [{ggiraph}](https://davidgohel.github.io/ggiraph/)
+
+```{r}
+#| label: fig-sau-interactive
+#| fig-cap: "SAU top 10 (interactive)"
+
+library(plotly)
+
+graph_sau |> 
+  ggplotly(tooltip = "n")
+```
+
+### Disposition
+
+Il est possible de choisir l'emprise et l'emplacement des graphiques (disponible aussi pour d'autres éléments).  
+
+- Placer un graphique en marge avec l'option `column:`.  
+
+```{r}
+#| label: fig-sau-interactive-marge
+#| fig-cap: "Distribution de la SAU"
+#| column: margin
+
+densite_sau <- ra |> 
+  ggplot() +
+  geom_density(aes(sau_tot), fill = "darkslategray3")
+
+densite_sau
+```
+
+  [doc](https://quarto.org/docs/authoring/article-layout.html)
+  
+  Par exemple : densité ou histogramme de la `sau_tot`.
+
+- Disposer deux graphiques côte à côte avec l'option `layout-ncol:`.  
+  Il est possible d'ajouter des sous-légendes pour chaque graphique [doc](https://quarto.org/docs/authoring/figures.html#complex-layouts)
+
+```{r}
+#| label: fig-graphiques-assembles
+#| fig-cap: "SAU"
+#| fig-subcap: 
+#|  - Distribution
+#|  - Top 10
+#| layout-ncol: 2
+
+densite_sau
+graph_sau
+```
+
+
+## Cartes
+
+
+
+```{r}
+#| label: fig-carte
+#| fig-cap: Carte
+#| column: page
+
+library(sf)
+library(leaflet)
+
+"~/CERISE/03-Espace-de-Diffusion/000_Referentiels/0040_Geo/IGN/adminexpress/adminexpress_cog_simpl_000_2024.gpkg" |> 
+  read_sf(layer = "region") |> 
+  leaflet() |>
+  addTiles() |> 
+  addPolygons()
+```
 
 
 ## HTML avec éléments interactifs
 
 
+
 ## PDF
 
+Hors CERISE ?
+
+- Changer le format dans l'en-tête
+- Tricoter
 
 ## Tableau de bord
 
 
 ## Rapports paramétrés
+
+- Faire un rapport régional donnant le nom de la région, la SAU, les UGB totaux.
+- Générer le rapport pour toutes les régions
 
 
 ## Méta {.appendix .unnumbered}

@@ -100,7 +100,22 @@ versatile : pour le langage en entrée et les formats en sortie (diapo suivante
 
 ## Quarto
 
-Un système de publication
+### Un système de publication
+
+![Principe de fonctionnement (source RStudio)](images/rstudio-qmd-how-it-works.png){#fig-works}
+
+::: notes
+Mélange code et texte : une partie du document est générée par des données (tableaux, graphiques ou texte)
+
+Successeur de Rmarkdown
+
+Commandes complémentaires LaTeX ou Typst pour le PDF
+
+Pandoc est un convertisseur "universel" de formats de texte
+:::
+
+
+### Formats/moteurs
 
 :::::: columns
 ::: {.column width="50%"}
@@ -119,30 +134,18 @@ Un système de publication
     -   [Observable](https://observablehq.com/)
     -   [Julia](https://julialang.org/)
 :::
+::::::
 
 ::: notes
 Le format PDF nécessite {tinytex}
 :::
-::::::
 
-----
-
-![Principe de fonctionnement (source RStudio)](images/rstudio-qmd-how-it-works.png){#fig-works}
-
-::: notes
-Mélange code et texte 
-
-Successeur de Rmarkdown
-
-Commandes complémentaires LaTeX ou Typst pour le PDF
-
-Pandoc est un convertisseur "universel" de formats de texte
-:::
 
 ## Avantages
 
 - intégration avec R
 - reproductibilité
+  - session vierge à chaque génération
   - limiter les copier/coller entre outils
   - prise en compte des changements de données ou de méthodes
 - interactivité possible dans le document (HTML)
@@ -157,19 +160,23 @@ Pandoc est un convertisseur "universel" de formats de texte
 ## Inconvénients
 
 -   syntaxe (markdown)
--   génération
+-   génération active du rendu pour visualiser
+-   débogage parfois plus complexe
 
 ::: notes
-Mais disponibilité d'un éditeur visuel [What You See Is What You Mean](https://en.wikipedia.org/wiki/WYSIWYM) dans RStudio.
+- Mais disponibilité d'un éditeur visuel [What You See Is What You Mean](https://en.wikipedia.org/wiki/WYSIWYM) dans RStudio.
+- Asynchrone
 :::
 
 ## Sur CERISE
 
-Un package {quarto} et un binaire `quarto`.
+Un paquet {quarto} et un binaire `quarto`.
 
-```{{r}}
+``` r
 install.packages("quarto")
 ```
+
+dans la console :
 
 ```{.bash}
 quarto check install
@@ -183,10 +190,16 @@ quarto install tinytex
 ```
 
 ::: notes
- Typst n'est pas encore disponible sur CERISE pour générer du PDF sans LaTeX
+- Le programme est livré avec RStudio (mais peut être intallé à part aussi)
+- La paquet n'est pas indispensable mais peut être utile
+- Typst n'est pas encore disponible sur CERISE pour générer du PDF sans LaTeX
 :::
 
 # Structure et syntaxe
+
+::: notes
+On passe en revue rapidement les élément d'un document Quarto, puis on revient dessus dans le détail par la suite
+:::
 
 ----
 
@@ -214,8 +227,10 @@ And when it has gone past I will turn the `{{r}} somme` inner eye to see its
 path. Where the fear has gone there will be nothing. 
 
 > Only I will remain.
-
 ````
+::: notes
+Un exemple pour montrer rapidement les différents éléments qu'on décrira ci-après
+:::
 
 ## markdown
 
@@ -234,6 +249,8 @@ Le code exécutable est intégré dans un *chunk* (bloc) :
 1+1
 ```
 
+<kbd>Ctrl</kbd> <kbd>Alt</kbd> <kbd>i</kbd>
+
 [doc](https://quarto.org/docs/computations/r.html)
 
 ::: notes
@@ -243,11 +260,11 @@ Le code exécutable est intégré dans un *chunk* (bloc) :
 - `label:` est un identifiant
 :::
 
-## YAML
+## En-tête de configuration
 
-- en-tête de configuration
+- [YAML](https://fr.wikipedia.org/wiki/YAML)
 - bloc entre `---`
-- *a minima* : `title:`
+- Facultatif mais *a minima* : `title:`, `author:`, `date:`, `format:`
 - options nombreuses et variables selon les formats
 
 ## Rendu
@@ -260,6 +277,10 @@ quarto render mon_document.qmd
 
 <kbd>Ctrl</kbd> <kbd>⇧</kbd> <kbd>k</kbd> ou ![](images/clipboard-660236810.png){width="75pt" style="vertical-align:text-top"} (ou
 ![](images/clipboard-660236811.png){width="131pt" style="vertical-align:text-top"})
+
+::: notes
+Le tricotage/rendu se fait dans une nouvelle session à chaque fois et n'impacte pas votre environnement courant ; de même les objets de votre environnement courant ne sont pas disponibles, par défaut, lors du rendu
+:::
 
 ::: callout-note
 ### À vous de jouer
@@ -570,7 +591,7 @@ format:
 ---
 
 ::: callout-note
-### À vous de jouer
+#### À vous de jouer
 
 [Exercice 3.](exercices/exercices_enonces_quarto.html#code) Code
 :::
@@ -680,9 +701,9 @@ Utiliser le préfixe `tbl-` pour l'identifiant afin de pouvoir bénéficier des 
 ---
 
 ::: callout-note
-### À vous de jouer
+#### À vous de jouer
 
-[Exercice 3.](exercices/exercices_enonces_quarto.html#tableau) Tableaux
+[Exercice 4.](exercices/exercices_enonces_quarto.html#tableaux) Tableaux
 :::
 
 
@@ -692,7 +713,10 @@ Utiliser le préfixe `tbl-` pour l'identifiant afin de pouvoir bénéficier des 
 #| label: fig-iris
 #| fig-cap: "Iris"
 #| output-location: column
-
+#| fig-alt: Graphique en nuage de points des longueurs et largeurs de pétales par espèce d'Iris
+#| out-width: "100%"
+#| fig-width: 7
+#| fig-height: 5.5
 ggplot(iris, aes(Petal.Length, 
                  Petal.Width, 
                  color = Species)) +
@@ -701,6 +725,18 @@ ggplot(iris, aes(Petal.Length,
 ```
 
 Taille d'image dans Quarto [@arel-bundockConsistentFiguresQuarto2024]
+
+::: notes
+Interactivité possible avec {plotly} ou {ggiraph}. *cf.* exercices
+:::
+
+---
+
+::: callout-note
+#### À vous de jouer
+
+[Exercice 5.](exercices/exercices_enonces_quarto.html#graphiques) Graphiques
+:::
 
 
 ### Cartes
@@ -723,16 +759,27 @@ Taille d'image dans Quarto [@arel-bundockConsistentFiguresQuarto2024]
 Carte interactive non-visualisable au format PDF.
 :::
 
+::: callout-note
+#### À vous de jouer
+
+[Exercice 6.](exercices/exercices_enonces_quarto.html#cartes) Cartes
+:::
+
 
 ### Diagrammes
 
 - [Mermaid](https://mermaid.js.org/)
 - À construire avec [mermaid.live](https://mermaid.live)
 
+----
+
 ::: {.content-visible when-format="html"}
 ```{mermaid}
+%%| output-location: column
+
 flowchart TD
-    A[(données)] --> B(importer) --> C[/données valides/]
+    A[(données)] --> B(importer) 
+    B --> C[/données valides/]
     C --> D{"sum(sau > 200)"}
     D -- oui --> E(OK)
     D -- non --> F(Stop)
@@ -774,7 +821,7 @@ if (params$sortie == "knitr") kable::knitr(sau) else sau
 
 On n'est pas obligé de changer manuellement les paramètres et re-tricoter ; on peut itérer sur une liste :
 
-```{{r}}
+```{.r}
 for (r in c(11, 94, 84, 04)) {
   quarto::quarto_render("mon_document.qmd",
                         execute_params = list(region = r),
@@ -789,9 +836,26 @@ résultera en 4 rapports personnalisés : *rapport_11.html*, *rapport_94.html*
 
 ### Inclusions
 
+En tout point du qmd :
+
 ```{.markdown}
 {{{< include entete.qmd >}}}
 ```
+
+[doc](https://quarto.org/docs/authoring/includes.html)
+
+ou dans le YAML pour ajouter de simples en-tête et pieds de page :
+
+````{.markdown}
+---
+format:
+  html:
+    include-before-body: en_tete.html
+    include-after-body: pied.html
+---
+````
+
+[doc](https://quarto.org/docs/output-formats/html-basics.html#includes)
 
 ### Cache
 
@@ -813,6 +877,10 @@ quarto render mon_document.qmd --cache-refresh
 ```
 
 [doc](https://quarto.org/docs/computations/caching.html)
+
+::: notes
+`cache` peut être défini au niveau projet, document ou chunk.
+:::
 
 ### Crosstalk
 
@@ -852,6 +920,10 @@ Autre option (à mettre dans un chunk de configuration en début de document) :
 :::
 
 ## Couleurs
+
+Modification du thème ou des CSS
+
+// TODO
 
 # Références
 
