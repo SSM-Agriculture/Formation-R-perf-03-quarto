@@ -39,6 +39,7 @@ Pour bénéficier de la version la plus récente de Quarto, vous pouvez travaill
 ```{r}
 #| label: setup
 #| echo: true
+#| eval: true
 #| code-fold: false
 
 # ces paquets seront nécessaires pour la suite
@@ -90,6 +91,7 @@ Utilisation d'un extrait randomisé du RA 2020. Ouvrir le fichier dans *donnees/
 ```{r}
 #| label: donnees
 #| echo: true
+#| eval: true
 
 ra <- read_rds("donnees/ra_2020.rds") 
 ```
@@ -123,6 +125,7 @@ ra |>
 
 ```{r}
 #| label: sau-tot-assigne
+#| eval: true
 
 sau_tot_ha <- ra |> 
   summarise(sau_tot_ha = sum(sau_tot, na.rm = TRUE)) |> 
@@ -362,6 +365,7 @@ Sur CERISE en pré-prod uniquement (ou en prod fin février)
 ```{r}
 #| label: source-et-forge
 #| echo: false
+#| eval: true
 #| warning: false
 
 meta_qmd_source <- xfun::with_ext(knitr::current_input(dir = TRUE), "qmd") |> 
@@ -381,8 +385,8 @@ Ce document est produit par :
   
 ```{r}
 #| label: afficher-forge
-#| eval: !expr meta_url != ""
 #| echo: false
+#| eval: true
 #| results: asis
 
 cat("### Dépôt Git {.appendix .unnumbered}
