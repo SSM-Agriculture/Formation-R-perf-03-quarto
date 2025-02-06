@@ -289,7 +289,7 @@ Le tricotage/rendu se fait dans une nouvelle session à chaque fois et n'impacte
 ::: callout-note
 ### À vous de jouer
 
-[Exercice 1.](exercices/exercices_enonces_quarto.html#interface) : découvrir l'interface
+[Exercice 1.](exercices/exercices_corriges_quarto.html#interface) : découvrir l'interface
 :::
 
 ## Éléments
@@ -541,7 +541,7 @@ Le caisson de calibrage de la bride du commutateur à fuseaux rotatifs est HORS-
 ::: callout-note
 ### À vous de jouer
 
-[Exercice 2.](exercices/exercices_enonces_quarto.html#doc-simple) produire un document simple
+[Exercice 2.](exercices/exercices_corriges_quarto.html#doc-simple) produire un document simple
 :::
 
 
@@ -597,7 +597,7 @@ format:
 ::: callout-note
 #### À vous de jouer
 
-[Exercice 3.](exercices/exercices_enonces_quarto.html#code) Code
+[Exercice 3.](exercices/exercices_corriges_quarto.html#code) Code
 :::
 
 
@@ -707,7 +707,7 @@ Utiliser le préfixe `tbl-` pour l'identifiant afin de pouvoir bénéficier des 
 ::: callout-note
 #### À vous de jouer
 
-[Exercice 4.](exercices/exercices_enonces_quarto.html#tableaux) Tableaux
+[Exercice 4.](exercices/exercices_corriges_quarto.html#tableaux) Tableaux
 :::
 
 
@@ -739,7 +739,7 @@ Interactivité possible avec {plotly} ou {ggiraph}. *cf.* exercices
 ::: callout-note
 #### À vous de jouer
 
-[Exercice 5.](exercices/exercices_enonces_quarto.html#graphiques) Graphiques
+[Exercice 5.](exercices/exercices_corriges_quarto.html#graphiques) Graphiques
 :::
 
 
@@ -766,7 +766,7 @@ Carte interactive non-visualisable au format PDF.
 ::: callout-note
 #### À vous de jouer
 
-[Exercice 6.](exercices/exercices_enonces_quarto.html#cartes) Cartes
+[Exercice 6.](exercices/exercices_corriges_quarto.html#cartes) Cartes
 :::
 
 
@@ -837,6 +837,14 @@ résultera en 4 rapports personnalisés : *rapport_11.html*, *rapport_94.html*
 
 [doc](https://quarto.org/docs/computations/parameters.html)
 
+---
+
+::: callout-note
+#### À vous de jouer
+
+[Exercice 8.](exercices/exercices_corriges_quarto.html#rapports-paramétrés) rapports paramétrés
+:::
+
 
 ### Inclusions
 
@@ -886,17 +894,19 @@ quarto render mon_document.qmd --cache-refresh
 `cache` peut être défini au niveau projet, document ou chunk.
 :::
 
-### Crosstalk
+### Crosstalk {visibility="uncounted"}
 
 // TODO
 
 [doc](https://rstudio.github.io/crosstalk/)
 
-### Dashboards
+
+### Dashboards {visibility="uncounted"}
 
 // TODO
 
 [doc](https://quarto.org/docs/dashboards/call)
+
 
 # Marque de l'État
 
@@ -923,11 +933,12 @@ Permet d'avoir la police Marianne pour le texte et de la prendre en compte dans 
 Autre option (à mettre dans un chunk de configuration en début de document) : `knitr::opts_chunk$set(dev = "ragg_png")`
 :::
 
-## Couleurs
+## Couleurs {visibility="uncounted"}
 
 Modification du thème ou des CSS
 
 // TODO
+
 
 # Références
 

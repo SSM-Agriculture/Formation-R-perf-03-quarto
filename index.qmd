@@ -3,3 +3,12 @@ title: Module Quarto
 subtitle: Formation R perfectionnement
 ---
 
+Module Quarto de la formation R perfectionnement des [formations à R dispensées au MASA](https://ssm-agriculture.github.io/site-formations-R/).
+
+
+Vous trouverez :
+
+-  [La présentation](formation_quarto.html) (format HTML RevealJS)  
+   imprimable en tapant `e` puis <kbd>Ctrl</kbd> + <kbd>p</kbd> ;
+- Le même contenu que la présentation dans un [document HTML](formation_quarto_document.html) plus classique ;
+- [Les exercices](exercices/exercices_corriges_quarto.html) (énoncés + corrigés).

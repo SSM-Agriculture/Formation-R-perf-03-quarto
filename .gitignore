@@ -9,3 +9,4 @@ formation_quarto_files
 *.pdf
 *.rds
 *.gpkg
+_site/

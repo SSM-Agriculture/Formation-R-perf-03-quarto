@@ -156,12 +156,14 @@ knitr::knit_hooks$set(inline = function(x) {
 
 > La SAU totale vaut `r sau_tot_ha` ha.
 
-### Débuguer
+### Déboguer
 
 - Exécuter chunk par chunk
 - Utiliser "Exécuter tous les chunks au-dessus".
 
 ## Afficher des tableaux {#tableaux}
+
+Afficher les premières lignes du data.frame `ra`.
 
 ### Tibble brut
 
@@ -172,6 +174,8 @@ ra
 ```
 
 ### HTML mis en forme
+
+Afficher les premières lignes du data.frame `ra` avec une mise en forme plus élaborée, avec {gt} ou `knitr::kable()`.
 
 ::: {.panel-tabset}
 
@@ -202,7 +206,8 @@ ra |>
 
 #### Interactif
 
-Javascript avec datatable
+Afficher les 100 premières ligne de `ra` dans un tableau interactif Javascript avec datatable (package {DT}).
+
 
 ```{r}
 #| label: tbl-ra-dt
@@ -225,7 +230,7 @@ Tableau interactif non-visualisable au format PDF.
 ## Graphiques {#graphiques}
 
 - Ajouter un graphique dans le document Quarto.
-  Ex. : Top 10 SAU départementales à partir de `ra`.
+  *Ex.* : Top 10 des SAU départementales à partir de `ra`.
 - Préciser un titre de figure
   
 ```{r}
@@ -253,10 +258,12 @@ graph_sau <- ra |>
 graph_sau
 ```
 
+Ajouter une phrase dans votre texte indiquant que la @fig-sau montre des résultats intéressants (insertion d'un renvoi).
+
+
 ### Interactivité
 
-
-- Activer l'interactivité avec [{ggiraph}](https://davidgohel.github.io/ggiraph/)
+- Activer l'interactivité sur un graphique avec [{ggiraph}](https://davidgohel.github.io/ggiraph/)
 
 ```{r}
 #| label: fig-sau-interactive
@@ -308,7 +315,7 @@ graph_sau
 
 ## Cartes
 
-
+Ouvrir la couche `region` du fichier *~/CERISE/03-Espace-de-Diffusion/000_Referentiels/0040_Geo/IGN/adminexpress/adminexpress_cog_simpl_000_2024.gpkg* et l'afficher avec {leaflet}.
 
 ```{r}
 #| label: fig-carte
@@ -326,18 +333,22 @@ library(leaflet) # cartographie dynamique
 ```
 
 
-## HTML avec éléments interactifs
+## HTML avec éléments interactifs {visibility="uncounted"}
 
+// TODO
 
 
 ## PDF
 
-Hors CERISE ?
+Sur CERISE en pré-prod uniquement (ou en prod fin février)
 
-- Changer le format dans l'en-tête
+- (Partir d'un nouveau document ou enlever les éléments interactifs {DT} ou {leaflet})
+- Changer le format dans l'en-tête (`typst` ou `pdf`)
 - Tricoter
 
-## Tableau de bord
+## Tableau de bord {visibility="uncounted"}
+
+// TODO
 
 
 ## Rapports paramétrés
