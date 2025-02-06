@@ -105,13 +105,10 @@ versatile : pour le langage en entrée et les formats en sortie (diapo suivante
 ![Principe de fonctionnement (source RStudio)](images/rstudio-qmd-how-it-works.png){#fig-works}
 
 ::: notes
-Mélange code et texte : une partie du document est générée par des données (tableaux, graphiques ou texte)
-
-Successeur de Rmarkdown
-
-Commandes complémentaires LaTeX ou Typst pour le PDF
-
-Pandoc est un convertisseur "universel" de formats de texte
+- Mélange code et texte : une partie du document est générée par des données (tableaux, graphiques ou texte)
+- Successeur de Rmarkdown
+- Commandes complémentaires LaTeX ou Typst pour le PDF
+- Pandoc est un convertisseur "universel" de formats de texte
 :::
 
 
@@ -170,17 +167,19 @@ Le format PDF nécessite {tinytex}
 
 ## Sur CERISE
 
-Un paquet {quarto} et un binaire `quarto`.
+Un paquet {quarto} et un binaire `quarto` (ils sont pré-installés sur CERISE).
 
-``` r
-install.packages("quarto")
-```
-
-dans la console :
+Vérification dans le terminal :
 
 ```{.bash}
 quarto check install
 quarto check knitr
+```
+
+::: callout-note
+### Si nécesaire
+``` r
+install.packages("quarto")
 ```
 
 Le format PDF nécessite LaTeX.
@@ -188,17 +187,18 @@ Le format PDF nécessite LaTeX.
 ```{.bash}
 quarto install tinytex
 ```
+:::
 
 ::: notes
-- Le programme est livré avec RStudio (mais peut être intallé à part aussi)
+- Le programme est livré avec RStudio (mais peut être installé à part aussi)
 - La paquet n'est pas indispensable mais peut être utile
-- Typst n'est pas encore disponible sur CERISE pour générer du PDF sans LaTeX
+- Typst n'est pas encore disponible sur CERISE (sauf en pré-prod) pour générer du PDF sans LaTeX
 :::
 
 # Structure et syntaxe
 
 ::: notes
-On passe en revue rapidement les élément d'un document Quarto, puis on revient dessus dans le détail par la suite
+On passe en revue rapidement les éléments d'un document Quarto, puis on revient sur chaque éléments en détail par la suite
 :::
 
 ----
@@ -238,6 +238,10 @@ Un langage balisé simplifié
 
 [doc](https://quarto.org/docs/authoring/markdown-basics.html)
 
+::: notes
+Inventé en 2004 pour offrir une syntaxe facile à lire et à écrire, en l'état, sans formatage. 
+:::
+
 ## chunks
 
 Le code exécutable est intégré dans un *chunk* (bloc) :
@@ -257,7 +261,7 @@ Le code exécutable est intégré dans un *chunk* (bloc) :
 - détails dans la partie Code
 - Triple quote + le langage dans des accolades
 - Les commentaires/pipe permettent de préciser des options (la plus grosse différence visible entre Rmarkdown et Quarto)
-- `label:` est un identifiant
+- `label:` est un identifiant (facultatif mais conseillé)
 :::
 
 ## En-tête de configuration

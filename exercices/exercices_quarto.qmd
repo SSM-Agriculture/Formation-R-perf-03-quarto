@@ -32,14 +32,19 @@ execute:
   warning: false
 ---
 
+Exercices de la [formation R perfectionnement](https://ssm-agriculture.github.io/Formation-R-perf-03-quarto/), module Quarto, des [formations à R dispensées au MASA](https://ssm-agriculture.github.io/site-formations-R/).
+
+Pour bénéficier de la version la plus récente de Quarto, vous pouvez travailler --pour cette formation-- sur la [version de pré-production de CERISE](https://rstudio-pprd.agriculture.rie.gouv.fr/).
+
 ```{r}
 #| label: setup
 #| echo: true
+#| code-fold: false
 
-library(readr)
-library(dplyr)
-library(ggplot2)
-library(forcats)
+# ces paquets seront nécessaires pour la suite
+library(readr)   # lecture des données
+library(dplyr)   # manipulation des données
+                 # et d'autres au fur et à mesure...
 ```
 
 
@@ -77,19 +82,33 @@ Tricoter le document.
 
 ### Présentation des données
 
+Utilisation d'un extrait randomisé du RA 2020. Ouvrir le fichier dans *donnees/ra_2020.rds*.
+
+::: {.panel-tabset}
+#### Code
+
 ```{r}
 #| label: donnees
 #| echo: true
 
 ra <- read_rds("donnees/ra_2020.rds") 
-
 ```
+
+#### Aperçu
+
+```{r}
+#| label: donnees-glimpse
+#| echo: false
+
+glimpse(ra)
+```
+:::
 
 ### Utiliser les résultats de calculs
 
 - Insérer un code R chargeant les paquets nécessaires, ouvrant les données du RA et calculant la SAU totale
-- Exécuter
-- Tricoter
+- Exécuter (sortie dans la console)
+- Tricoter (aperçu HTML)
 
 ```{r}
 #| label: sau-tot-brut
@@ -112,7 +131,6 @@ sau_tot_ha <- ra |>
 
 > La SAU totale vaut `r sau_tot_ha` ha.
 
-
 - Formater le résultat (arrondi, séparateur décimal, séparateur de milliers)
 
 > La SAU totale vaut `r format(round(sau_tot_ha, 1), decimal.mark = ",", big.mark = " ")` ha.
@@ -127,7 +145,6 @@ options(OutDec = ",",
         scipen = 1e3)
 
 # ou par exemple
-
 knitr::knit_hooks$set(inline = function(x) {
   if (!is.numeric(x)) { 
     x
@@ -163,7 +180,7 @@ ra
 ```{r}
 #| label: tbl-ra-gt
 
-library(gt)
+library(gt) # tableaux
 
 ra |> 
   slice_head(n = 5) |> 
@@ -175,7 +192,7 @@ ra |>
 ```{r}
 #| label: tbl-ra-knitr
 
-library(knitr)
+library(knitr) # moteur de transfo markdown
 
 ra |> 
   slice_head(n = 5) |> 
@@ -191,7 +208,7 @@ Javascript avec datatable
 #| label: tbl-ra-dt
 #| eval: !expr knitr::is_html_output() 
 
-library(DT)
+library(DT) # tableaux interactifs
 
 ra |> 
   slice_head(n = 100) |> 
@@ -214,6 +231,9 @@ Tableau interactif non-visualisable au format PDF.
 ```{r}
 #| label: fig-sau
 #| fig-cap: "SAU top 10"
+
+library(ggplot2) # graphiques
+library(forcats) # facteurs
 
 graph_sau <- ra |> 
   summarise(.by = c(siege_lib_dep),
@@ -242,7 +262,7 @@ graph_sau
 #| label: fig-sau-interactive
 #| fig-cap: "SAU top 10 (interactive)"
 
-library(plotly)
+library(plotly) # graphiques interactifs
 
 graph_sau |> 
   ggplotly(tooltip = "n")
@@ -295,8 +315,8 @@ graph_sau
 #| fig-cap: Carte
 #| column: page
 
-library(sf)
-library(leaflet)
+library(sf)      # SIG
+library(leaflet) # cartographie dynamique
 
 "~/CERISE/03-Espace-de-Diffusion/000_Referentiels/0040_Geo/IGN/adminexpress/adminexpress_cog_simpl_000_2024.gpkg" |> 
   read_sf(layer = "region") |> 

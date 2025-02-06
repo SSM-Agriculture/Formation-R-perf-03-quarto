@@ -1,6 +1,19 @@
 project:
+  type: website
   title: "Formation-R-perf-03-quarto"
   execute-dir: project
+
+website:
+  title: "Module Quarto - Formation R perfectionnement"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: formation_quarto.qmd
+        text : Présentation
+      - href: exercices/exercices_quarto.qmd
+        text: Énoncés des exercices
+
 mainfont: Marianne
 monofont: Fira Code
 crossref:
