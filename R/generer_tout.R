@@ -40,4 +40,4 @@ quarto_render("readme.qmd", output_format = "gfm")
 
 # publier sur github pages ------------------------------------------------
 
-system("quarto publish gh-pages formation_quarto.qmd")
+#system("quarto publish gh-pages formation_quarto.qmd")
