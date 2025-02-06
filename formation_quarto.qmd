@@ -842,7 +842,7 @@ résultera en 4 rapports personnalisés : *rapport_11.html*, *rapport_94.html*
 ::: callout-note
 #### À vous de jouer
 
-[Exercice 8.](exercices/exercices_corriges_quarto.html#rapports-paramétrés) rapports paramétrés
+[Exercice 10.](exercices/exercices_corriges_quarto.html#rapports-paramétrés) rapports paramétrés
 :::
 
 
@@ -882,7 +882,7 @@ region <- read_sf("donnees/departements.gpkg") |>
   st_union()
 ```
 
-Ne sera exécuté qu'une fois sauf si le code du chunk change ou si la date du fichier change ou si on passe à `cache: false`, ou via :
+Ne sera exécuté qu'une fois sauf si le code du *chunk* change ou si la date du fichier change ou si on passe à `cache: false`, ou via :
 
 ```{.bash}
 quarto render mon_document.qmd --cache-refresh
@@ -930,7 +930,7 @@ Pour textes et graphiques [@servicedinformationdugouvernementCharteGraphiqueLEta
 ::: notes
 Permet d'avoir la police Marianne pour le texte et de la prendre en compte dans les graphiques ggplot.
 
-Autre option (à mettre dans un chunk de configuration en début de document) : `knitr::opts_chunk$set(dev = "ragg_png")`
+Autre possibilité (à mettre dans un *chunk* de configuration en début de document) : `knitr::opts_chunk$set(dev = "ragg_png")`
 :::
 
 ## Couleurs {visibility="uncounted"}

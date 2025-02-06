@@ -263,7 +263,7 @@ Ajouter une phrase dans votre texte indiquant que la @fig-sau montre des résult
 
 ### Interactivité
 
-- Activer l'interactivité sur un graphique avec [{ggiraph}](https://davidgohel.github.io/ggiraph/)
+- Activer l'interactivité sur un graphique avec [{plotly}](https://plotly.com/r/)
 
 ```{r}
 #| label: fig-sau-interactive
