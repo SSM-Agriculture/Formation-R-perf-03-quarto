@@ -32,7 +32,7 @@ execute:
   warning: false
 ---
 
-Exercices de la [formation R perfectionnement](https://ssm-agriculture.github.io/Formation-R-perf-03-quarto/), module Quarto, des [formations à R dispensées au MASA](https://ssm-agriculture.github.io/site-formations-R/).
+Exercices de la [formation R perfectionnement](https://ssm-agriculture.github.io/Formation-R-perf-03-quarto/), module Quarto, des [formations à R dispensées au SSM Agriculture](https://ssm-agriculture.github.io/site-formations-R/).
 
 Pour bénéficier de la version la plus récente de Quarto, vous pouvez travailler --pour cette formation-- sur la [version de pré-production de CERISE](https://rstudio-pprd.agriculture.rie.gouv.fr/).
 

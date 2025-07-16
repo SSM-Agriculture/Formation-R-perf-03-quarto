@@ -3,7 +3,7 @@ title: Module Quarto
 subtitle: Formation R perfectionnement
 ---
 
-Module Quarto de la formation R perfectionnement des [formations à R dispensées au MASA](https://ssm-agriculture.github.io/site-formations-R/).
+Module Quarto de la formation R perfectionnement des [formations à R dispensées au SSM Agriculture](https://ssm-agriculture.github.io/site-formations-R/).
 
 
 Vous trouverez :
