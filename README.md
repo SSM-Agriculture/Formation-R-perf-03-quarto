@@ -1,6 +1,6 @@
 # Formation Quarto
 Michaël Delorme
-2025-02-06
+2025-10-09
 
 - [Objectif](#objectif)
 - [Fichiers](#fichiers)
@@ -48,13 +48,15 @@ source("R/generer_tout.R")
 
 Diaporama disponible sur
 <https://ssm-agriculture.github.io/Formation-R-perf-03-quarto/> dans le
-cadre des [modules de formations à dispensés au
-MASA](https://ssm-agriculture.github.io/site-formations-R/).
+cadre des [modules de formations à dispensés au SSM
+Agriculture](https://ssm-agriculture.github.io/site-formations-R/).
+
+    quarto publish
 
 ## Méta
 
 Ce document est produit par :  
-*C:/Users/michael.delorme/Documents/formations/formation_quarto/readme.qmd*
+*C:/Users/damien.dotta/DEMESIS/Formations_R/Formation_R_perfectionnement/Formation-R-perf-03-quarto/readme.qmd*
 
 ### Dépôt Git
 

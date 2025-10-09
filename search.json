@@ -32,231 +32,28 @@
     "href": "lisez-moi.html#publication",
     "title": "Formation Quarto",
     "section": "Publication",
-    "text": "Publication\nDiaporama disponible sur https://ssm-agriculture.github.io/Formation-R-perf-03-quarto/ dans le cadre des modules de formations à dispensés au MASA."
+    "text": "Publication\nDiaporama disponible sur https://ssm-agriculture.github.io/Formation-R-perf-03-quarto/ dans le cadre des modules de formations à dispensés au SSM Agriculture.\nquarto publish"
   },
   {
     "objectID": "lisez-moi.html#méta",
     "href": "lisez-moi.html#méta",
     "title": "Formation Quarto",
     "section": "Méta",
-    "text": "Méta\n\nCe document est produit par :\nC:/Users/michael.delorme/Documents/formations/formation_quarto/readme.qmd"
+    "text": "Méta\n\nCe document est produit par :\nC:/Users/damien.dotta/DEMESIS/Formations_R/Formation_R_perfectionnement/Formation-R-perf-03-quarto/readme.qmd"
   },
   {
-    "objectID": "formation_quarto.html#pré-requis-techniques",
-    "href": "formation_quarto.html#pré-requis-techniques",
-    "title": "Formation Quarto",
-    "section": "Pré-requis techniques",
-    "text": "Pré-requis techniques\n\nQuarto (≥ 1.5)\nRStudio (≥ 2022.07) et R (≥ 4)\n\n\nlibrary(dplyr)   # manip. données\nlibrary(ggplot2) # graphiques\nlibrary(sf)      # carto.\nlibrary(leaflet) # carto.\nlibrary(gt)      # formatage tableaux\n\n# un theme ggplot utilisant la typographie Marianne\ntheme_masa &lt;- function(...) {\n  theme_grey(...) %+replace%\n    theme(\n      text = element_text(family = \"Marianne\"))\n}\n\n\nLa police Marianne doit être installée sur le poste"
-  },
-  {
-    "objectID": "formation_quarto.html#objectifs",
-    "href": "formation_quarto.html#objectifs",
-    "title": "Formation Quarto",
-    "section": "Objectifs",
-    "text": "Objectifs\n\nIntérêt des publications reproductibles\nDécouvrir la versatilité de Quarto\nRéaliser un document, de simple à complexe\n\n\nversatile : pour le langage en entrée et les formats en sortie (diapo suivante)"
-  },
-  {
-    "objectID": "formation_quarto.html#quarto",
-    "href": "formation_quarto.html#quarto",
-    "title": "Formation Quarto",
-    "section": "Quarto",
-    "text": "Quarto"
-  },
-  {
-    "objectID": "formation_quarto.html#avantages",
-    "href": "formation_quarto.html#avantages",
-    "title": "Formation Quarto",
-    "section": "Avantages",
-    "text": "Avantages\n\nintégration avec R\nreproductibilité\n\nsession vierge à chaque génération\nlimiter les copier/coller entre outils\nprise en compte des changements de données ou de méthodes\n\ninteractivité possible dans le document (HTML)\nversionnement avec git\n\n\n\nafficher du code dans le doc\néviter les copier/coller : synchronisation analyse/résultats\nfaciliter la reproductibilité avec {renv}"
-  },
-  {
-    "objectID": "formation_quarto.html#inconvénients",
-    "href": "formation_quarto.html#inconvénients",
-    "title": "Formation Quarto",
-    "section": "Inconvénients",
-    "text": "Inconvénients\n\nsyntaxe (markdown)\ngénération active du rendu pour visualiser\ndébogage parfois plus complexe\n\n\n\nMais disponibilité d’un éditeur visuel What You See Is What You Mean dans RStudio.\nAsynchrone"
-  },
-  {
-    "objectID": "formation_quarto.html#sur-cerise",
-    "href": "formation_quarto.html#sur-cerise",
-    "title": "Formation Quarto",
-    "section": "Sur CERISE",
-    "text": "Sur CERISE\nUn paquet {quarto} et un binaire quarto (ils sont pré-installés sur CERISE).\nVérification dans le terminal :\nquarto check install\nquarto check knitr\n\n\n\n\n\n\nSi nécesaire\n\n\ninstall.packages(\"quarto\")\nLe format PDF nécessite LaTeX.\nquarto install tinytex\n\n\n\n\n\nLe programme est livré avec RStudio (mais peut être installé à part aussi)\nLa paquet n’est pas indispensable mais peut être utile\nTypst n’est pas encore disponible sur CERISE (sauf en pré-prod) pour générer du PDF sans LaTeX"
-  },
-  {
-    "objectID": "formation_quarto.html#markdown",
-    "href": "formation_quarto.html#markdown",
-    "title": "Formation Quarto",
-    "section": "markdown",
-    "text": "markdown\nUn langage balisé simplifié\ndoc\n\nInventé en 2004 pour offrir une syntaxe facile à lire et à écrire, en l’état, sans formatage."
-  },
-  {
-    "objectID": "formation_quarto.html#chunks",
-    "href": "formation_quarto.html#chunks",
-    "title": "Formation Quarto",
-    "section": "chunks",
-    "text": "chunks\nLe code exécutable est intégré dans un chunk (bloc) :\n```{r}\n#| label: mon-chunk\n#| warning: false\n\n1+1\n```\nCtrl Alt i\ndoc\n\n\ndétails dans la partie Code\nTriple quote + le langage dans des accolades\nLes commentaires/pipe permettent de préciser des options (la plus grosse différence visible entre Rmarkdown et Quarto)\nlabel: est un identifiant (facultatif mais conseillé)"
-  },
-  {
-    "objectID": "formation_quarto.html#en-tête-de-configuration",
-    "href": "formation_quarto.html#en-tête-de-configuration",
-    "title": "Formation Quarto",
-    "section": "En-tête de configuration",
-    "text": "En-tête de configuration\n\nYAML\nbloc entre ---\nFacultatif mais a minima : title:, author:, date:, format:\noptions nombreuses et variables selon les formats"
-  },
-  {
-    "objectID": "formation_quarto.html#rendu",
-    "href": "formation_quarto.html#rendu",
-    "title": "Formation Quarto",
-    "section": "Rendu",
-    "text": "Rendu\n(knit)\nquarto render mon_document.qmd\nCtrl ⇧ k ou  (ou )\n\nLe tricotage/rendu se fait dans une nouvelle session à chaque fois et n’impacte pas votre environnement courant ; de même les objets de votre environnement courant ne sont pas disponibles, par défaut, lors du rendu\n\n\n\n\n\n\n\nÀ vous de jouer\n\n\nExercice 1. : découvrir l’interface"
-  },
-  {
-    "objectID": "formation_quarto.html#éléments",
-    "href": "formation_quarto.html#éléments",
-    "title": "Formation Quarto",
-    "section": "Éléments",
-    "text": "Éléments"
-  },
-  {
-    "objectID": "formation_quarto.html#fonctionnalités-avancées",
-    "href": "formation_quarto.html#fonctionnalités-avancées",
-    "title": "Formation Quarto",
-    "section": "Fonctionnalités avancées",
-    "text": "Fonctionnalités avancées"
-  },
-  {
-    "objectID": "formation_quarto.html#typographie-marianne",
-    "href": "formation_quarto.html#typographie-marianne",
-    "title": "Formation Quarto",
-    "section": "Typographie Marianne",
-    "text": "Typographie Marianne\nPour textes et graphiques  (Service d’information du gouvernement, 2020)\n\nInstaller {ragg}, {systemfonts} et {textshaping}\nDans l’en-tête yaml du document Quarto :\n---\nmainfont: Marianne\nknitr:\n  opts_chunk: \n    dev: \"ragg_png\"\n---\n\n\nPermet d’avoir la police Marianne pour le texte et de la prendre en compte dans les graphiques ggplot.\nAutre option (à mettre dans un chunk de configuration en début de document) : knitr::opts_chunk$set(dev = \"ragg_png\")"
-  },
-  {
-    "objectID": "formation_quarto.html#couleurs",
-    "href": "formation_quarto.html#couleurs",
-    "title": "Formation Quarto",
-    "section": "Couleurs",
-    "text": "Couleurs\nModification du thème ou des CSS\n// TODO"
-  },
-  {
-    "objectID": "formation_quarto_document.html",
-    "href": "formation_quarto_document.html",
-    "title": "Formation Quarto",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Module Quarto",
     "section": "",
-    "text": "Quarto (≥ 1.5)\nRStudio (≥ 2022.07) et R (≥ 4)\n\n\nlibrary(dplyr)   # manip. données\nlibrary(ggplot2) # graphiques\nlibrary(sf)      # carto.\nlibrary(leaflet) # carto.\nlibrary(gt)      # formatage tableaux\n\n# un theme ggplot utilisant la typographie Marianne\ntheme_masa &lt;- function(...) {\n  theme_grey(...) %+replace%\n    theme(\n      text = element_text(family = \"Marianne\"))\n}\n\n\nLa police Marianne doit être installée sur le poste"
-  },
-  {
-    "objectID": "formation_quarto_document.html#pré-requis-techniques",
-    "href": "formation_quarto_document.html#pré-requis-techniques",
-    "title": "Formation Quarto",
-    "section": "",
-    "text": "Quarto (≥ 1.5)\nRStudio (≥ 2022.07) et R (≥ 4)\n\n\nlibrary(dplyr)   # manip. données\nlibrary(ggplot2) # graphiques\nlibrary(sf)      # carto.\nlibrary(leaflet) # carto.\nlibrary(gt)      # formatage tableaux\n\n# un theme ggplot utilisant la typographie Marianne\ntheme_masa &lt;- function(...) {\n  theme_grey(...) %+replace%\n    theme(\n      text = element_text(family = \"Marianne\"))\n}\n\n\nLa police Marianne doit être installée sur le poste"
-  },
-  {
-    "objectID": "formation_quarto_document.html#objectifs",
-    "href": "formation_quarto_document.html#objectifs",
-    "title": "Formation Quarto",
-    "section": "Objectifs",
-    "text": "Objectifs\n\nIntérêt des publications reproductibles\nDécouvrir la versatilité de Quarto\nRéaliser un document, de simple à complexe\n\n\nversatile : pour le langage en entrée et les formats en sortie (diapo suivante)"
-  },
-  {
-    "objectID": "formation_quarto_document.html#quarto",
-    "href": "formation_quarto_document.html#quarto",
-    "title": "Formation Quarto",
-    "section": "Quarto",
-    "text": "Quarto\n\nUn système de publication\n\n\n\n\n\n\nFigure 1 –  Principe de fonctionnement (source RStudio)\n\n\n\n\n\nMélange code et texte : une partie du document est générée par des données (tableaux, graphiques ou texte)\nSuccesseur de Rmarkdown\nCommandes complémentaires LaTeX ou Typst pour le PDF\nPandoc est un convertisseur “universel” de formats de texte\n\n\n\n\nFormats/moteurs\n\n\n\nmulti-format\n\nHTML (rapports, livres, présentations)\nPDF\nAppli web (statique/Shiny) : blog, site, tableau de bord\nPowerpoint\nMS Word\n\n\n\n\nmulti-langage\n\nR\nPython\nObservable\nJulia\n\n\n\n\n\nLe format PDF nécessite {tinytex}"
-  },
-  {
-    "objectID": "formation_quarto_document.html#avantages",
-    "href": "formation_quarto_document.html#avantages",
-    "title": "Formation Quarto",
-    "section": "Avantages",
-    "text": "Avantages\n\nintégration avec R\nreproductibilité\n\nsession vierge à chaque génération\nlimiter les copier/coller entre outils\nprise en compte des changements de données ou de méthodes\n\ninteractivité possible dans le document (HTML)\nversionnement avec git\n\n\n\nafficher du code dans le doc\néviter les copier/coller : synchronisation analyse/résultats\nfaciliter la reproductibilité avec {renv}"
-  },
-  {
-    "objectID": "formation_quarto_document.html#inconvénients",
-    "href": "formation_quarto_document.html#inconvénients",
-    "title": "Formation Quarto",
-    "section": "Inconvénients",
-    "text": "Inconvénients\n\nsyntaxe (markdown)\ngénération active du rendu pour visualiser\ndébogage parfois plus complexe\n\n\n\nMais disponibilité d’un éditeur visuel What You See Is What You Mean dans RStudio.\nAsynchrone"
-  },
-  {
-    "objectID": "formation_quarto_document.html#sur-cerise",
-    "href": "formation_quarto_document.html#sur-cerise",
-    "title": "Formation Quarto",
-    "section": "Sur CERISE",
-    "text": "Sur CERISE\nUn paquet {quarto} et un binaire quarto (ils sont pré-installés sur CERISE).\nVérification dans le terminal :\nquarto check install\nquarto check knitr\n\n\n\n\n\n\nSi nécesaire\n\n\n\ninstall.packages(\"quarto\")\nLe format PDF nécessite LaTeX.\nquarto install tinytex\n\n\n\n\nLe programme est livré avec RStudio (mais peut être installé à part aussi)\nLa paquet n’est pas indispensable mais peut être utile\nTypst n’est pas encore disponible sur CERISE (sauf en pré-prod) pour générer du PDF sans LaTeX"
-  },
-  {
-    "objectID": "formation_quarto_document.html#markdown",
-    "href": "formation_quarto_document.html#markdown",
-    "title": "Formation Quarto",
-    "section": "markdown",
-    "text": "markdown\nUn langage balisé simplifié\ndoc\n\nInventé en 2004 pour offrir une syntaxe facile à lire et à écrire, en l’état, sans formatage."
-  },
-  {
-    "objectID": "formation_quarto_document.html#chunks",
-    "href": "formation_quarto_document.html#chunks",
-    "title": "Formation Quarto",
-    "section": "chunks",
-    "text": "chunks\nLe code exécutable est intégré dans un chunk (bloc) :\n```{r}\n#| label: mon-chunk\n#| warning: false\n\n1+1\n```\nCtrl Alt i\ndoc\n\n\ndétails dans la partie Code\nTriple quote + le langage dans des accolades\nLes commentaires/pipe permettent de préciser des options (la plus grosse différence visible entre Rmarkdown et Quarto)\nlabel: est un identifiant (facultatif mais conseillé)"
-  },
-  {
-    "objectID": "formation_quarto_document.html#en-tête-de-configuration",
-    "href": "formation_quarto_document.html#en-tête-de-configuration",
-    "title": "Formation Quarto",
-    "section": "En-tête de configuration",
-    "text": "En-tête de configuration\n\nYAML\nbloc entre ---\nFacultatif mais a minima : title:, author:, date:, format:\noptions nombreuses et variables selon les formats"
-  },
-  {
-    "objectID": "formation_quarto_document.html#rendu",
-    "href": "formation_quarto_document.html#rendu",
-    "title": "Formation Quarto",
-    "section": "Rendu",
-    "text": "Rendu\n(knit)\nquarto render mon_document.qmd\nCtrl ⇧ k ou  (ou )\n\nLe tricotage/rendu se fait dans une nouvelle session à chaque fois et n’impacte pas votre environnement courant ; de même les objets de votre environnement courant ne sont pas disponibles, par défaut, lors du rendu\n\n\n\n\n\n\n\nÀ vous de jouer\n\n\n\nExercice 1. : découvrir l’interface"
-  },
-  {
-    "objectID": "formation_quarto_document.html#éléments",
-    "href": "formation_quarto_document.html#éléments",
-    "title": "Formation Quarto",
-    "section": "Éléments",
-    "text": "Éléments\n\nTexte\n\n2 retours à la ligne pour faire un paragraphe\n2 espaces et 1 retour à la ligne pour un saut de ligne\n* ou _ pour mettre en *italique* ou en **gras**\n[un lien](https://www.example.org/) → un lien\nune portion de texte peut être stylée en vert avec [vert]{style=\"color:darkgreen\"}\nmais du HTML est aussi possible &lt;span style=\"color:red\"&gt;rouge&lt;/span&gt; pour mettre en rouge\n\ndoc\n\n\nTitres\nPréfixer le titre avec #, ## ou ### pour avoir les titres de niveau 1, 2 ou 3, etc..\n#### Titre de niveau 4\n\nTitre de niveau 4\n\n\n\nListes\n\n\n- Atréides\n  - Leto\n  - Jessica\n  - Paul\n- Harkonnen\n  - Vladimir\n  - Rabban\n  - Feyd-Rautha\nou\n- Atréides\n  * Leto\n  * Jessica\n  * Paul\n- Harkonnen\n  + Vladimir\n  + Rabban\n  + Feyd-Rautha\n\n\nAtréides\n\nLeto\nJessica\nPaul\n\nHarkonnen\n\nVladimir\nRabban\nFeyd-Rautha\n\n\n\n\n\n\n\n1. Atréides\n   - Leto\n   - Jessica\\\n     **2 espaces (ou `\\`) + nouvelle ligne + aligner\n     pour ajouter du texte dans les items**\n   - Paul\n2. Harkonnen\n   - Vladimir\n   - Rabban\n   - Feyd-Rautha\n\n\nAtréides\n\nLeto\nJessica\n2 espaces (ou \\) + nouvelle ligne + aligner pour ajouter du texte dans les items\nPaul\n\nHarkonnen\n\nVladimir\nRabban\nFeyd-Rautha\n\n\n\n\n\nRenumérotation automatique incrémentée à partir du premier numéro trouvé.\n\n\n\nLiens\n[Texte du lien](https://fr.wikipedia.org/wiki/Arrakis)\nTexte du lien\n\n\nImages\n![Fremen](images/images/dune_book.jpg)\n\n\n\n\n\n\nFigure 2 –  Fremen\n\n\n\n![Fremen](images/images/dune_book.jpg \"Shai-hulud\"){#fig-dune fig-alt=\"A sand worm on Arrakis\"}\n\nUtiliser le préfixe fig- pour l’identifiant afin de pouvoir bénéficier des renvois automatiques et de la numérotation automatique\n\n\n\nRenvois\n(cross-references)\nUn lien automatique est créé si on indique @fig-dune : Quarto nous écrit le lien (type et numéro) qui renvoie à figure 2.\nLes noms des types affichés peuvent être modifiés dans l’en-tête :\n---\ncrossref:\n  fig-prefix: figure # par défaut : Figure\n  fig-title:  Figure\n  tbl-prefix: tableau # par défaut : Tableau\n  tbl-title:  Tableau\n  title-delim: \" &ndash; \"\n---\n\n\nNotes de pied de page\nLes notes se construisent en ajoutant un [^1] dans le texte, avec le 1 pouvant être une numérotation (pas obligatoirement dans l’ordre) ou tout autre mot clé. La note est ensuite introduite avec le même symbole dans un nouveau paragraphe :\n[^1]: texte de la note\nC’est normalement facile1 à faire si on se rappelle de la syntaxe.\n\n\nÉquations\nSyntaxe LaTeX entre des $ (inline) ou $$ (bloc).\n$\\sigma = \\sqrt{\\frac{1}{N} \\sum_{i=1}^N (x_i - \\mu)^2},\\text{ où } \\mu = \\frac{1}{N} \\sum_{i=1}^N x_i$\n\\[\\sigma = \\sqrt{\\frac{1}{N} \\sum_{i=1}^N (x_i - \\mu)^2},\\text{ où } \\mu = \\frac{1}{N} \\sum_{i=1}^N x_i\\] doc\n\n\nCitations/bibliographie\nAvec Zotero et l’extension Better BibTeX pour auto-exporter en BibTeX la collection quand elle est modifiée.\nPréciser le fichier utilisé en en-tête, puis utilisation des identifiants du fichier BibTex.\n---\ntitle: \"Mon document\"\nbibliography: formation_quarto.bib\n---\n\nComme le dit @rdevelopmentcoreteamLanguageEnvironmentStatistical2010 :\n\n&gt; Lorem ipsum dolor sit amet[@rstudioGuide2024], consectetur adipiscing elit\nComme le dit R Development Core Team (2010) :\n\nLorem ipsum dolor sit amet (RStudio, 2024a), consectetur adipiscing elit\n\n\nLa bibliographie est directement générée :\n\nen fin de document ou\naprès un &lt;div&gt; identifié avec #refs ex. :\n## Références\n::: {#refs}\n:::\n\ndoc\n\n\nLibellés\n(Callout)\nLes “libellés” permettent de mettre en exergue des informations complémentaires.\n:::{.callout-note}\nIl existe cinq types de libellés : \n`note`, `tip`, `warning`, `caution` et `important`.\n:::\n\n\n\n\n\n\nNote\n\n\n\nIl existe cinq types de libellés : note, tip, warning, caution et important.\n\n\n\n::: callout-warning\nSuite aux nombreux manquements à l’obligation de contrôle hebdomadaire (...)\n:::\n\n\n\n\n\n\nAvertissement\n\n\n\nSuite aux nombreux manquements à l’obligation de contrôle hebdomadaire de l’étanchéité des colonnettes à crémaillère (…)\n\n\n::: callout-warning\n#### Attention\n\nLe caisson de calibrage de la bride du commutateur à fuseaux (...)\n:::\n\n\n\n\n\n\nAttention\n\n\n\nLe caisson de calibrage de la bride du commutateur à fuseaux rotatifs est HORS-SERVICE\n\n\ndoc\n\n\n\n\n\n\n\nÀ vous de jouer\n\n\n\nExercice 2. produire un document simple\n\n\n\n\nCode\n\niris |&gt; \n  glm(Sepal.Length ~ Sepal.Width, data = _)\n\n\nCall:  glm(formula = Sepal.Length ~ Sepal.Width, data = iris)\n\nCoefficients:\n(Intercept)  Sepal.Width  \n     6.5262      -0.2234  \n\nDegrees of Freedom: 149 Total (i.e. Null);  148 Residual\nNull Deviance:      102.2 \nResidual Deviance: 100.8    AIC: 372\n\n\n\n\nOptions de bloc de code\n\nexécution :\n#| eval: exécuter le code\n#| echo: afficher le code\nnommage :\n#| label: identifiant du chunk\n#| fig-cap: légende du bloc\n\n\n\n\nOutils\nSi on a #| echo: true l’utilisateur voit le code\nOn peut aussi ajouter des outils pour l’utilisateur pour qu’il affiche ou cache les chunks avec, dans l’en-tête YAML :\nformat: \n  html:\n    code-fold: true\n    code-tools: true\n\n\n\nSorties de code\n\ntexte, avec :\n\n#| results: markup ou\ncat() et #| results: asis\n\ntableaux\nimages\néléments interactifs\n\n\n\n\n\n\n\n\nÀ vous de jouer\n\n\n\nExercice 3. Code\n\n\n\n\n\nTableaux\nLes tableaux sont balisés ainsi en Markdown :\n\n\n| année | titre                   |\n|------:|:------------------------|\n|  1965 | Dune                    |\n|  1969 | Le Messie de Dune       |\n|  1976 | Les Enfants de Dune     |\n|  1981 | L'Empereur-Dieu de Dune |\n|  1984 | Les Hérétiques de Dune  |\n|  1985 | La Maison des mères     |\n\n: Cycle de Dune {#tbl-cycle}\n\n\n\n\n\n\n\nannée\ntitre\n\n\n\n\n1965\nDune\n\n\n1969\nLe Messie de Dune\n\n\n1976\nLes Enfants de Dune\n\n\n1981\nL’Empereur-Dieu de Dune\n\n\n1984\nLes Hérétiques de Dune\n\n\n1985\nLa Maison des mères\n\n\n\n\n\nTableau 1 –  Cycle de Dune\n\n\n\n\n\ndoc\n\nMais la plupart du temps on affichera des tableaux programmatiquement.\n\n\n\niris |&gt; \n  summarise(.by = Species,\n            moy_sepales = sum(Sepal.Length))\n\n     Species moy_sepales\n1     setosa       250.3\n2 versicolor       296.8\n3  virginica       329.4\n\n\n\nTableau 2 –  Iris (tibble)\n\n\n\n\nAvec {knitr} ou le paramètre en en-tête :\nformat:\n  html:\n    df-print: kable\n\niris |&gt; \n  summarise(.by = Species,\n            moy_sepales = sum(Sepal.Length)) |&gt; \n  knitr::kable()\n\n\n\n\n\n\n\nSpecies\nmoy_sepales\n\n\n\n\nsetosa\n250.3\n\n\nversicolor\n296.8\n\n\nvirginica\n329.4\n\n\n\n\n\n\nTableau 3 –  Iris (kable)\n\n\n\n\ndoc\n\nContrôler l’impression de data.frame avec df-print: kable ou df-print: paged, df-print: tibble Interactivité javascript df-print: paged à voir en exercice\n\n\nou avec {gt}\n\niris |&gt; \n  summarise(.by = Species,\n            moy_sepales = sum(Sepal.Length)) |&gt; \n  gt()\n\n\n\n\n\n\n\n\n\n\nSpecies\nmoy_sepales\n\n\n\n\nsetosa\n250.3\n\n\nversicolor\n296.8\n\n\nvirginica\n329.4\n\n\n\n\n\n\n\n\nTableau 4 –  Iris (gt)\n\n\n\n\n\nUtiliser le préfixe tbl- pour l’identifiant afin de pouvoir bénéficier des renvois automatiques et la numérotation automatique\n\n\n\n\n\n\n\n\nÀ vous de jouer\n\n\n\nExercice 4. Tableaux\n\n\n\n\nGraphiques\n\nggplot(iris, aes(Petal.Length, \n                 Petal.Width, \n                 color = Species)) +\n  geom_point() +\n  theme_masa()\n\n\n\n\n\n\n\nFigure 3 –  Iris\n\n\n\n\n\nTaille d’image dans Quarto  (Arel-Bundock, 2024)\n\nInteractivité possible avec {plotly} ou {ggiraph}. cf. exercices\n\n\n\n\n\n\n\n\nÀ vous de jouer\n\n\n\nExercice 5. Graphiques\n\n\n\n\nCartes\n\n\"~/CERISE/03-Espace-de-Diffusion/000_Referentiels/0040_Geo/IGN/adminexpress/adminexpress_cog_simpl_000_2024.gpkg\" |&gt; \n  read_sf(layer = \"region\") |&gt; \n  leaflet() |&gt;\n  addTiles() |&gt; \n  addPolygons()\n\n\n\n\n\n\n\nFigure 4 –  Exemple Leaflet\n\n\n\n\n\n\n\n\n\n\nÀ vous de jouer\n\n\n\nExercice 6. Cartes\n\n\n\n\nDiagrammes\n\nMermaid\nÀ construire avec mermaid.live\n\n\n\nflowchart TD\n    A[(données)] --&gt; B(importer) \n    B --&gt; C[/données valides/]\n    C --&gt; D{\"sum(sau &gt; 200)\"}\n    D -- oui --&gt; E(OK)\n    D -- non --&gt; F(Stop)\n\n\n\n\nflowchart TD\n    A[(données)] --&gt; B(importer) \n    B --&gt; C[/données valides/]\n    C --&gt; D{\"sum(sau &gt; 200)\"}\n    D -- oui --&gt; E(OK)\n    D -- non --&gt; F(Stop)"
-  },
-  {
-    "objectID": "formation_quarto_document.html#fonctionnalités-avancées",
-    "href": "formation_quarto_document.html#fonctionnalités-avancées",
-    "title": "Formation Quarto",
-    "section": "Fonctionnalités avancées",
-    "text": "Fonctionnalités avancées\n\nRapports paramétrés\n\n\nmon_document.qmd\n\n---\ntitle: Rapport\nformat:\n  html: default\nparam:\n  region: 84\n  sortie: knitr\n---\n\n## Région `{r} params$region`\n\n```{r}\nsau &lt;- ra |&gt; \n  filter(siege_reg == params$region) |&gt; \n  summarise(.by = siege_dep,\n            sau_tot = sum(sau_tot, na.rm = TRUE))\n\nif (params$sortie == \"knitr\") kable::knitr(sau) else sau\n```\n\n\nOn n’est pas obligé de changer manuellement les paramètres et re-tricoter ; on peut itérer sur une liste :\nfor (r in c(11, 94, 84, 04)) {\n  quarto::quarto_render(\"mon_document.qmd\",\n                        execute_params = list(region = r),\n                        output_file = paste0(\"rapport_\", r, \".html\"))\n}\nrésultera en 4 rapports personnalisés : rapport_11.html, rapport_94.html,…\ndoc\n\n\n\n\n\n\n\nÀ vous de jouer\n\n\n\nExercice 8. rapports paramétrés\n\n\n\n\nInclusions\nEn tout point du qmd :\n{{&lt; include entete.qmd &gt;}}\ndoc\nou dans le YAML pour ajouter de simples en-tête et pieds de page :\n---\nformat:\n  html:\n    include-before-body: en_tete.html\n    include-after-body: pied.html\n---\ndoc\n\n\nCache\nPour les calculs longs et rarement variables on peut gagner du temps avec cache: true (au niveau document ou chunk).\n```{r}\n#| label: long-traitement\n#| cache: true\n#| cache-extra : !expr file.mtime(\"donnees/departements.gpkg\")\n\nregion &lt;- read_sf(\"donnees/departements.gpkg\") |&gt; \n  st_union()\n```\nNe sera exécuté qu’une fois sauf si le code du chunk change ou si la date du fichier change ou si on passe à cache: false, ou via :\nquarto render mon_document.qmd --cache-refresh\ndoc\n\ncache peut être défini au niveau projet, document ou chunk.\n\n\n\nCrosstalk\n// TODO\ndoc\n\n\nDashboards\n// TODO\ndoc"
-  },
-  {
-    "objectID": "formation_quarto_document.html#typographie-marianne",
-    "href": "formation_quarto_document.html#typographie-marianne",
-    "title": "Formation Quarto",
-    "section": "Typographie Marianne",
-    "text": "Typographie Marianne\nPour textes et graphiques  (Service d’information du gouvernement, 2020)\n\nInstaller {ragg}, {systemfonts} et {textshaping}\nDans l’en-tête yaml du document Quarto :\n---\nmainfont: Marianne\nknitr:\n  opts_chunk: \n    dev: \"ragg_png\"\n---\n\n\nPermet d’avoir la police Marianne pour le texte et de la prendre en compte dans les graphiques ggplot.\nAutre option (à mettre dans un chunk de configuration en début de document) : knitr::opts_chunk$set(dev = \"ragg_png\")"
-  },
-  {
-    "objectID": "formation_quarto_document.html#couleurs",
-    "href": "formation_quarto_document.html#couleurs",
-    "title": "Formation Quarto",
-    "section": "Couleurs",
-    "text": "Couleurs\nModification du thème ou des CSS\n// TODO"
-  },
-  {
-    "objectID": "formation_quarto_document.html#footnotes",
-    "href": "formation_quarto_document.html#footnotes",
-    "title": "Formation Quarto",
-    "section": "Notes de bas de page",
-    "text": "Notes de bas de page\n\n\npage d’aide sur les notes de bas de page.↩︎"
+    "text": "Module Quarto de la formation R perfectionnement des formations à R dispensées au SSM Agriculture.\nVous trouverez :\n\nLa présentation (format HTML RevealJS)\nimprimable en tapant e puis Ctrl + p ;\nLe même contenu que la présentation dans un document HTML plus classique ;\nLes exercices (énoncés + corrigés)."
   },
   {
     "objectID": "exercices/exercices_corriges_quarto.html",
     "href": "exercices/exercices_corriges_quarto.html",
     "title": "Exercices Quarto",
     "section": "",
-    "text": "Exercices de la formation R perfectionnement, module Quarto, des formations à R dispensées au MASA.\nPour bénéficier de la version la plus récente de Quarto, vous pouvez travailler –pour cette formation– sur la version de pré-production de CERISE.\n# ces paquets seront nécessaires pour la suite\nlibrary(readr)   # lecture des données\nlibrary(dplyr)   # manipulation des données\n                 # et d'autres au fur et à mesure..."
+    "text": "Exercices de la formation R perfectionnement, module Quarto, des formations à R dispensées au SSM Agriculture.\nPour bénéficier de la version la plus récente de Quarto, vous pouvez travailler –pour cette formation– sur la version de pré-production de CERISE.\n# ces paquets seront nécessaires pour la suite\nlibrary(readr)   # lecture des données\nlibrary(dplyr)   # manipulation des données\n                 # et d'autres au fur et à mesure..."
   },
   {
     "objectID": "exercices/exercices_corriges_quarto.html#interface",
@@ -298,42 +95,28 @@
     "href": "exercices/exercices_corriges_quarto.html#cartes",
     "title": "Exercices Quarto",
     "section": "6 Cartes",
-    "text": "6 Cartes\nOuvrir la couche region du fichier ~/CERISE/03-Espace-de-Diffusion/000_Referentiels/0040_Geo/IGN/adminexpress/adminexpress_cog_simpl_000_2024.gpkg et l’afficher avec {leaflet}.\n\n\nCode\nlibrary(sf)      # SIG\nlibrary(leaflet) # cartographie dynamique\n\n\"~/CERISE/03-Espace-de-Diffusion/000_Referentiels/0040_Geo/IGN/adminexpress/adminexpress_cog_simpl_000_2024.gpkg\" |&gt; \n  read_sf(layer = \"region\") |&gt; \n  leaflet() |&gt;\n  addTiles() |&gt; \n  addPolygons()\n\n\n\n\n\n\n\n\nFigure 5 –  Carte"
-  },
-  {
-    "objectID": "exercices/exercices_corriges_quarto.html#html-avec-éléments-interactifs",
-    "href": "exercices/exercices_corriges_quarto.html#html-avec-éléments-interactifs",
-    "title": "Exercices Quarto",
-    "section": "7 HTML avec éléments interactifs",
-    "text": "7 HTML avec éléments interactifs\n// TODO"
+    "text": "6 Cartes\nOuvrir la couche region du fichier ~/CERISE/03-Espace-de-Diffusion/000_Referentiels/0040_Geo/IGN/adminexpress/adminexpress_cog_simpl_000_2024.gpkg et l’afficher avec {leaflet}.\n\n\nCode\nlibrary(sf)      # SIG\nlibrary(leaflet) # cartographie dynamique\n\n\"donnees/adminexpress_cog_simpl_000_2024.gpkg\" |&gt; \n  read_sf(layer = \"region\") |&gt; \n  leaflet() |&gt; \n  addTiles() |&gt; \n  addPolygons()\n\n\n\n\n\n\n\n\nFigure 5 –  Carte"
   },
   {
     "objectID": "exercices/exercices_corriges_quarto.html#pdf",
     "href": "exercices/exercices_corriges_quarto.html#pdf",
     "title": "Exercices Quarto",
-    "section": "8 PDF",
-    "text": "8 PDF\nSur CERISE en pré-prod uniquement (ou en prod fin février)\n\n(Partir d’un nouveau document ou enlever les éléments interactifs {DT} ou {leaflet})\nChanger le format dans l’en-tête (typst ou pdf)\nTricoter"
-  },
-  {
-    "objectID": "exercices/exercices_corriges_quarto.html#tableau-de-bord",
-    "href": "exercices/exercices_corriges_quarto.html#tableau-de-bord",
-    "title": "Exercices Quarto",
-    "section": "9 Tableau de bord",
-    "text": "9 Tableau de bord\n// TODO"
+    "section": "7 PDF",
+    "text": "7 PDF\n\nPartir d’un nouveau document ou enlever les éléments interactifs {DT} ou {leaflet}\nChanger le format dans l’en-tête (typst ou pdf)\nTricoter"
   },
   {
     "objectID": "exercices/exercices_corriges_quarto.html#rapports-paramétrés",
     "href": "exercices/exercices_corriges_quarto.html#rapports-paramétrés",
     "title": "Exercices Quarto",
-    "section": "10 Rapports paramétrés",
-    "text": "10 Rapports paramétrés\n\nFaire un rapport régional donnant le nom de la région, la SAU, les UGB totaux.\nGénérer le rapport pour toutes les régions"
+    "section": "8 Rapports paramétrés",
+    "text": "8 Rapports paramétrés\n\nFaire un rapport régional donnant le nom de la région, la SAU, les UGB totaux."
   },
   {
     "objectID": "exercices/exercices_corriges_quarto.html#méta",
     "href": "exercices/exercices_corriges_quarto.html#méta",
     "title": "Exercices Quarto",
     "section": "Méta",
-    "text": "Méta\n\nCe document est produit par :\nC:/Users/michael.delorme/Documents/formations/formation_quarto/exercices/exercices_quarto.qmd"
+    "text": "Méta\n\nCe document est produit par :\nC:/Users/damien.dotta/DEMESIS/Formations_R/Formation_R_perfectionnement/Formation-R-perf-03-quarto/exercices/exercices_quarto.qmd"
   },
   {
     "objectID": "exercices/exercices_corriges_quarto.html#footnotes",
@@ -343,10 +126,248 @@
     "text": "Notes de bas de page\n\n\nWhat You See Is What You Mean↩︎"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Module Quarto",
+    "objectID": "formation_quarto_document.html",
+    "href": "formation_quarto_document.html",
+    "title": "Formation Quarto",
     "section": "",
-    "text": "Module Quarto de la formation R perfectionnement des formations à R dispensées au MASA.\nVous trouverez :\n\nLa présentation (format HTML RevealJS)\nimprimable en tapant e puis Ctrl + p ;\nLe même contenu que la présentation dans un document HTML plus classique ;\nLes exercices (énoncés + corrigés)."
+    "text": "Quarto (≥ 1.5)\nRStudio (≥ 2022.07) et R (≥ 4)\n\n=&gt; Installé par défaut sur Cerise !"
+  },
+  {
+    "objectID": "formation_quarto_document.html#pré-requis-techniques",
+    "href": "formation_quarto_document.html#pré-requis-techniques",
+    "title": "Formation Quarto",
+    "section": "",
+    "text": "Quarto (≥ 1.5)\nRStudio (≥ 2022.07) et R (≥ 4)\n\n=&gt; Installé par défaut sur Cerise !"
+  },
+  {
+    "objectID": "formation_quarto_document.html#objectifs",
+    "href": "formation_quarto_document.html#objectifs",
+    "title": "Formation Quarto",
+    "section": "Objectifs",
+    "text": "Objectifs\n\nIntérêt des publications reproductibles\nDécouvrir la versatilité de Quarto\nRéaliser un document, de simple à complexe\n\n\nversatile : pour le langage en entrée et les formats en sortie (diapo suivante)"
+  },
+  {
+    "objectID": "formation_quarto_document.html#quarto",
+    "href": "formation_quarto_document.html#quarto",
+    "title": "Formation Quarto",
+    "section": "Quarto",
+    "text": "Quarto\n\nUn système de publication\n\n\n\n\n\n\nFigure 1 –  Principe de fonctionnement (source RStudio)\n\n\n\n\n\nMélange code et texte : une partie du document est générée par des données (tableaux, graphiques ou texte)\nSuccesseur de Rmarkdown\nCommandes complémentaires LaTeX ou Typst pour le PDF\nPandoc est un convertisseur “universel” de formats de texte\n\n\n\n\nFormats/moteurs\n\n\n\nmulti-format\n\nHTML (rapports, livres, présentations)\nPDF\nAppli web (statique/interactif) : blog, site, tableau de bord\nPowerpoint\nMS Word\n\n\n\n\nmulti-langage\n\nR\nPython\nObservable\nJulia\n\n\n\n\n\nLe format PDF nécessite {tinytex}"
+  },
+  {
+    "objectID": "formation_quarto_document.html#avantages",
+    "href": "formation_quarto_document.html#avantages",
+    "title": "Formation Quarto",
+    "section": "Avantages",
+    "text": "Avantages\n\nintégration avec R\nreproductibilité\n\nsession vierge à chaque génération\nlimiter les copier/coller entre outils\nprise en compte des changements de données ou de méthodes\n\ninteractivité possible dans le document (HTML)\nversionnement avec git\n\n\n\nafficher du code dans le doc\néviter les copier/coller : synchronisation analyse/résultats\nfaciliter la reproductibilité avec {renv}"
+  },
+  {
+    "objectID": "formation_quarto_document.html#inconvénients",
+    "href": "formation_quarto_document.html#inconvénients",
+    "title": "Formation Quarto",
+    "section": "Inconvénients",
+    "text": "Inconvénients\n\nsyntaxe (markdown)\ngénération active du rendu pour visualiser\ndébogage parfois plus complexe\n\n\n\nMais disponibilité d’un éditeur visuel What You See Is What You Mean dans RStudio.\nAsynchrone"
+  },
+  {
+    "objectID": "formation_quarto_document.html#derniers-détails-sur-linstallation",
+    "href": "formation_quarto_document.html#derniers-détails-sur-linstallation",
+    "title": "Formation Quarto",
+    "section": "Derniers détails sur l’installation",
+    "text": "Derniers détails sur l’installation\nUn paquet {quarto} et un binaire quarto (ils sont pré-installés sur CERISE).\nVérification dans le terminal :\nquarto check install\nquarto check knitr\n\n\n\n\n\n\nSi nécesaire\n\n\n\ninstall.packages(\"quarto\")\nLe format PDF nécessite LaTeX.\nquarto install tinytex\n\n\n\n\nLe programme est livré avec RStudio (mais peut être installé à part aussi)\nLa paquet n’est pas indispensable mais peut être utile\nTypst n’est pas encore disponible sur CERISE (sauf en pré-prod) pour générer du PDF sans LaTeX"
+  },
+  {
+    "objectID": "formation_quarto_document.html#premiers-pas-avec-quarto",
+    "href": "formation_quarto_document.html#premiers-pas-avec-quarto",
+    "title": "Formation Quarto",
+    "section": "Premiers pas avec quarto",
+    "text": "Premiers pas avec quarto\n\nComment créer votre premier document quarto ?\nUn mode “source” et un mode “visuel”\nGénérer un document “self contained” : https://quarto.org/docs/output-formats/html-basics.html#self-contained"
+  },
+  {
+    "objectID": "formation_quarto_document.html#premier-exemple",
+    "href": "formation_quarto_document.html#premier-exemple",
+    "title": "Formation Quarto",
+    "section": "Premier exemple",
+    "text": "Premier exemple\n\nOn passe en revue rapidement les éléments d’un document Quarto, puis on revient sur chaque élément en détail par la suite\n\n\n---\ntitle: \"Litany against fear\"\nauthor: \"Bene Gesserit\"\n---\n\nI must not fear. *Fear is the mind-killer*. Fear is the little-death that\nbrings total obliteration. \n\n```{python}\nimport numpy as np\nnp.exp(np.pi * complex(0, 1)) + 1\n```\n\n**I will face my fear.** I will permit it to pass over me and through me.\n\n```{r}\nsomme &lt;- sum(1:10)\n```\n\nUn exemple pour montrer rapidement les différents éléments qu’on décrira ci-après"
+  },
+  {
+    "objectID": "formation_quarto_document.html#markdown",
+    "href": "formation_quarto_document.html#markdown",
+    "title": "Formation Quarto",
+    "section": "markdown",
+    "text": "markdown\nUn langage balisé simplifié\ndoc\n\nInventé en 2004 pour offrir une syntaxe facile à lire et à écrire, en l’état, sans formatage."
+  },
+  {
+    "objectID": "formation_quarto_document.html#chunks",
+    "href": "formation_quarto_document.html#chunks",
+    "title": "Formation Quarto",
+    "section": "chunks",
+    "text": "chunks\nLe code exécutable est intégré dans un chunk (bloc) :\n```{r}\n#| label: mon-chunk\n#| warning: false\n\n1+1\n```\nCtrl Alt i\ndoc\n\n\ndétails dans la partie Code\nTriple quote + le langage dans des accolades\nLes commentaires/pipe permettent de préciser des options (la plus grosse différence visible entre Rmarkdown et Quarto)\nlabel: est un identifiant (facultatif mais conseillé)"
+  },
+  {
+    "objectID": "formation_quarto_document.html#en-tête-de-configuration",
+    "href": "formation_quarto_document.html#en-tête-de-configuration",
+    "title": "Formation Quarto",
+    "section": "En-tête de configuration",
+    "text": "En-tête de configuration\n\nYAML\nbloc entre ---\nFacultatif mais a minima : title:, author:, date:, format:\nOptions nombreuses et variables selon les formats =&gt; voir ici"
+  },
+  {
+    "objectID": "formation_quarto_document.html#rendu",
+    "href": "formation_quarto_document.html#rendu",
+    "title": "Formation Quarto",
+    "section": "Rendu",
+    "text": "Rendu\nAvec la console R :\nquarto_render(\"mon_document.qmd3)\nAvec le terminal :\nquarto render mon_document.qmd\nCtrl ⇧ k ou  (ou )\n\nLe tricotage/rendu se fait dans une nouvelle session à chaque fois et n’impacte pas votre environnement courant ; de même les objets de votre environnement courant ne sont pas disponibles, par défaut, lors du rendu\n\n\n\n\n\n\n\n\nÀ vous de jouer\n\n\n\nExercice 1. : découvrir l’interface"
+  },
+  {
+    "objectID": "formation_quarto_document.html#éléments",
+    "href": "formation_quarto_document.html#éléments",
+    "title": "Formation Quarto",
+    "section": "Éléments",
+    "text": "Éléments\n\nTexte\n\n2 retours à la ligne pour faire un paragraphe\n2 espaces et 1 retour à la ligne pour un saut de ligne\n* ou _ pour mettre en *italique* ou en **gras**\n[un lien](https://www.example.org/) → un lien\nune portion de texte peut être stylée en vert avec [vert]{style=\"color:darkgreen\"}\nmais du HTML est aussi possible &lt;span style=\"color:red\"&gt;rouge&lt;/span&gt; pour mettre en rouge\n\ndoc\n\n\nTitres\nPréfixer le titre avec #, ## ou ### pour avoir les titres de niveau 1, 2 ou 3, etc..\n#### Titre de niveau 4\n\nTitre de niveau 4\n\n\n\nListes\n\n\n- Atréides\n  - Leto\n  - Jessica\n  - Paul\n- Harkonnen\n  - Vladimir\n  - Rabban\n  - Feyd-Rautha\nou\n- Atréides\n  * Leto\n  * Jessica\n  * Paul\n- Harkonnen\n  + Vladimir\n  + Rabban\n  + Feyd-Rautha\n\n\nAtréides\n\nLeto\nJessica\nPaul\n\nHarkonnen\n\nVladimir\nRabban\nFeyd-Rautha\n\n\n\n\n\n\n\n1. Atréides\n   - Leto\n   - Jessica\\\n     **2 espaces (ou `\\`) + nouvelle ligne + aligner\n     pour ajouter du texte dans les items**\n   - Paul\n2. Harkonnen\n   - Vladimir\n   - Rabban\n   - Feyd-Rautha\n\n\nAtréides\n\nLeto\nJessica\n2 espaces (ou \\) + nouvelle ligne + aligner pour ajouter du texte dans les items\nPaul\n\nHarkonnen\n\nVladimir\nRabban\nFeyd-Rautha\n\n\n\n\n\nRenumérotation automatique incrémentée à partir du premier numéro trouvé.\n\n\n\nImages\n![Fremen](images/images/dune_book.jpg)\n\n\n\n\n\n\nFigure 2 –  Fremen\n\n\n\n![Fremen](images/images/dune_book.jpg \"Shai-hulud\"){#fig-dune fig-alt=\"A sand worm on Arrakis\"}\n\nUtiliser le préfixe fig- pour l’identifiant afin de pouvoir bénéficier des renvois automatiques et de la numérotation automatique\n\n\n\nRenvois\n(cross-references)\nUn lien automatique est créé si on indique @fig-dune : Quarto nous écrit le lien (type et numéro) qui renvoie à figure 2.\nLes noms des types affichés peuvent être modifiés dans l’en-tête :\n---\ncrossref:\n  fig-prefix: figure # par défaut : Figure\n  fig-title:  Figure\n  tbl-prefix: tableau # par défaut : Tableau\n  tbl-title:  Tableau\n  title-delim: \" &ndash; \"\n---\n\n\nNotes de pied de page\nLes notes se construisent en ajoutant un [^1] dans le texte, avec le 1 pouvant être une numérotation (pas obligatoirement dans l’ordre) ou tout autre mot clé. La note est ensuite introduite avec le même symbole dans un nouveau paragraphe :\n[^1]: texte de la note\nC’est normalement facile1 à faire si on se rappelle de la syntaxe.\n\n\nÉquations\nSyntaxe LaTeX entre des $ (inline) ou $$ (bloc).\n$\\sigma = \\sqrt{\\frac{1}{N} \\sum_{i=1}^N (x_i - \\mu)^2},\\text{ où } \\mu = \\frac{1}{N} \\sum_{i=1}^N x_i$\n\\[\\sigma = \\sqrt{\\frac{1}{N} \\sum_{i=1}^N (x_i - \\mu)^2},\\text{ où } \\mu = \\frac{1}{N} \\sum_{i=1}^N x_i\\] doc\n\n\nLibellés\n(Callout)\nLes “libellés” permettent de mettre en exergue des informations complémentaires.\n:::{.callout-note}\nIl existe cinq types de libellés : \n`note`, `tip`, `warning`, `caution` et `important`.\n:::\n\n\n\n\n\n\nNote\n\n\n\nIl existe cinq types de libellés : note, tip, warning, caution et important.\n\n\n\n::: callout-warning\nSuite aux nombreux manquements à l’obligation de contrôle hebdomadaire (...)\n:::\n\n\n\n\n\n\nAvertissement\n\n\n\nSuite aux nombreux manquements à l’obligation de contrôle hebdomadaire de l’étanchéité (…)\n\n\n::: {.callout-tip title=\"Mon titre\"}\nThis is a callout with a title.\n:::\n\n\n\n\n\n\nMon titre\n\n\n\nThis is a callout with a title.\n\n\ndoc\n\n\n\n\n\n\n\nÀ vous de jouer\n\n\n\nExercice 2. produire un document simple\n\n\n\n\nThèmes\nQuarto est fourni avec plusieurs thèmes =&gt; voir ici.\n\n\nCode\nUn bloc de code (ou chunk en anglais) exécuté sans options.\n\nglm(Sepal.Length ~ Sepal.Width, data = iris)\n\n\nCall:  glm(formula = Sepal.Length ~ Sepal.Width, data = iris)\n\nCoefficients:\n(Intercept)  Sepal.Width  \n     6.5262      -0.2234  \n\nDegrees of Freedom: 149 Total (i.e. Null);  148 Residual\nNull Deviance:      102.2 \nResidual Deviance: 100.8    AIC: 372\n\n\n\n\nOptions de bloc de code\nDe nombreuses options sont disponible pour personnaliser les blocs de code.\n\nexécution :\n#| eval: exécuter le code\n#| echo: afficher le code\nnommage :\n#| label: identifiant du chunk (pas obligatoire mais si vous décidez d’en mettre, pas de doublons)\n#| fig-cap: sert uniquement à légender une figure (image ou graphique par exemple)\n\n\n\n\nOutils\nSi on a #| echo: true l’utilisateur voit le code\nOn peut aussi ajouter des outils pour l’utilisateur pour qu’il affiche ou cache les chunks avec, dans l’en-tête YAML :\nformat: \n  html:\n    code-fold: true\n    code-tools: true\n\ncode-fold: true permet à l’utilisateur de plier / déplier le code sous les résultats.\ncode-tools: true permet d’ajouter une barre d’outils en haut du quarto pour les blocs de code.\n\n\n\nLe bloc de code setup\nPour charger les packages et gérer la configuration de votre quarto, il est recommandé d’inclure un premier bloc de code juste après l’en-tête de votre document.\nVoici un exemple :\n\n\n\n\n\n\n\n\nÀ vous de jouer\n\n\n\nExercice 3. Code\n\n\n\n\n\nTableaux\nLes tableaux sont balisés ainsi en Markdown :\n\n\n| année | titre                   |\n|------:|:------------------------|\n|  1965 | Dune                    |\n|  1969 | Le Messie de Dune       |\n|  1976 | Les Enfants de Dune     |\n|  1981 | L'Empereur-Dieu de Dune |\n|  1984 | Les Hérétiques de Dune  |\n|  1985 | La Maison des mères     |\n\n: Cycle de Dune {#tbl-cycle}\n\n\n\n\n\n\n\nannée\ntitre\n\n\n\n\n1965\nDune\n\n\n1969\nLe Messie de Dune\n\n\n1976\nLes Enfants de Dune\n\n\n1981\nL’Empereur-Dieu de Dune\n\n\n1984\nLes Hérétiques de Dune\n\n\n1985\nLa Maison des mères\n\n\n\n\n\nTableau 1 –  Cycle de Dune\n\n\n\n\n\ndoc\nVoir cet outil en ligne.\n\nMais la plupart du temps on affichera des tableaux programmatiquement.\n\n\n\niris |&gt; \n  summarise(.by = Species,\n            moy_sepales = sum(Sepal.Length))\n\n     Species moy_sepales\n1     setosa       250.3\n2 versicolor       296.8\n3  virginica       329.4\n\n\n\nTableau 2 –  Iris (tibble)\n\n\n\n\nAvec {knitr} ou le paramètre en en-tête :\nformat:\n  html:\n    df-print: kable\n\niris |&gt; \n  summarise(.by = Species,\n            moy_sepales = sum(Sepal.Length)) |&gt; \n  knitr::kable()\n\n\n\n\n\n\n\nSpecies\nmoy_sepales\n\n\n\n\nsetosa\n250.3\n\n\nversicolor\n296.8\n\n\nvirginica\n329.4\n\n\n\n\n\n\nTableau 3 –  Iris (kable)\n\n\n\n\ndoc\n\nContrôler l’impression de data.frame avec df-print: kable ou df-print: paged, df-print: tibble Interactivité javascript df-print: paged à voir en exercice\n\n\nou avec {gt}\n\nlibrary(gt)\n\niris |&gt; \n  summarise(.by = Species,\n            moy_sepales = sum(Sepal.Length)) |&gt; \n  gt()\n\n\n\n\n\n\n\n\n\n\nSpecies\nmoy_sepales\n\n\n\n\nsetosa\n250.3\n\n\nversicolor\n296.8\n\n\nvirginica\n329.4\n\n\n\n\n\n\n\n\nTableau 4 –  Iris (gt)\n\n\n\n\n\nUtiliser le préfixe tbl- pour l’identifiant afin de pouvoir bénéficier des renvois automatiques et la numérotation automatique\n\n\n\n\n\n\n\n\nÀ vous de jouer\n\n\n\nExercice 4. Tableaux\n\n\n\n\nGraphiques\n\nggplot(iris, aes(Petal.Length, \n                 Petal.Width, \n                 color = Species)) +\n  geom_point()\n\n\n\n\n\n\n\nFigure 3 –  Iris\n\n\n\n\n\nTaille d’image dans Quarto  (Arel-Bundock, 2024)\n\nInteractivité possible avec {plotly} ou {ggiraph}. cf. exercices\n\n\n\n\n\n\n\n\nÀ vous de jouer\n\n\n\nExercice 5. Graphiques\n\n\n\n\nCartes\n\nlibrary(leaflet)\nlibrary(sf)\n\n\"donnees/adminexpress_cog_simpl_000_2024.gpkg\" |&gt; \n  read_sf(layer = \"region\") |&gt; \n  leaflet() |&gt; \n  addTiles() |&gt; \n  addPolygons()\n\n\n\n\n\n\n\nFigure 4 –  Exemple Leaflet\n\n\n\n\n\n\n\n\n\n\nÀ vous de jouer\n\n\n\nExercice 6. Cartes\n\n\n\n\nPrésentations\nOn peut faire des présentations.\n\nChaque nouvelle slide est définie avec un titre de niveau 2 (##).\n\nPour rédiger une slide sur plusieurs colonnes c’est ici.\n\nL’emplacement des outputs des blocs de code peut être configuré.\n\n\n\nDiagrammes\n\nMermaid\nÀ construire avec mermaid.live\n\n\n\nflowchart TD\n    A[(données)] --&gt; B(importer) \n    B --&gt; C[/données valides/]\n    C --&gt; D{\"sum(sau &gt; 200)\"}\n    D -- oui --&gt; E(OK)\n    D -- non --&gt; F(Stop)\n\n\n\n\nflowchart TD\n    A[(données)] --&gt; B(importer) \n    B --&gt; C[/données valides/]\n    C --&gt; D{\"sum(sau &gt; 200)\"}\n    D -- oui --&gt; E(OK)\n    D -- non --&gt; F(Stop)"
+  },
+  {
+    "objectID": "formation_quarto_document.html#fonctionnalités-avancées",
+    "href": "formation_quarto_document.html#fonctionnalités-avancées",
+    "title": "Formation Quarto",
+    "section": "Fonctionnalités avancées",
+    "text": "Fonctionnalités avancées\n\nRapports paramétrés\n\n\nmon_document.qmd\n\n---\ntitle: Rapport\nformat:\n  html: default\nparams:\n  region: 84\n  sortie: knitr\n---\n\n## Région `{r} params$region`\n\n```{r}\nsau &lt;- ra |&gt; \n  filter(siege_reg == params$region) |&gt; \n  summarise(.by = siege_dep,\n            sau_tot = sum(sau_tot, na.rm = TRUE))\n\nif (params$sortie == \"knitr\") kable::knitr(sau) else sau\n```\n\n\nOn n’est pas obligé de changer manuellement les paramètres et re-tricoter ; on peut itérer sur une liste :\nfor (r in c(11, 94, 84, 04)) {\n  quarto::quarto_render(\"mon_document.qmd\",\n                        execute_params = list(region = r),\n                        output_file = paste0(\"rapport_\", r, \".html\"))\n}\nrésultera en 4 rapports personnalisés : rapport_11.html, rapport_94.html,…\ndoc\n\n\n\nAutres exemples de rapports paramétrés\nExemple 1\nhttps://gist.github.com/ddotta/67d1a54a94eb9648be6f3fe36cfe3e05\nqui génère un contenu différent en Html/Pdf ou en fonction du paramètre srise.\nExemple 2\nVoir cet exemple issu de la documentation officielle : https://quarto-dev.github.io/quarto-r/articles/dynamic-metadata.html#advanced-use-case-conditional-content-based-on-parameters\n\n\nInclusions\nEn tout point du qmd :\n{{&lt; include entete.qmd &gt;}}\ndoc\nou dans le YAML pour ajouter de simples en-tête et pieds de page :\n---\nformat:\n  html:\n    include-before-body: en_tete.html\n    include-after-body: pied.html\n---\ndoc\n\n\nCache\nPour les calculs longs et rarement variables on peut gagner du temps avec cache: true (au niveau document ou chunk).\n```{r}\n#| label: long-traitement\n#| cache: true\n#| cache-extra : !expr file.mtime(\"donnees/departements.gpkg\")\n\nregion &lt;- read_sf(\"donnees/departements.gpkg\") |&gt; \n  st_union()\n```\nNe sera exécuté qu’une fois sauf si le code du chunk change ou si la date du fichier change ou si on passe à cache: false, ou via :\nquarto render mon_document.qmd --cache-refresh\ndoc\n\ncache peut être défini au niveau projet, document ou chunk.\n\n\n\nCrosstalk\n// TODO\ndoc\n\n\nDashboards\n// TODO\ndoc"
+  },
+  {
+    "objectID": "formation_quarto_document.html#typographie-marianne",
+    "href": "formation_quarto_document.html#typographie-marianne",
+    "title": "Formation Quarto",
+    "section": "Typographie Marianne",
+    "text": "Typographie Marianne\nPour textes et graphiques  (Service d’information du gouvernement, 2020)\n\nInstaller {ragg}, {systemfonts} et {textshaping}\nDans l’en-tête yaml du document Quarto :\n---\nmainfont: Marianne\nknitr:\n  opts_chunk: \n    dev: \"ragg_png\"\n---\n\n\nPermet d’avoir la police Marianne pour le texte et de la prendre en compte dans les graphiques ggplot.\nAutre possibilité (à mettre dans un chunk de configuration en début de document) : knitr::opts_chunk$set(dev = \"ragg_png\")"
+  },
+  {
+    "objectID": "formation_quarto_document.html#couleurs",
+    "href": "formation_quarto_document.html#couleurs",
+    "title": "Formation Quarto",
+    "section": "Couleurs",
+    "text": "Couleurs\nModification du thème ou des CSS\n// TODO"
+  },
+  {
+    "objectID": "formation_quarto_document.html#footnotes",
+    "href": "formation_quarto_document.html#footnotes",
+    "title": "Formation Quarto",
+    "section": "Notes de bas de page",
+    "text": "Notes de bas de page\n\n\npage d’aide sur les notes de bas de page.↩︎"
+  },
+  {
+    "objectID": "formation_quarto.html#pré-requis-techniques",
+    "href": "formation_quarto.html#pré-requis-techniques",
+    "title": "Formation Quarto",
+    "section": "Pré-requis techniques",
+    "text": "Pré-requis techniques\n\nQuarto (≥ 1.5)\nRStudio (≥ 2022.07) et R (≥ 4)\n\n=&gt; Installé par défaut sur Cerise !"
+  },
+  {
+    "objectID": "formation_quarto.html#objectifs",
+    "href": "formation_quarto.html#objectifs",
+    "title": "Formation Quarto",
+    "section": "Objectifs",
+    "text": "Objectifs\n\nIntérêt des publications reproductibles\nDécouvrir la versatilité de Quarto\nRéaliser un document, de simple à complexe\n\n\nversatile : pour le langage en entrée et les formats en sortie (diapo suivante)"
+  },
+  {
+    "objectID": "formation_quarto.html#quarto",
+    "href": "formation_quarto.html#quarto",
+    "title": "Formation Quarto",
+    "section": "Quarto",
+    "text": "Quarto"
+  },
+  {
+    "objectID": "formation_quarto.html#avantages",
+    "href": "formation_quarto.html#avantages",
+    "title": "Formation Quarto",
+    "section": "Avantages",
+    "text": "Avantages\n\nintégration avec R\nreproductibilité\n\nsession vierge à chaque génération\nlimiter les copier/coller entre outils\nprise en compte des changements de données ou de méthodes\n\ninteractivité possible dans le document (HTML)\nversionnement avec git\n\n\n\nafficher du code dans le doc\néviter les copier/coller : synchronisation analyse/résultats\nfaciliter la reproductibilité avec {renv}"
+  },
+  {
+    "objectID": "formation_quarto.html#inconvénients",
+    "href": "formation_quarto.html#inconvénients",
+    "title": "Formation Quarto",
+    "section": "Inconvénients",
+    "text": "Inconvénients\n\nsyntaxe (markdown)\ngénération active du rendu pour visualiser\ndébogage parfois plus complexe\n\n\n\nMais disponibilité d’un éditeur visuel What You See Is What You Mean dans RStudio.\nAsynchrone"
+  },
+  {
+    "objectID": "formation_quarto.html#derniers-détails-sur-linstallation",
+    "href": "formation_quarto.html#derniers-détails-sur-linstallation",
+    "title": "Formation Quarto",
+    "section": "Derniers détails sur l’installation",
+    "text": "Derniers détails sur l’installation\nUn paquet {quarto} et un binaire quarto (ils sont pré-installés sur CERISE).\nVérification dans le terminal :\nquarto check install\nquarto check knitr\n\n\n\n\n\n\nSi nécesaire\n\n\ninstall.packages(\"quarto\")\nLe format PDF nécessite LaTeX.\nquarto install tinytex\n\n\n\n\n\nLe programme est livré avec RStudio (mais peut être installé à part aussi)\nLa paquet n’est pas indispensable mais peut être utile\nTypst n’est pas encore disponible sur CERISE (sauf en pré-prod) pour générer du PDF sans LaTeX"
+  },
+  {
+    "objectID": "formation_quarto.html#premiers-pas-avec-quarto",
+    "href": "formation_quarto.html#premiers-pas-avec-quarto",
+    "title": "Formation Quarto",
+    "section": "Premiers pas avec quarto",
+    "text": "Premiers pas avec quarto\n\nComment créer votre premier document quarto ?\nUn mode “source” et un mode “visuel”\nGénérer un document “self contained” : https://quarto.org/docs/output-formats/html-basics.html#self-contained"
+  },
+  {
+    "objectID": "formation_quarto.html#premier-exemple",
+    "href": "formation_quarto.html#premier-exemple",
+    "title": "Formation Quarto",
+    "section": "Premier exemple",
+    "text": "Premier exemple\n\nOn passe en revue rapidement les éléments d’un document Quarto, puis on revient sur chaque élément en détail par la suite"
+  },
+  {
+    "objectID": "formation_quarto.html#markdown",
+    "href": "formation_quarto.html#markdown",
+    "title": "Formation Quarto",
+    "section": "markdown",
+    "text": "markdown\nUn langage balisé simplifié\ndoc\n\nInventé en 2004 pour offrir une syntaxe facile à lire et à écrire, en l’état, sans formatage."
+  },
+  {
+    "objectID": "formation_quarto.html#chunks",
+    "href": "formation_quarto.html#chunks",
+    "title": "Formation Quarto",
+    "section": "chunks",
+    "text": "chunks\nLe code exécutable est intégré dans un chunk (bloc) :\n```{r}\n#| label: mon-chunk\n#| warning: false\n\n1+1\n```\nCtrl Alt i\ndoc\n\n\ndétails dans la partie Code\nTriple quote + le langage dans des accolades\nLes commentaires/pipe permettent de préciser des options (la plus grosse différence visible entre Rmarkdown et Quarto)\nlabel: est un identifiant (facultatif mais conseillé)"
+  },
+  {
+    "objectID": "formation_quarto.html#en-tête-de-configuration",
+    "href": "formation_quarto.html#en-tête-de-configuration",
+    "title": "Formation Quarto",
+    "section": "En-tête de configuration",
+    "text": "En-tête de configuration\n\nYAML\nbloc entre ---\nFacultatif mais a minima : title:, author:, date:, format:\nOptions nombreuses et variables selon les formats =&gt; voir ici"
+  },
+  {
+    "objectID": "formation_quarto.html#rendu",
+    "href": "formation_quarto.html#rendu",
+    "title": "Formation Quarto",
+    "section": "Rendu",
+    "text": "Rendu\nAvec la console R :\nquarto_render(\"mon_document.qmd3)\nAvec le terminal :\nquarto render mon_document.qmd\nCtrl ⇧ k ou  (ou )\n\nLe tricotage/rendu se fait dans une nouvelle session à chaque fois et n’impacte pas votre environnement courant ; de même les objets de votre environnement courant ne sont pas disponibles, par défaut, lors du rendu"
+  },
+  {
+    "objectID": "formation_quarto.html#éléments",
+    "href": "formation_quarto.html#éléments",
+    "title": "Formation Quarto",
+    "section": "Éléments",
+    "text": "Éléments"
+  },
+  {
+    "objectID": "formation_quarto.html#fonctionnalités-avancées",
+    "href": "formation_quarto.html#fonctionnalités-avancées",
+    "title": "Formation Quarto",
+    "section": "Fonctionnalités avancées",
+    "text": "Fonctionnalités avancées"
+  },
+  {
+    "objectID": "formation_quarto.html#typographie-marianne",
+    "href": "formation_quarto.html#typographie-marianne",
+    "title": "Formation Quarto",
+    "section": "Typographie Marianne",
+    "text": "Typographie Marianne\nPour textes et graphiques  (Service d’information du gouvernement, 2020)\n\nInstaller {ragg}, {systemfonts} et {textshaping}\nDans l’en-tête yaml du document Quarto :\n---\nmainfont: Marianne\nknitr:\n  opts_chunk: \n    dev: \"ragg_png\"\n---\n\n\nPermet d’avoir la police Marianne pour le texte et de la prendre en compte dans les graphiques ggplot.\nAutre possibilité (à mettre dans un chunk de configuration en début de document) : knitr::opts_chunk$set(dev = \"ragg_png\")"
+  },
+  {
+    "objectID": "formation_quarto.html#couleurs",
+    "href": "formation_quarto.html#couleurs",
+    "title": "Formation Quarto",
+    "section": "Couleurs",
+    "text": "Couleurs\nModification du thème ou des CSS\n// TODO"
+  },
+  {
+    "objectID": "NEWS.html",
+    "href": "NEWS.html",
+    "title": "formation-quarto 0.1",
+    "section": "",
+    "text": "formation-quarto 0.1\nCette version a été écrite par le DEMESIS et constitue le support de la formation dispensée en 2025 au SSM Agriculture."
   }
 ]
