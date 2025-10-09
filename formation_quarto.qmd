@@ -370,14 +370,6 @@ ou
 Renumérotation automatique incrémentée à partir du premier numéro trouvé.
 :::
 
-### Liens
-
-``` markdown
-[Texte du lien](https://fr.wikipedia.org/wiki/Arrakis)
-```
-
-[Texte du lien](https://fr.wikipedia.org/wiki/Arrakis)
-
 ### Images
 
 `![Fremen](images/images/dune_book.jpg)`
