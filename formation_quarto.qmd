@@ -479,6 +479,8 @@ This is a callout with a title.
 
 ### Code
 
+Un bloc de code (ou chunk en anglais) exécuté sans options.  
+
 ```{r}
 #| label: exemple-code
 
