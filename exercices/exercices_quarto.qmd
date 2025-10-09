@@ -337,9 +337,7 @@ library(leaflet) # cartographie dynamique
 
 ## PDF
 
-Sur CERISE en pré-prod uniquement (ou en prod fin février)
-
-- (Partir d'un nouveau document ou enlever les éléments interactifs {DT} ou {leaflet})
+- Partir d'un nouveau document ou enlever les éléments interactifs {DT} ou {leaflet}
 - Changer le format dans l'en-tête (`typst` ou `pdf`)
 - Tricoter
 
