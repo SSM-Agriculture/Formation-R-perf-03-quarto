@@ -207,11 +207,6 @@ np.exp(np.pi * complex(0, 1)) + 1
 ```{{r}}
 somme <- sum(1:10)
 ```
-
-And when it has gone past I will turn the `{{r}} somme` inner eye to see its 
-path. Where the fear has gone there will be nothing. 
-
-> Only I will remain.
 ````
 
 ::: notes
