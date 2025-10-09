@@ -142,7 +142,7 @@ Le format PDF nécessite {tinytex}
 - Asynchrone
 :::
 
-## Sur CERISE
+## Derniers détails sur l'installation
 
 Un paquet {quarto} et un binaire `quarto` (ils sont pré-installés sur CERISE).
 
