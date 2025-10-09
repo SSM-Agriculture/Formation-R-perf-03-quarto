@@ -452,21 +452,17 @@ Suite aux nombreux manquements à l’obligation de contrôle hebdomadaire (...)
 ```
 
 ::: callout-warning
-Suite aux nombreux manquements à l'obligation de contrôle hebdomadaire de l'étanchéité des colonnettes à crémaillère (...)
+Suite aux nombreux manquements à l'obligation de contrôle hebdomadaire de l'étanchéité (...)
 :::
 
 ``` markdown
-::: callout-warning
-#### Attention
-
-Le caisson de calibrage de la bride du commutateur à fuseaux (...)
+::: {.callout-tip title="Mon titre"}
+This is a callout with a title.
 :::
 ```
 
-::: callout-warning
-#### Attention
-
-Le caisson de calibrage de la bride du commutateur à fuseaux rotatifs est HORS-SERVICE
+::: {.callout-tip title="Mon titre"}
+This is a callout with a title.
 :::
 
 
