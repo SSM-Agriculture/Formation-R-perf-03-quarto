@@ -178,6 +178,7 @@ quarto install tinytex
 
 - Comment créer votre premier document quarto ?
 - Un mode "source" et un mode "visuel"
+- Générer un document "self contained" : https://quarto.org/docs/output-formats/html-basics.html#self-contained
 
 ## Premier exemple
 ::: notes
