@@ -723,6 +723,14 @@ Carte interactive non-visualisable au format PDF.
 [Exercice 6.](exercices/exercices_corriges_quarto.html#cartes) Cartes
 :::
 
+### Présentations
+
+On peut faire [des présentations](https://quarto.org/docs/presentations/).  
+
+- Chaque nouvelle slide est définie avec un titre de niveau 2 (`##`).  
+- Pour rédiger une slide sur plusieurs colonnes c'est [ici](https://quarto.org/docs/presentations/#multiple-columns).  
+- L'emplacement des outputs des blocs de code [peut être configuré](https://quarto.org/docs/presentations/revealjs/#output-location).
+
 
 ### Diagrammes
 
