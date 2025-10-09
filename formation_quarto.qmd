@@ -525,16 +525,6 @@ format:
 - `code-fold: true` permet à l’utilisateur de plier / déplier le code sous les résultats.  
 
 - `code-tools: true` permet d'ajouter une barre d’outils en haut du quarto pour les blocs de code.
-----
-
-#### Sorties de code
-
-- texte, avec :
-  - `#| results: markup` ou
-  - `cat()` et `#| results: asis`
-- tableaux
-- images
-- éléments interactifs
 
 ---
 
