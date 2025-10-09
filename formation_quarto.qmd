@@ -254,8 +254,12 @@ Le code exécutable est intégré dans un *chunk* (bloc) :
 
 ## Rendu
 
-(*knit*)
+Avec la console R :
+```{.r}
+quarto_render("mon_document.qmd3)
+```
 
+Avec le terminal :
 ```{.bash}
 quarto render mon_document.qmd
 ```
@@ -266,6 +270,8 @@ quarto render mon_document.qmd
 ::: notes
 Le tricotage/rendu se fait dans une nouvelle session à chaque fois et n'impacte pas votre environnement courant ; de même les objets de votre environnement courant ne sont pas disponibles, par défaut, lors du rendu
 :::
+
+---
 
 ::: callout-note
 ### À vous de jouer
