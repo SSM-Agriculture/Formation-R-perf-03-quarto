@@ -493,12 +493,16 @@ iris |>
 
 #### Options de bloc de code
 
+De [nombreuses options](https://quarto.org/docs/computations/execution-options.html) sont disponible pour personnaliser les blocs de code.  
+
+
+
 -   exécution : 
   - `#| eval:` exécuter le code
   - `#| echo:` afficher le code
 -   nommage : 
-  - `#| label:` identifiant du chunk
-  - `#| fig-cap:` légende du bloc
+  - `#| label:` identifiant du chunk (pas obligatoire mais si vous décidez d'en mettre, pas de doublons)
+  - `#| fig-cap:` sert uniquement à légender une figure (image ou graphique par exemple)
 
 ----
 
@@ -515,6 +519,9 @@ format:
     code-tools: true
 ```
 
+- `code-fold: true` permet à l’utilisateur de plier / déplier le code sous les résultats.  
+
+- `code-tools: true` permet d'ajouter une barre d’outils en haut du quarto pour les blocs de code.
 ----
 
 #### Sorties de code
