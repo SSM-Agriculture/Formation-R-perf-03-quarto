@@ -181,8 +181,9 @@ quarto install tinytex
 - Générer un document "self contained" : https://quarto.org/docs/output-formats/html-basics.html#self-contained
 
 ## Premier exemple
+
 ::: notes
-On passe en revue rapidement les éléments d'un document Quarto, puis on revient sur chaque éléments en détail par la suite
+On passe en revue rapidement les éléments d'un document Quarto, puis on revient sur chaque élément en détail par la suite
 :::
 
 ----
