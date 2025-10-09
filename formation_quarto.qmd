@@ -650,6 +650,7 @@ ou avec {gt}
 #| label: tbl-iris-gt
 #| tbl-cap: "Iris (gt)"
 #| output-location: column
+library(gt)
 
 iris |> 
   summarise(.by = Species,
@@ -684,8 +685,7 @@ Utiliser le préfixe `tbl-` pour l'identifiant afin de pouvoir bénéficier des 
 ggplot(iris, aes(Petal.Length, 
                  Petal.Width, 
                  color = Species)) +
-  geom_point() +
-  theme_masa()
+  geom_point()
 ```
 
 Taille d'image dans Quarto [@arel-bundockConsistentFiguresQuarto2024]
@@ -715,8 +715,7 @@ Interactivité possible avec {plotly} ou {ggiraph}. *cf.* exercices
 "donnees/adminexpress_cog_simpl_000_2024.gpkg" |> 
   read_sf(layer = "region") |> 
   leaflet() |>
-  addTiles() |> 
-  addPolygons()
+  addTiles() 
 ```
 
 ::: {.content-visible when-format="pdf"}
