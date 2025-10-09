@@ -250,7 +250,7 @@ Le code exécutable est intégré dans un *chunk* (bloc) :
 - [YAML](https://fr.wikipedia.org/wiki/YAML)
 - bloc entre `---`
 - Facultatif mais *a minima* : `title:`, `author:`, `date:`, `format:`
-- options nombreuses et variables selon les formats
+- Options nombreuses et variables selon les formats => voir [ici](https://quarto.org/docs/output-formats/html-basics.html)
 
 ## Rendu
 
