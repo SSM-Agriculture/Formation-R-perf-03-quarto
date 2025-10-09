@@ -476,6 +476,9 @@ This is a callout with a title.
 [Exercice 2.](exercices/exercices_corriges_quarto.html#doc-simple) produire un document simple
 :::
 
+### Thèmes
+
+Quarto est fourni avec plusieurs thèmes => voir [ici](https://quarto.org/docs/output-formats/html-themes.html).
 
 ### Code
 
