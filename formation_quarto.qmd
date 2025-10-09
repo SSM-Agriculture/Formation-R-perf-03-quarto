@@ -62,11 +62,6 @@ nocite: |
 
 # Introduction
 
-
-::: callout-caution
-DIAPORAMA EN COURS DE CONSTRUCTION
-:::
-
 Un module des [formations à R dispensées au SSM Agriculture](https://ssm-agriculture.github.io/site-formations-R/)
 
 
