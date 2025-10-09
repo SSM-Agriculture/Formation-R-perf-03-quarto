@@ -65,6 +65,11 @@ source("R/generer_tout.R")
 
 Diaporama disponible sur <https://ssm-agriculture.github.io/Formation-R-perf-03-quarto/> dans le cadre des [modules de formations à dispensés au SSM Agriculture](https://ssm-agriculture.github.io/site-formations-R/).
 
+```{bash}
+quarto publish
+```
+
+
 
 ## Méta {.appendix}
 
