@@ -426,43 +426,6 @@ $\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^N (x_i - \mu)^2},\text{ où } \mu = \frac
 $$\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^N (x_i - \mu)^2},\text{ où } \mu = \frac{1}{N} \sum_{i=1}^N x_i$$ [doc](https://quarto.org/docs/authoring/markdown-basics.html#equations)
 
 
-### Citations/bibliographie
-
-Avec [Zotero](https://www.zotero.org/) et l'extension [Better BibTeX](https://retorque.re/zotero-better-bibtex/) pour auto-exporter en BibTeX la collection quand elle est modifiée.
-
-Préciser le fichier utilisé en en-tête, puis utilisation des identifiants du fichier BibTex.
-
-``` markdown
----
-title: "Mon document"
-bibliography: formation_quarto.bib
----
-
-Comme le dit @rdevelopmentcoreteamLanguageEnvironmentStatistical2010 :
-
-> Lorem ipsum dolor sit amet[@rstudioGuide2024], consectetur adipiscing elit
-```
-
-Comme le dit @rdevelopmentcoreteamLanguageEnvironmentStatistical2010 :
-
-> Lorem ipsum dolor sit amet[@rstudioGuide2024], consectetur adipiscing elit
-
-----
-
-La bibliographie est directement générée :
-
--   en fin de document ou
-
--   après un \<div\> identifié avec #refs ex. :
-
-    ``` markdown
-    ## Références
-    ::: {#refs}
-    :::
-    ```
-
-[doc](https://quarto.org/docs/authoring/citations.html)
-
 ### Libellés
 
 (*Callout*)
