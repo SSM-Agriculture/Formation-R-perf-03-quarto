@@ -328,7 +328,7 @@ Ouvrir la couche `region` du fichier *~/CERISE/03-Espace-de-Diffusion/000_Refere
 library(sf)      # SIG
 library(leaflet) # cartographie dynamique
 
-"~/CERISE/03-Espace-de-Diffusion/000_Referentiels/0040_Geo/IGN/adminexpress/adminexpress_cog_simpl_000_2024.gpkg" |> 
+"donnees/adminexpress_cog_simpl_000_2024.gpkg" |> 
   read_sf(layer = "region") |> 
   leaflet() |>
   addTiles() |> 
