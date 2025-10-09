@@ -96,7 +96,7 @@ versatile : pour le langage en entrée et les formats en sortie (diapo suivante
 -   [multi-format](https://quarto.org/docs/gallery/)
     -   HTML (rapports, livres, présentations)
     -   PDF
-    -   Appli web (statique/Shiny) : blog, site, tableau de bord
+    -   Appli web (statique/interactif) : blog, site, tableau de bord
     -   Powerpoint
     -   MS Word
 :::
