@@ -590,7 +590,9 @@ Les tableaux sont balisés ainsi en Markdown :
 :::
 ::::::
 
-[doc](https://quarto.org/docs/authoring/tables.html)
+[doc](https://quarto.org/docs/authoring/tables.html)  
+
+Voir [cet outil en ligne](https://www.tablesgenerator.com/markdown_tables).
 
 ----
 
