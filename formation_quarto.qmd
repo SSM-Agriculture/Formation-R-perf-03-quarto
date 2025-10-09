@@ -57,26 +57,8 @@ nocite: |
 - Quarto (≥ 1.5)
 - RStudio (≥ 2022.07) et R (≥ 4)
 
-```{r}
-#| label: setup
+=> Installé par défaut sur Cerise !
 
-library(dplyr)   # manip. données
-library(ggplot2) # graphiques
-library(sf)      # carto.
-library(leaflet) # carto.
-library(gt)      # formatage tableaux
-
-# un theme ggplot utilisant la typographie Marianne
-theme_masa <- function(...) {
-  theme_grey(...) %+replace%
-    theme(
-      text = element_text(family = "Marianne"))
-}
-```
-
-::: notes
-La police Marianne doit être installée sur le poste
-:::
 
 # Introduction
 
