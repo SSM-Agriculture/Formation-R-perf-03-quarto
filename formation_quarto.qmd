@@ -493,8 +493,8 @@ Un bloc de code (ou chunk en anglais) exécuté sans options.
 ```{r}
 #| label: exemple-code
 
-iris |> 
-  glm(Sepal.Length ~ Sepal.Width, data = iris)
+glm(Sepal.Length ~ Sepal.Width, data = iris)
+
 ```
 
 
@@ -712,7 +712,7 @@ Interactivité possible avec {plotly} ou {ggiraph}. *cf.* exercices
 #| output-location: column
 #| eval: !expr knitr::is_html_output() 
 
-"~/CERISE/03-Espace-de-Diffusion/000_Referentiels/0040_Geo/IGN/adminexpress/adminexpress_cog_simpl_000_2024.gpkg" |> 
+"donnees/adminexpress_cog_simpl_000_2024.gpkg" |> 
   read_sf(layer = "region") |> 
   leaflet() |>
   addTiles() |> 
