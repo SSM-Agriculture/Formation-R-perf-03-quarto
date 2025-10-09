@@ -370,7 +370,7 @@ ou
 Renumérotation automatique incrémentée à partir du premier numéro trouvé.
 :::
 
-### Images
+### [Images](https://quarto.org/docs/authoring/figures.html)
 
 `![Fremen](images/images/dune_book.jpg)`
 
