@@ -526,6 +526,24 @@ format:
 
 - `code-tools: true` permet d'ajouter une barre d’outils en haut du quarto pour les blocs de code.
 
+#### Le bloc de code `setup`
+
+**Pour charger les packages et gérer la configuration de votre quarto**, il est recommandé d'inclure un premier bloc de code juste après l'en-tête de votre document.  
+Voici un exemple : 
+
+````{.markdown}
+```{r}
+#| label: setup
+#| include: false
+#| warning: false
+#| message: false
+
+library(dplyr)
+library(ggplot2)
+library(knitr)
+```
+````
+
 ---
 
 ::: callout-note
