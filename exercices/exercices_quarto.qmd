@@ -335,12 +335,6 @@ library(leaflet) # cartographie dynamique
   addPolygons()
 ```
 
-
-## HTML avec éléments interactifs {visibility="uncounted"}
-
-// TODO
-
-
 ## PDF
 
 Sur CERISE en pré-prod uniquement (ou en prod fin février)
@@ -349,15 +343,10 @@ Sur CERISE en pré-prod uniquement (ou en prod fin février)
 - Changer le format dans l'en-tête (`typst` ou `pdf`)
 - Tricoter
 
-## Tableau de bord {visibility="uncounted"}
-
-// TODO
-
 
 ## Rapports paramétrés
 
 - Faire un rapport régional donnant le nom de la région, la SAU, les UGB totaux.
-- Générer le rapport pour toutes les régions
 
 
 ## Méta {.appendix .unnumbered}
