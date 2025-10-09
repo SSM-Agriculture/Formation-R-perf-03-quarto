@@ -213,6 +213,7 @@ path. Where the fear has gone there will be nothing.
 
 > Only I will remain.
 ````
+
 ::: notes
 Un exemple pour montrer rapidement les différents éléments qu'on décrira ci-après
 :::
@@ -808,7 +809,7 @@ if (params$sortie == "knitr") kable::knitr(sau) else sau
 
 ----
 
-On n'est pas obligé de changer manuellement les paramètres et re-tricoter ; on peut itérer sur une liste :
+On n'est pas obligé de changer manuellement les paramètres et re-tricoter ; on peut itérer sur une liste :
 
 ```{.r}
 for (r in c(11, 94, 84, 04)) {
@@ -818,18 +819,24 @@ for (r in c(11, 94, 84, 04)) {
 }
 ```
 
-résultera en 4 rapports personnalisés : *rapport_11.html*, *rapport_94.html*,...
+résultera en 4 rapports personnalisés : *rapport_11.html*, *rapport_94.html*,...
 
 [doc](https://quarto.org/docs/computations/parameters.html)
 
 ---
 
-::: callout-note
-#### À vous de jouer
+### Autres exemples de rapports paramétrés
 
-[Exercice 10.](exercices/exercices_corriges_quarto.html#rapports-paramétrés) rapports paramétrés
-:::
+**Exemple 1**  
 
+https://gist.github.com/ddotta/67d1a54a94eb9648be6f3fe36cfe3e05  
+
+qui génère un contenu différent en Html/Pdf ou en fonction du paramètre srise.  
+
+**Exemple 2**  
+
+Voir cet exemple issu de la documentation officielle :
+https://quarto-dev.github.io/quarto-r/articles/dynamic-metadata.html#advanced-use-case-conditional-content-based-on-parameters
 
 ### Inclusions
 
