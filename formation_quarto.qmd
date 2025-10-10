@@ -57,7 +57,7 @@ nocite: |
 - Quarto (≥ 1.5)
 - RStudio (≥ 2022.07) et R (≥ 4)
 
-=> Installé par défaut sur Cerise !
+- => Installé par défaut sur Cerise !
 
 
 # Introduction
@@ -178,7 +178,7 @@ quarto install tinytex
 
 - Comment créer votre premier document quarto ?
 - Un mode "source" et un mode "visuel"
-- Générer un document "self contained" : https://quarto.org/docs/output-formats/html-basics.html#self-contained
+- Générer un document ["self contained"](https://quarto.org/docs/output-formats/html-basics.html#self-contained)  
 
 ## Premier exemple
 
@@ -502,18 +502,17 @@ glm(Sepal.Length ~ Sepal.Width, data = iris)
 
 #### Options de bloc de code
 
-De [nombreuses options](https://quarto.org/docs/computations/execution-options.html) sont disponible pour personnaliser les blocs de code.  
+De [nombreuses options](https://quarto.org/docs/computations/execution-options.html) sont disponibles pour personnaliser les blocs de code.  
 
 
 
--   exécution : 
+-   Exécution : 
   - `#| eval:` exécuter le code
   - `#| echo:` afficher le code
--   nommage : 
+-   Nommage : 
   - `#| label:` identifiant du chunk (pas obligatoire mais si vous décidez d'en mettre, pas de doublons)
   - `#| fig-cap:` sert uniquement à légender une figure (image ou graphique par exemple)
 
-----
 
 #### Outils
 
@@ -702,25 +701,30 @@ Interactivité possible avec {plotly} ou {ggiraph}. *cf.* exercices
 [Exercice 5.](exercices/exercices_corriges_quarto.html#graphiques) Graphiques
 :::
 
-
 ### Cartes
 
 ```{r}
-#| label: fig-carte
+#| label: fig-carte2
 #| fig-cap: "Exemple Leaflet"
 #| out-width: 100%
 #| output-location: column
 #| eval: !expr knitr::is_html_output() 
 
+library(leaflet)
+library(sf)
+
 "donnees/adminexpress_cog_simpl_000_2024.gpkg" |> 
   read_sf(layer = "region") |> 
-  leaflet() |>
-  addTiles() 
+  leaflet() |> 
+  addTiles() |> 
+  addPolygons()
 ```
 
 ::: {.content-visible when-format="pdf"}
 Carte interactive non-visualisable au format PDF.
 :::
+
+---
 
 ::: callout-note
 #### À vous de jouer
@@ -808,16 +812,9 @@ résultera en 4 rapports personnalisés : *rapport_11.html*, *rapport_94.html*,.
 
 ### Autres exemples de rapports paramétrés
 
-**Exemple 1**  
+[Exemple 1](https://gist.github.com/ddotta/67d1a54a94eb9648be6f3fe36cfe3e05) qui génère un contenu différent en Html/Pdf ou en fonction du paramètre srise.  
 
-https://gist.github.com/ddotta/67d1a54a94eb9648be6f3fe36cfe3e05  
-
-qui génère un contenu différent en Html/Pdf ou en fonction du paramètre srise.  
-
-**Exemple 2**  
-
-Voir cet exemple issu de la documentation officielle :
-https://quarto-dev.github.io/quarto-r/articles/dynamic-metadata.html#advanced-use-case-conditional-content-based-on-parameters
+[Exemple 2](https://quarto-dev.github.io/quarto-r/articles/dynamic-metadata.html#advanced-use-case-conditional-content-based-on-parameters) issu de la documentation officielle.  
 
 ### Inclusions
 
