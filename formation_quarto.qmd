@@ -1,7 +1,7 @@
 ---
 title: "Formation Quarto"
 subtitle: "Parcours de formation R perfectionnement SSP"
-date-modified: "`r Sys.Date()`"
+date-modified: "Octobre 2025"
 title-slide-attributes:
   data-background-image: images/ze-paulo-gasparotto-GeReAnOMiZ8-unsplash.jpg
   data-background-size: cover
@@ -513,8 +513,8 @@ De [nombreuses options](https://quarto.org/docs/computations/execution-options.h
   - `#| label:` identifiant du chunk (pas obligatoire mais si vous décidez d'en mettre, pas de doublons)
   - `#| fig-cap:` sert uniquement à légender une figure (image ou graphique par exemple)
 
-
-#### Outils
+  
+### Outils
 
 Si on a `#| echo: true` l'utilisateur voit le code
 
@@ -531,7 +531,8 @@ format:
 
 - `code-tools: true` permet d'ajouter une barre d’outils en haut du quarto pour les blocs de code.
 
-#### Le bloc de code `setup`
+
+### Le bloc de code `setup`
 
 **Pour charger les packages et gérer la configuration de votre quarto**, il est recommandé d'inclure un premier bloc de code juste après l'en-tête de votre document.  
 Voici un exemple : 
@@ -864,20 +865,6 @@ quarto render mon_document.qmd --cache-refresh
 `cache` peut être défini au niveau projet, document ou chunk.
 :::
 
-### Crosstalk {visibility="uncounted"}
-
-// TODO
-
-[doc](https://rstudio.github.io/crosstalk/)
-
-
-### Dashboards {visibility="uncounted"}
-
-// TODO
-
-[doc](https://quarto.org/docs/dashboards/call)
-
-
 # Marque de l'État
 
 ## Typographie Marianne
@@ -900,15 +887,8 @@ Pour textes et graphiques [@servicedinformationdugouvernementCharteGraphiqueLEta
 ::: notes
 Permet d'avoir la police Marianne pour le texte et de la prendre en compte dans les graphiques ggplot.
 
-Autre possibilité (à mettre dans un *chunk* de configuration en début de document) : `knitr::opts_chunk$set(dev = "ragg_png")`
+Autre possibilité (à mettre dans un *chunk* de configuration en début de document) : `knitr::opts_chunk$set(dev = "ragg_png")`
 :::
-
-## Couleurs {visibility="uncounted"}
-
-Modification du thème ou des CSS
-
-// TODO
-
 
 # Références
 
