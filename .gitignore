@@ -10,3 +10,4 @@ formation_quarto_files
 *.rds
 *.gpkg
 _site/
+.github
