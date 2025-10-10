@@ -52,6 +52,17 @@ nocite: |
   @*
 ---
 
+```{r}
+#| label: setup
+#| include: false
+#| warning: false
+#| message: false
+
+library(dplyr)
+library(ggplot2)
+library(knitr)
+```
+
 ## Pré-requis techniques
 
 - Quarto (≥ 1.5)
@@ -537,18 +548,7 @@ format:
 **Pour charger les packages et gérer la configuration de votre quarto**, il est recommandé d'inclure un premier bloc de code juste après l'en-tête de votre document.  
 Voici un exemple : 
 
-````{.markdown}
-```{r}
-#| label: setup
-#| include: false
-#| warning: false
-#| message: false
-
-library(dplyr)
-library(ggplot2)
-library(knitr)
-```
-````
+![Bloc de setup](images/chunk_setup.png){#fig-setup}
 
 ---
 
