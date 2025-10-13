@@ -401,7 +401,7 @@ Renumérotation automatique incrémentée à partir du premier numéro trouvé.
 ![Fremen](images/dune_book.jpg){#fig-dune fig-alt="A sand worm on Arrakis"}
 
 ``` markdown
-![Fremen](images/images/dune_book.jpg "Shai-hulud"){#fig-dune fig-alt="A sand worm on Arrakis"}
+![Fremen](images/images/dune_book.jpg){#fig-dune fig-alt="A sand worm on Arrakis"}
 ```
 
 ::: notes
