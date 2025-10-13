@@ -92,6 +92,13 @@ versatile : pour le langage en entrée et les formats en sortie (diapo suivante
 
 ![Principe de fonctionnement (source RStudio)](images/rstudio-qmd-how-it-works.png){#fig-works}
 
+
+- qmd : fichier quarto 
+- knitr : package R pour générer des fichiers markdown  
+- md : fichier markdown  
+- pandoc : convertisseur universel de documents  
+- sorties multi-formats (html, word, pdf...)
+
 ::: notes
 - Mélange code et texte : une partie du document est générée par des données (tableaux, graphiques ou texte)
 - Successeur de Rmarkdown
@@ -134,7 +141,7 @@ Le format PDF nécessite {tinytex}
   - limiter les copier/coller entre outils
   - prise en compte des changements de données ou de méthodes
 - interactivité possible dans le document (HTML)
-- versionnement avec git
+- versionnement avec Git et compatible avec le CI/CD (intégration continue)
 
 ::: notes
 - afficher du code dans le doc
@@ -258,7 +265,7 @@ Le code exécutable est intégré dans un *chunk* (bloc) :
 
 ## En-tête de configuration
 
-- [YAML](https://fr.wikipedia.org/wiki/YAML)
+- En language [YAML](https://fr.wikipedia.org/wiki/YAML)
 - bloc entre `---`
 - Facultatif mais *a minima* : `title:`, `author:`, `date:`, `format:`
 - Options nombreuses et variables selon les formats => voir [ici](https://quarto.org/docs/output-formats/html-basics.html)
@@ -267,7 +274,7 @@ Le code exécutable est intégré dans un *chunk* (bloc) :
 
 Avec la console R :
 ```{.r}
-quarto_render("mon_document.qmd3)
+quarto_render("mon_document.qmd")
 ```
 
 Avec le terminal :
@@ -391,7 +398,7 @@ Renumérotation automatique incrémentée à partir du premier numéro trouvé.
 
 `![Fremen](images/images/dune_book.jpg)`
 
-![Fremen](images/dune_book.jpg "Shai-hulud"){#fig-dune fig-alt="A sand worm on Arrakis"}
+![Fremen](images/dune_book.jpg){#fig-dune fig-alt="A sand worm on Arrakis"}
 
 ``` markdown
 ![Fremen](images/images/dune_book.jpg "Shai-hulud"){#fig-dune fig-alt="A sand worm on Arrakis"}
